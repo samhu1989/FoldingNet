@@ -1,0 +1,6 @@
+MyPi 3.1415926535898
+InputFilePath ./data/box_627.txt
+MyEpsilon 0.0001
+MyInfinity 10000000
+ResolutionMultipe 5
+ThresholdForSeparateLines 0.4

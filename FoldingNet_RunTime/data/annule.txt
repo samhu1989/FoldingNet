@@ -1,0 +1,132 @@
+<Line Export from AI designs>
+<!-- Created with Ai->Line Export Plug-In Version 1.3 (PC/32) -->
+ Name of Desin : annule
+
+      draw(ctx);
+
+    function draw(ctx) {
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 0.141602 0.141602 423.353 0.141602
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 0.52002 204.221 413.187 204.221
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 1.45264 0.141602 1.45264 204.221
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 392.379 25.1147 392.379 179.25
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 392.38 25.1147 362.255 64.7275
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 392.38 179.25 362.255 139.635
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 20.4409 25.1147 20.4409 179.25
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 20.4409 179.249 392.379 179.249
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 20.4409 25.1147 392.379 25.1147
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 20.4409 25.1147 50.5649 64.7275
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 20.4409 179.25 50.5659 139.635
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 1
+
+ LINESEGMENT 411.37 0.141602 411.37 204.221
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 50.5649 64.7275 362.255 64.7275
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 362.255 64.7275 362.255 139.635
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 362.255 139.635 50.5659 139.635
+
+      // bT/LINE
+
+      // bT/LINE/
+ ISDASH 0
+
+ LINESEGMENT 50.5659 139.635 50.5659 64.7275
+    }

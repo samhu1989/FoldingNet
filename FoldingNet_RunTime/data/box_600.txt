@@ -1,0 +1,2132 @@
+<Line Export from AI designs>
+<!-- Created with Ai->Line Export Plug-In Version 1.3 (PC/32) -->
+ Name of Desin : box_600
+
+      draw(ctx);
+
+    function draw(ctx) {
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 260.8 57.9 244.6 45.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 245.8 43.9 262.0 56.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 254.4 39.0 260.4 31.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 260.4 43.5 254.4 39.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 251.5 39.4 260.4 46.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 260.4 28.8 251.5 39.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 245.8 34.6 258.9 19.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 257.4 17.7 244.3 33.3
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 242.9 5.0 241.2 3.2
+ BEZIER 241.2 3.2 239.4 1.5
+ BEZIER 239.4 1.5 237.4 0.1
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 270.0 14.8 242.9 5.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 270.0 40.0 270.0 14.8
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 270.0 61.9 270.0 40.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 242.5 64.1 270.0 61.9
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 237.4 67.0 242.5 64.1
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 43.2 57.9 59.4 45.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 58.2 43.9 42.0 56.3
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 43.7 31.9 43.7 31.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 49.6 39.0 43.7 31.9
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 43.7 43.5 49.6 39.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 52.5 39.4 43.7 46.1
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 43.7 28.8 43.7 28.8
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 43.7 28.8 52.5 39.4
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 45.1 19.0 45.1 19.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 58.2 34.6 45.1 19.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 46.6 17.7 46.6 17.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 46.6 17.7 59.7 33.3
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 66.6 0.1 63.7 2.3
+ BEZIER 63.7 2.3 61.1 5.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 34.0 14.8 61.1 5.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 34.0 61.9 34.0 14.8
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 34.0 61.9 34.0 61.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 61.5 64.1 34.0 61.9
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 61.5 64.1 61.5 64.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 66.6 67.0 61.5 64.1
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 66.6 385.3 64.3 387.3
+ BEZIER 64.3 387.3 62.4 389.7
+ BEZIER 62.4 389.7 61.0 392.3
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 51.4 421.6 61.0 392.3
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 0.2 421.6 0.2 598.6
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 51.4 421.6 0.2 421.6
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 454.4 19.8 438.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 441.7 8.5 457.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 469.2 19.8 453.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 456.5 8.5 472.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 484.1 19.8 467.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 471.3 8.5 487.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 498.9 19.8 482.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 486.2 8.5 502.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 11.1 510.0 19.8 497.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 522.5 11.1 510.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 517.7 19.8 533.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 537.4 8.5 521.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 532.5 19.8 548.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 552.2 8.5 536.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 547.4 19.8 563.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 567.0 8.5 550.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 8.5 562.2 19.8 578.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 19.8 581.8 8.5 565.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 434.0 55.2 451.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 453.4 28.4 436.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 444.1 55.2 461.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 463.4 28.4 446.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 454.2 55.2 471.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 473.5 28.4 456.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 464.2 55.2 481.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 483.5 28.4 466.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 474.3 55.2 491.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 493.6 28.4 476.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 484.3 55.2 501.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 503.6 28.4 486.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 494.4 48.7 507.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 45.0 507.2 28.4 496.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 523.3 45.0 512.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 48.7 512.9 28.4 525.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 533.4 55.2 516.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 518.8 28.4 535.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 543.4 55.2 526.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 528.8 28.4 545.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 553.5 55.2 536.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 538.9 28.4 555.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 563.6 55.2 546.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 548.9 28.4 565.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 573.6 55.2 556.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 559.0 28.4 576.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 28.4 583.7 55.2 566.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 55.2 569.1 28.4 586.0
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 205.5 683.1 189.3 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 192.8 694.4 209.0 683.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 177.9 694.4 194.1 683.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 190.6 683.1 174.4 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 163.1 694.4 179.3 683.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 175.8 683.1 159.6 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 151.9 691.8 164.4 683.1
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 139.4 683.1 139.4 683.1
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 139.4 683.1 151.9 691.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 128.1 683.1 128.1 683.1
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 144.2 694.4 128.1 683.1
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 124.6 683.1 140.8 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 129.4 694.4 113.2 683.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 109.8 683.1 126.0 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 111.2 694.4 95.0 683.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 98.5 683.1 114.7 694.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 86.1 674.8 103.0 648.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 105.4 648.0 88.4 674.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 96.1 674.8 113.1 648.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 115.4 648.0 98.5 674.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 106.2 674.8 123.1 648.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 125.5 648.0 108.5 674.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 116.2 674.8 133.2 648.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 135.5 648.0 118.6 674.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 126.3 674.8 143.3 648.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 145.6 648.0 128.6 674.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 136.3 674.8 149.2 654.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 149.2 658.2 138.7 674.8
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 154.8 658.2 154.8 658.2
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 165.3 674.8 154.8 658.2
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 154.8 654.5 154.8 654.5
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 154.8 654.5 167.6 674.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 158.4 648.0 158.4 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 175.3 674.8 158.4 648.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 160.7 648.0 160.7 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 160.7 648.0 177.7 674.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 168.4 648.0 168.4 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 185.4 674.8 168.4 648.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 170.8 648.0 170.8 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 170.8 648.0 187.7 674.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 178.5 648.0 178.5 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 195.5 674.8 178.5 648.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 180.8 648.0 180.8 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 180.8 648.0 197.8 674.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 188.6 648.0 188.6 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 205.5 674.8 188.6 648.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 190.9 648.0 190.9 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 190.9 648.0 207.9 674.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 198.6 648.0 198.6 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 215.6 674.8 198.6 648.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 201.0 648.0 201.0 648.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 201.0 648.0 217.9 674.8
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 438.3 284.4 438.3
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 438.3 295.7 454.5
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 441.7 284.4 441.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 295.7 457.9 284.4 441.7
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 453.1 284.4 453.1
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 453.1 295.7 469.3
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 456.6 284.4 456.6
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 295.7 472.8 284.4 456.6
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 467.9 284.4 467.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 467.9 295.7 484.1
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 471.4 284.4 471.4
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 295.7 487.6 284.4 471.4
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 482.8 284.4 482.8
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 482.8 295.7 498.9
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 486.2 284.4 486.2
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 295.7 502.4 284.4 486.2
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 295.7 517.8 284.4 534.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 284.4 537.4 295.7 521.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 295.7 532.6 284.4 548.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 284.4 552.2 295.7 536.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 295.7 547.4 284.4 563.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 284.4 567.1 295.7 550.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 295.7 562.2 284.4 578.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 284.4 581.9 295.7 565.7
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 569.1 248.9 569.1
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 569.1 275.8 586.1
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 566.8 248.9 566.8
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 583.7 248.9 566.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 559.1 248.9 559.1
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 559.1 275.8 576.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 556.7 248.9 556.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 573.7 248.9 556.7
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 549.0 248.9 549.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 549.0 275.8 566.0
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 546.7 248.9 546.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 563.6 248.9 546.7
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 538.9 248.9 538.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 538.9 275.8 555.9
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 536.6 248.9 536.6
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 553.6 248.9 536.6
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 528.9 248.9 528.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 528.9 275.8 545.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 526.5 248.9 526.5
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 543.5 248.9 526.5
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 518.8 248.9 518.8
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 518.8 275.8 535.8
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 248.9 516.5 248.9 516.5
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 533.4 248.9 516.5
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 255.5 512.9 255.5 512.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 255.5 512.9 275.8 525.7
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 259.2 512.9 259.2 512.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 275.8 523.4 259.2 512.9
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 293.1 510.1 284.4 522.6
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 497.6 284.4 497.6
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 284.4 497.6 293.1 510.1
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 259.2 507.2 275.8 496.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 494.4 255.5 507.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 503.7 275.8 486.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 484.4 248.9 501.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 493.6 275.8 476.7
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 474.3 248.9 491.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 483.6 275.8 466.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 464.3 248.9 481.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 473.5 275.8 456.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 454.2 248.9 471.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 463.5 275.8 446.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 444.2 248.9 461.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 248.9 453.4 275.8 436.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 275.8 434.1 248.9 451.1
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 63.1 68.4 66.6 67.0
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 1.6 68.4 1.6 68.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 1.6 68.4 63.1 68.4
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 1.6 68.4 0.6 68.8
+ ISDASH 0
+ BEZIER 0.6 68.8 0.2 69.8
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 0.2 69.8 0.2 69.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 0.2 313.6 0.2 69.8
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 0.2 313.6 0.6 314.6
+ ISDASH 0
+ BEZIER 0.6 314.6 1.6 315.0
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 1.6 315.0 1.6 315.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 62.4 315.0 1.6 315.0
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 39.2 66.6 39.2
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 39.2 66.6 67.0
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 0.1 66.6 0.1
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 0.1 66.6 40.5
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 66.6 0.1 66.6 0.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 116.4 0.1 66.6 0.1
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 152.0 0.1 115.0 0.1
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 189.0 0.1 152.0 0.1
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 237.4 0.1 187.9 0.1
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 27.9 237.4 0.1
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 67.0 237.4 27.9
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 240.9 68.4 237.4 67.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 302.4 68.4 240.9 68.4
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 303.8 69.8 302.3 68.4
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 303.8 313.6 303.8 69.8
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 302.3 315.0 303.3 314.6
+ ISDASH 0
+ BEZIER 303.3 314.6 303.8 313.6
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 241.7 315.0 302.4 315.0
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 237.4 316.5 241.7 315.0
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 62.4 315.0 62.4 315.0
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 62.4 315.0 66.6 316.4
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 66.6 316.4 60.7 319.2
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 66.6 385.3 65.8 382.8
+ BEZIER 65.8 382.8 64.4 380.6
+ BEZIER 64.4 380.6 62.6 378.7
+ BEZIER 62.6 378.7 60.4 377.3
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 33.3 366.6 60.4 377.3
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 33.3 341.2 33.3 341.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 33.3 341.2 33.3 366.6
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 33.3 321.5 33.3 321.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 33.3 321.5 33.3 341.2
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 60.7 319.2 33.3 321.5
+
+      // bT/
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 42.7 324.7 42.7 324.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 42.7 324.7 58.9 337.2
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 41.5 326.3 41.5 326.3
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 57.7 338.8 41.5 326.3
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 40.3 358.1 51.5 344.8
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 48.7 345.1 40.3 355.0
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 40.3 338.7 40.3 338.7
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 40.3 338.7 48.7 345.1
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 40.3 336.2 40.3 336.2
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 51.5 344.8 40.3 336.2
+ ISDASH 0
+
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 44.2 364.6 57.3 348.9
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 58.9 350.2 45.8 365.8
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 261.1 324.8 244.9 337.3
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 246.1 338.8 262.3 326.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 255.2 345.2 263.5 355.1
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 263.5 338.8 255.2 345.2
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 252.3 344.9 263.5 336.3
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 252.3 344.9 252.3 344.9
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 263.5 358.2 252.3 344.9
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 246.5 349.0 246.5 349.0
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 246.5 349.0 259.6 364.7
+ ISDASH 0
+
+
+      // bT//
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 245.0 350.3 245.0 350.3
+
+      // bT///
+ ISDASH 0
+
+ LINESEGMENT 258.1 365.9 245.0 350.3
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 243.7 377.4 240.8 379.3
+ BEZIER 240.8 379.3 238.6 382.1
+ BEZIER 238.6 382.1 237.4 385.3
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 270.9 366.7 243.7 377.4
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 270.8 321.6 270.8 366.7
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 243.4 319.3 270.8 321.6
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 237.4 316.5 243.4 319.3
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 316.5 237.4 316.5
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 385.3 237.4 316.5
+ ISDASH 1
+
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 243.1 392.4 241.7 389.7
+ BEZIER 241.7 389.7 239.7 387.3
+ BEZIER 239.7 387.3 237.4 385.3
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 243.1 392.4 243.1 392.4
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 252.7 421.6 243.1 392.4
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 252.7 421.6 252.7 421.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 303.9 421.6 252.7 421.6
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 303.9 421.6 303.9 421.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 303.9 598.5 303.9 421.6
+ ISDASH 0
+
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 252.7 598.5 252.7 598.5
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 252.7 598.5 303.9 598.5
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 243.1 627.8 252.7 598.5
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 237.4 634.8 240.7 631.6
+ BEZIER 240.7 631.6 243.1 627.8
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 235.1 640.6 237.4 634.8
+
+      // bT/
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 235.1 640.6 235.1 640.6
+
+      // bT//
+ ISDASH 0
+
+ LINESEGMENT 235.1 700.2 235.1 640.6
+ ISDASH 0
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 68.8 640.5 68.8 700.1
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 66.6 634.8 68.8 640.5
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 61.0 627.7 62.4 630.4
+ BEZIER 62.4 630.4 64.3 632.8
+ BEZIER 64.3 632.8 66.6 634.8
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 51.3 598.5 61.0 627.7
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 0.1 598.5 51.3 598.5
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 385.3 66.6 385.3
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 385.3 237.4 385.3
+ ISDASH 1
+
+
+      // bT/
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 103.6 385.3 103.6 385.3
+ ISDASH 0
+ BEZIER 103.6 385.3 103.6 385.4
+ ISDASH 0
+ BEZIER 103.6 385.4 103.7 385.3
+ ISDASH 0
+ BEZIER 103.7 385.3 103.6 385.3
+
+      // bT/
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 115.1 385.3 115.0 385.3
+ ISDASH 0
+ BEZIER 115.0 385.3 115.1 385.4
+ ISDASH 0
+ BEZIER 115.1 385.4 115.1 385.3
+ ISDASH 0
+ BEZIER 115.1 385.3 115.1 385.3
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 200.3 67.0 237.4 67.0
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 152.0 67.0 200.3 67.0
+
+      // bT//
+
+      // bT///
+ ISDASH 1
+
+ LINESEGMENT 103.6 67.0 103.6 67.0
+
+      // bT///
+ ISDASH 1
+
+ LINESEGMENT 103.6 67.0 152.0 67.0
+ ISDASH 1
+
+
+      // bT//
+
+      // bT///
+ ISDASH 1
+
+ LINESEGMENT 66.6 67.0 66.6 67.0
+
+      // bT///
+ ISDASH 1
+
+ LINESEGMENT 66.6 67.0 103.6 67.0
+ ISDASH 1
+
+
+      // bT//
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 103.6 67.0 103.6 67.0
+ ISDASH 0
+ BEZIER 103.6 67.0 103.6 67.0
+ ISDASH 0
+ BEZIER 103.6 67.0 103.7 67.0
+ ISDASH 0
+ BEZIER 103.7 67.0 103.6 67.0
+
+      // bT//
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 103.6 67.0 103.6 67.0
+ ISDASH 0
+ BEZIER 103.6 67.0 103.6 67.0
+ ISDASH 0
+ BEZIER 103.6 67.0 103.7 67.0
+ ISDASH 0
+ BEZIER 103.7 67.0 103.6 67.0
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 67.0 66.6 67.0
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 66.6 67.0 66.6 316.4
+ ISDASH 1
+
+
+      // bT/
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 66.6 163.4 66.6 163.4
+ ISDASH 0
+ BEZIER 66.6 163.4 66.6 163.4
+ ISDASH 0
+ BEZIER 66.6 163.4 66.7 163.4
+ ISDASH 0
+ BEZIER 66.7 163.4 66.6 163.4
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 237.4 67.0 237.4 316.5
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 66.6 316.5 66.6 316.5
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 66.6 316.5 237.4 316.5
+
+      // bT/
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 104.0 316.4 104.0 316.5
+ ISDASH 0
+ BEZIER 104.0 316.5 104.0 316.5
+ ISDASH 0
+ BEZIER 104.0 316.5 104.0 316.5
+ ISDASH 0
+ BEZIER 104.0 316.5 104.0 316.4
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 237.4 344.5 66.6 344.5
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 66.6 316.4 66.6 316.4
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 66.6 385.3 66.6 316.4
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 303.9 598.5 303.9 598.5
+ ISDASH 0
+ BEZIER 303.9 598.5 303.9 598.6
+ ISDASH 0
+ BEZIER 303.9 598.6 304.0 598.5
+ ISDASH 0
+ BEZIER 304.0 598.5 303.9 598.5
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 578.1 237.4 578.1
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 578.1 237.4 634.8
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 441.5 237.4 441.5
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 441.5 237.4 581.9
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 453.4 237.4 453.4
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 453.4 237.4 510.1
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 385.3 237.4 385.3
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 385.3 237.4 442.0
+ ISDASH 1
+
+
+      // bT/
+ ISDASH 1
+
+ ISDASH 0
+ BEZIER 237.4 578.1 237.3 578.1
+ ISDASH 0
+ BEZIER 237.3 578.1 237.4 578.1
+ ISDASH 0
+ BEZIER 237.4 578.1 237.4 578.1
+ ISDASH 0
+ BEZIER 237.4 578.1 237.4 578.1
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 66.6 634.8 66.6 385.3
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 0.1 598.5 0.1 598.5
+ ISDASH 0
+ BEZIER 0.1 598.5 0.1 598.5
+ ISDASH 0
+ BEZIER 0.1 598.5 0.2 598.5
+ ISDASH 0
+ BEZIER 0.2 598.5 0.1 598.5
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 0.1 615.4 0.1 615.4
+ ISDASH 0
+ BEZIER 0.1 615.4 0.1 615.4
+ ISDASH 0
+ BEZIER 0.1 615.4 0.2 615.4
+ ISDASH 0
+ BEZIER 0.2 615.4 0.1 615.4
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 278.3 421.6 278.3 421.6
+ ISDASH 0
+ BEZIER 278.3 421.6 278.3 421.7
+ ISDASH 0
+ BEZIER 278.3 421.7 278.4 421.6
+ ISDASH 0
+ BEZIER 278.4 421.6 278.3 421.6
+
+      // bT/
+ ISDASH 0
+
+ ISDASH 0
+ BEZIER 278.3 598.5 278.3 598.5
+ ISDASH 0
+ BEZIER 278.3 598.5 278.3 598.6
+ ISDASH 0
+ BEZIER 278.3 598.6 278.4 598.5
+ ISDASH 0
+ BEZIER 278.4 598.5 278.3 598.5
+
+      // bT/
+ ISDASH 1
+
+ LINESEGMENT 103.6 634.8 66.6 634.8
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 103.6 634.8 103.6 634.8
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 152.0 634.8 103.6 634.8
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 152.0 634.8 152.0 634.8
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 200.4 634.8 152.0 634.8
+ ISDASH 1
+
+
+      // bT/
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 200.4 634.8 200.4 634.8
+
+      // bT//
+ ISDASH 1
+
+ LINESEGMENT 237.4 634.8 200.4 634.8
+ ISDASH 1
+
+
+      // bT/ 24695x10708 -1.000, 0.000, 0.000, -1.000, 191.2, 662.5
+ ISDASH 1
+-1.000, 0.000, 0.000, -1.000, 175.2, 662.5
+ ISDASH 1
+-1.000, 0.000, 0.000, -1.000, 120.0, 662.5
+ ISDASH 1
+-1.000, 0.000, 0.000, -1.000, 112.0, 662.5
+ ISDASH 1
+
+
+      // bT/
+ ISDASH 0
+
+ LINESEGMENT 68.8 700.1 235.1 700.2
+    }
