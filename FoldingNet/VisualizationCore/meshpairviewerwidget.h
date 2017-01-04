@@ -1,6 +1,5 @@
 #ifndef MESHPAIRVIEWERWIDGET_H
 #define MESHPAIRVIEWERWIDGET_H
-#include "MeshType.h"
 //== INCLUDES =================================================================
 #include <iostream>
 #include <visualizationcore_global.h>

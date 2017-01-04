@@ -37,11 +37,7 @@ public:
       normal_scale_(0.05)
   {
     QAction* a = add_draw_mode("Points");
-    add_draw_mode("Hidden-Line");
-    add_draw_mode("Octree");
-    add_draw_mode("VoxelGraph");
     add_draw_mode("Flat Colored Vertices");
-    add_draw_mode("Plate");
     slotDrawMode(a);
   }
 

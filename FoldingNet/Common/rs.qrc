@@ -6,5 +6,7 @@
         <file>rs/button/open.png</file>
         <file>rs/button/label.png</file>
         <file>rs/button/undo.png</file>
+        <file>rs/button/last.png</file>
+        <file>rs/button/next.png</file>
     </qresource>
 </RCC>

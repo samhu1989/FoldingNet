@@ -47,27 +47,28 @@ unix {
     INSTALLS += target
 }
 
+DESTDIR = $$OUT_PWD/../../FoldingNet_RunTime/bin
 
 win32: LIBS += -L$$DESTDIR/ -lCommon
 
-INCLUDEPATH += $$PWD/../../Common
-DEPENDPATH += $$PWD/../../Common
+INCLUDEPATH += $$PWD/../Common
+DEPENDPATH += $$PWD/../Common
 
 win32:CONFIG(release, debug|release): LIBS += -lfreeglut
 else:win32:CONFIG(debug, debug|release): LIBS += -lfreeglut
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../3rdParty/OpenMesh/lib/ -lOpenMeshCore.dll
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../3rdParty/OpenMesh/lib/ -lOpenMeshCored.dll
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCore.dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCored.dll
 
-INCLUDEPATH += $$PWD/../../../3rdParty/OpenMesh/include
-DEPENDPATH += $$PWD/../../../3rdParty/OpenMesh/include
+INCLUDEPATH += $$PWD/../../3rdParty/OpenMesh/include
+DEPENDPATH += $$PWD/../../3rdParty/OpenMesh/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../3rdParty/OpenMesh/lib/ -lOpenMeshTools.dll
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../3rdParty/OpenMesh/lib/ -lOpenMeshToolsd.dll
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshTools.dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshToolsd.dll
 
-INCLUDEPATH += $$PWD/../../../3rdParty/SuperLU/include
-DEPENDPATH += $$PWD/../../../3rdParty/SuperLU/include
+INCLUDEPATH += $$PWD/../../3rdParty/SuperLU/include
+DEPENDPATH += $$PWD/../../3rdParty/SuperLU/include
 
 FORMS += \
     labspace.ui \

@@ -46,7 +46,7 @@ DISTFILES += \
 
 RC_FILE += rc.rc
 
-DESTDIR = $$OUT_PWD/../../Dev_RunTime/bin
+DESTDIR = $$OUT_PWD/../../FoldingNet_RunTime/bin
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCore.dll
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCored.dll
@@ -74,8 +74,6 @@ else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../.
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/SuperLU/lib/ -lblas
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/SuperLU/lib/ -lblas
 
-INCLUDEPATH += $$PWD/../../3rdParty/SuperLU/include
-DEPENDPATH += $$PWD/../../3rdParty/SuperLU/include
 
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../3rdParty/SuperLU/lib/libblas.a
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../3rdParty/SuperLU/lib/libblas.a

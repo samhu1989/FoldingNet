@@ -332,7 +332,6 @@ MeshPairViewerWidgetT<M>::draw_openmesh(MeshBundle<Mesh>& b,const std::string& _
 
   else if (_draw_mode == "Solid Flat") // -------------------------------------
   {
-    std::cerr<<"solid flat"<<std::endl;
     glBegin(GL_TRIANGLES);
     for (; fIt!=fEnd; ++fIt)
     {
@@ -423,8 +422,11 @@ MeshPairViewerWidgetT<M>::draw_openmesh(MeshBundle<Mesh>& b,const std::string& _
       glEnableClientState(GL_VERTEX_ARRAY);
       glVertexPointer(3, GL_FLOAT, 0, mesh_.points());
 
-      glEnableClientState(GL_NORMAL_ARRAY);
-      glNormalPointer(GL_FLOAT, 0, mesh_.vertex_normals());
+      if( mesh_.has_vertex_normals() )
+      {
+          glEnableClientState(GL_NORMAL_ARRAY);
+          glNormalPointer(GL_FLOAT, 0, mesh_.vertex_normals());
+      }
 
       if ( mesh_.has_vertex_colors() )
       {
@@ -436,8 +438,11 @@ MeshPairViewerWidgetT<M>::draw_openmesh(MeshBundle<Mesh>& b,const std::string& _
       for (; fIt!=fEnd; ++fIt)
       {
           fvIt = mesh_.cfv_begin(*fIt);
-          glMaterial(mesh_,*fvIt);
-          glMaterial(mesh_,*fvIt,GL_FRONT_AND_BACK,GL_SPECULAR);
+          if(mesh_.has_vertex_colors())
+          {
+              glMaterial(mesh_,*fvIt);
+              glMaterial(mesh_,*fvIt,GL_FRONT_AND_BACK,GL_SPECULAR);
+          }
           while(fvIt!=mesh_.cfv_end(*fIt))
           {
                 glArrayElement(fvIt->idx());

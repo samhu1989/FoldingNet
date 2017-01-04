@@ -2,7 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include "GL/freeglut.h"
-
+#include "common.h"
+#include <QFileInfo>
 /*#include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
 #include <glm/mat4x4.hpp> // glm::mat4
@@ -2092,5 +2093,64 @@ void FoldingNet::myShowImageScroll(char * title, IplImage * src_img, int winWidt
 
 void FoldingNet::save_mesh(const std::string& filepath)
 {
-    ;
+    std::string fullpath;
+    QFileInfo info(QString::fromStdString(g_parameters.InputFilePath));
+    fullpath = filepath + "/" + info.baseName().toStdString() + ".ply";
+    std::cerr<<"input path:"<<fullpath<<std::endl;
+    QFileInfo oinfo(QString::fromStdString(fullpath));
+    std::cerr<<"file path:"<<oinfo.filePath().toStdString()<<std::endl;
+    std::cerr<<"saving mesh to:"<<oinfo.filePath().toStdString()<<std::endl;
+    DefaultMesh mesh;
+    std::vector<Plane>::iterator iter;
+    for(iter=_PolygonList.begin();iter!=_PolygonList.end();++iter)
+    {
+        Plane& plane = *iter;
+        MESH m = plane.GetMesh();
+        std::vector<DefaultMesh::VertexHandle> vhandle;
+        vhandle.reserve(plane.NumberofVertices());
+        for(int iv = 0 ; iv < plane.NumberofVertices() ; ++iv )
+        {
+            vhandle.push_back(
+                        mesh.add_vertex(
+                            DefaultMesh::Point(
+                                plane.IthVertex(iv).GetCorrespondingPoint().GetX()/100.0,
+                                plane.IthVertex(iv).GetCorrespondingPoint().GetY()/100.0,
+                                0.0
+                            )
+                        )
+            );
+        }
+        std::cerr<<"vhandle.size:"<<vhandle.size()<<std::endl;
+        TRIANGLE_PTR f_ptr = m.pTriArr;
+        for(int iface = 0 ; iface < m.triangle_num ; ++iface )
+        {
+            std::vector<DefaultMesh::VertexHandle> vhandle_face;
+            vhandle_face.push_back(vhandle[f_ptr->i1 - 3]);
+            vhandle_face.push_back(vhandle[f_ptr->i2 - 3]);
+            vhandle_face.push_back(vhandle[f_ptr->i3 - 3]);
+            mesh.add_face(vhandle_face);
+            f_ptr = f_ptr->pNext;
+            if(f_ptr==NULL)break;
+        }
+    }
+    std::cerr<<"requesting fields"<<std::endl;
+    mesh.request_vertex_colors();
+    mesh.request_vertex_normals();
+    mesh.request_face_colors();
+    arma::Mat<uint8_t> cMat((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+    cMat.row(0).fill(220);
+    cMat.row(1).fill(230);
+    cMat.row(2).fill(240);
+    mesh.request_face_normals();
+    mesh.update_normals();
+    OpenMesh::IO::Options opt;
+    opt+=OpenMesh::IO::Options::Binary;
+    opt+=OpenMesh::IO::Options::VertexColor;
+    opt+=OpenMesh::IO::Options::VertexNormal;
+    opt+=OpenMesh::IO::Options::FaceColor;
+    opt+=OpenMesh::IO::Options::FaceNormal;
+    if(!OpenMesh::IO::write_mesh(mesh,oinfo.filePath().toStdString(),opt,13)){
+        std::cerr<<"can't save to:"<<oinfo.filePath().toStdString()<<std::endl;
+        return;
+    }
 }

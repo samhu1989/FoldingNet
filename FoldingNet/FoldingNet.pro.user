@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.1, 2017-01-04T10:47:58. -->
+<!-- Written by QtCreator 4.0.1, 2017-01-04T16:13:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -288,10 +288,10 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/WorkSpace/FoldingNet/FoldingNet/ExpFold/ExpFold.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">-m w -i ./ply/ -o ./res_ply/</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">ExpFold/ExpFold.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory">E:/WorkSpace/FoldingNet/build-FoldingNet/FoldingNet_RunTime/bin</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory">../FoldingNet_RunTime</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">E:/WorkSpace/FoldingNet/build-FoldingNet/ExpFold/../../FoldingNet_RunTime/bin</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>

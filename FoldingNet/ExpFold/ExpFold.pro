@@ -11,7 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ExpFold
 TEMPLATE = app
 CONFIG += console
-
+CONFIG += c++11
+QMAKE_CXXFLAGS += -fopenmp
+LIBS += -lgomp -lpthread
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -59,3 +61,30 @@ else:win32:CONFIG(debug, debug|release): LIBS += -lopencv_highgui.dll
 
 win32:CONFIG(release, debug|release): LIBS += -lopencv_imgproc.dll
 else:win32:CONFIG(debug, debug|release): LIBS += -lopencv_imgproc.dll
+
+win32: LIBS += -L$$DESTDIR/ -lVisualizationCore
+
+INCLUDEPATH += $$PWD/../VisualizationCore
+DEPENDPATH += $$PWD/../VisualizationCore
+
+win32: LIBS += -L$$DESTDIR/ -lCommon
+
+INCLUDEPATH += $$PWD/../Common
+DEPENDPATH += $$PWD/../Common
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/SuperLU/lib/ -lsuperlu
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/SuperLU/lib/ -lsuperlu
+
+INCLUDEPATH += $$PWD/../../3rdParty/SuperLU/include
+DEPENDPATH += $$PWD/../../3rdParty/SuperLU/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCore.dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshCored.dll
+
+INCLUDEPATH += $$PWD/../../3rdParty/OpenMesh/include
+DEPENDPATH += $$PWD/../../3rdParty/OpenMesh/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshTools.dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../3rdParty/OpenMesh/lib/ -lOpenMeshToolsd.dll
+
+LIBS += -lopenblas

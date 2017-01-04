@@ -1,5 +1,5 @@
-#ifndef KDTREE
-#define KDTREE
+#ifndef __KDTREE__
+#define __KDTREE__
 #include <armadillo>
 template<typename M>
 struct MeshKDTreeInterface{

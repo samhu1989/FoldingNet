@@ -749,13 +749,14 @@ QGLViewerWidget::view_all()
 void
 QGLViewerWidget::set_scene_pos( const OpenMesh::Vec3f& _cog, float _radius )
 {
-  center_ = _cog;
-  radius_ = _radius;
-  glFogf( GL_FOG_START,      1.5*_radius );
-  glFogf( GL_FOG_END,        3.0*_radius );
+    std::cout<<"radius:"<<_radius<<std::endl;
+    center_ = _cog;
+    radius_ = _radius;
+    glFogf( GL_FOG_START,      1.5*_radius );
+    glFogf( GL_FOG_END,        3.0*_radius );
 
-  update_projection_matrix();
-  view_all();
+    update_projection_matrix();
+    view_all();
 }
 
 
