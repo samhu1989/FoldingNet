@@ -11,6 +11,10 @@ public:
 
 	Vertex(float x, float y, float z);
 
+    Vertex(const Vertex& v){_id=v._id;_X=v._X;_Y=v._Y;_Z=v._Z;_P=v._P;}
+
+    inline int GetId(){return _id;}
+    inline int SetId(int id){_id=id;}
 	float GetX();
 	void SetX(float x);
 	float GetY();
@@ -32,6 +36,7 @@ public:
 	void SetParameters(Parameters para);
 
 private:
+    int _id;
 	float _X;
 	float _Y;
 	float _Z;

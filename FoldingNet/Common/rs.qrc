@@ -8,5 +8,9 @@
         <file>rs/button/undo.png</file>
         <file>rs/button/last.png</file>
         <file>rs/button/next.png</file>
+        <file>rs/button/nextplane.png</file>
+        <file>rs/button/lastplane.png</file>
+        <file>rs/button/lastaxis.png</file>
+        <file>rs/button/nextaxis.png</file>
     </qresource>
 </RCC>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>423</width>
+    <height>375</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,14 +18,46 @@
     <normaloff>:/icon/rs/icon/pro_chen.png</normaloff>:/icon/rs/icon/pro_chen.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="layout"/>
+   <layout class="QGridLayout" name="layout">
+    <item row="1" column="0">
+     <widget class="QDoubleSpinBox" name="doubleSpinBox">
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="buttonSymbols">
+       <enum>QAbstractSpinBox::UpDownArrows</enum>
+      </property>
+      <property name="prefix">
+       <string/>
+      </property>
+      <property name="suffix">
+       <string> Degree</string>
+      </property>
+      <property name="decimals">
+       <number>3</number>
+      </property>
+      <property name="maximum">
+       <double>360.000000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>9.000000000000000</double>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="formLayout"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>423</width>
      <height>23</height>
     </rect>
    </property>
@@ -57,6 +89,10 @@
    </attribute>
    <addaction name="actionLastInput"/>
    <addaction name="actionNextInput"/>
+   <addaction name="actionLastPlane"/>
+   <addaction name="actionNext_Plane"/>
+   <addaction name="actionLast_Axis"/>
+   <addaction name="actionNext_Axist"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLastInput">
@@ -89,6 +125,82 @@
    </property>
    <property name="shortcut">
     <string>Right</string>
+   </property>
+  </action>
+  <action name="actionNext_Plane">
+   <property name="icon">
+    <iconset>
+     <normalon>:/button/rs/button/nextplane.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Next Plane</string>
+   </property>
+   <property name="toolTip">
+    <string>Next Plane</string>
+   </property>
+   <property name="shortcut">
+    <string>D</string>
+   </property>
+  </action>
+  <action name="actionLastPlane">
+   <property name="icon">
+    <iconset resource="../Common/rs.qrc">
+     <normaloff>:/button/rs/button/lastplane.png</normaloff>:/button/rs/button/lastplane.png</iconset>
+   </property>
+   <property name="text">
+    <string>LastPlane</string>
+   </property>
+   <property name="toolTip">
+    <string>Last Plane</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionNext_Axist">
+   <property name="icon">
+    <iconset>
+     <normalon>:/button/rs/button/nextaxis.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Next Axist</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
+   </property>
+  </action>
+  <action name="actionLast_Axis">
+   <property name="icon">
+    <iconset>
+     <normalon>:/button/rs/button/lastaxis.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Last Axis</string>
+   </property>
+   <property name="toolTip">
+    <string>Last Axis</string>
+   </property>
+   <property name="shortcut">
+    <string>W</string>
+   </property>
+  </action>
+  <action name="actionAngleUp">
+   <property name="text">
+    <string>AngleUp</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
+  </action>
+  <action name="actionAngleDown">
+   <property name="text">
+    <string>AngleDown</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
    </property>
   </action>
  </widget>

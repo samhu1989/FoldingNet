@@ -4,6 +4,7 @@
 #include "GL/freeglut.h"
 #include "common.h"
 #include <QFileInfo>
+#include <QRgb>
 /*#include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
 #include <glm/mat4x4.hpp> // glm::mat4
@@ -1168,7 +1169,7 @@ void FoldingNet::RotateArbitraryAxis(float angle, GraphEdge edge, float rtmatrix
 
 Vertex FoldingNet::MatrixMulVertex(float **rtmatrix, Vertex p)
 {
-	Vertex temp;
+    Vertex temp = p;
 	float x = rtmatrix[0][0] * p.GetX() + rtmatrix[0][1] * p.GetY() + rtmatrix[0][2] * p.GetZ() + rtmatrix[0][3];
 	float y = rtmatrix[1][0] * p.GetX() + rtmatrix[1][1] * p.GetY() + rtmatrix[1][2] * p.GetZ() + rtmatrix[1][3];
 	float z = rtmatrix[2][0] * p.GetX() + rtmatrix[2][1] * p.GetY() + rtmatrix[2][2] * p.GetZ() + rtmatrix[2][3];
@@ -1176,7 +1177,6 @@ Vertex FoldingNet::MatrixMulVertex(float **rtmatrix, Vertex p)
 	temp.SetX(x);
 	temp.SetY(y);
 	temp.SetZ(z);
-	temp.SetCorrespondingPoint(p.GetCorrespondingPoint());
 
 	return temp;
 }
@@ -2091,20 +2091,58 @@ void FoldingNet::myShowImageScroll(char * title, IplImage * src_img, int winWidt
 	}
 }
 
+struct color_equal_to : public binary_function<uint32_t,uint32_t,bool>
+{
+        bool operator()(const uint32_t& __x, const uint32_t& __y) const{
+            float dr = ( qRed(__x) - qRed(__y) );
+            float dg = ( qGreen(__x) - qGreen(__y) );
+            float db = ( qBlue(__x) - qBlue(__y) );
+            return std::sqrt( dr*dr + dg*dg + db*db ) < 30;
+        }
+};
+
 void FoldingNet::save_mesh(const std::string& filepath)
 {
-    std::string fullpath;
+    __gnu_cxx::hash_map<uint32_t,uint32_t,std::hash<uint32_t>,color_equal_to> color_to_key_map;
+    __gnu_cxx::hash_map<uint32_t,uint32_t> key_to_color_map;
+    std::string meshpath,featurepath;
     QFileInfo info(QString::fromStdString(g_parameters.InputFilePath));
-    fullpath = filepath + "/" + info.baseName().toStdString() + ".ply";
-    std::cerr<<"input path:"<<fullpath<<std::endl;
-    QFileInfo oinfo(QString::fromStdString(fullpath));
-    std::cerr<<"file path:"<<oinfo.filePath().toStdString()<<std::endl;
+    std::cerr<<"filepath:"<<filepath<<std::endl;
+    meshpath = filepath + "/" + info.baseName().toStdString() + ".ply";
+    featurepath = filepath + "/" + info.baseName().toStdString() + ".fvec.arma";
+    QFileInfo oinfo(QString::fromStdString(meshpath));
+    QFileInfo ofinfo(QString::fromStdString(featurepath));
     std::cerr<<"saving mesh to:"<<oinfo.filePath().toStdString()<<std::endl;
+    std::cerr<<"saving feature to:"<<ofinfo.filePath().toStdString()<<std::endl;
+
     DefaultMesh mesh;
+    //request memory space for fields
+    std::cerr<<"requesting fields"<<std::endl;
+    mesh.request_vertex_colors();
+    mesh.request_vertex_normals();
+    mesh.request_face_colors();
+    mesh.request_face_normals();
+
+    std::vector<int> is_dash;
     std::vector<Plane>::iterator iter;
     for(iter=_PolygonList.begin();iter!=_PolygonList.end();++iter)
     {
         Plane& plane = *iter;
+        uint32_t c;
+        std::vector<int> plane_is_dash;
+        plane_is_dash.resize(plane.NumberofVertices());
+        if( key_to_color_map.end() == key_to_color_map.find(plane.GetPlaneNumber()))
+        {
+            c = ColorArray::rand_color();
+            while( color_to_key_map.end() != color_to_key_map.find(c) )//if color is duplicated rand another one
+            {
+                c = ColorArray::rand_color();
+            }
+            key_to_color_map[plane.GetPlaneNumber()] = c;
+            color_to_key_map[c] = plane.GetPlaneNumber();
+        }else{
+            c = key_to_color_map[plane.GetPlaneNumber()];
+        }
         MESH m = plane.GetMesh();
         std::vector<DefaultMesh::VertexHandle> vhandle;
         vhandle.reserve(plane.NumberofVertices());
@@ -2119,6 +2157,8 @@ void FoldingNet::save_mesh(const std::string& filepath)
                             )
                         )
             );
+            //assign each plane to the same color
+            mesh.set_color(vhandle.back(),DefaultMesh::Color(qRed(c),qGreen(c),qBlue(c)));
         }
         std::cerr<<"vhandle.size:"<<vhandle.size()<<std::endl;
         TRIANGLE_PTR f_ptr = m.pTriArr;
@@ -2132,16 +2172,31 @@ void FoldingNet::save_mesh(const std::string& filepath)
             f_ptr = f_ptr->pNext;
             if(f_ptr==NULL)break;
         }
+//        for(int iV=0 ; iV < plane.NumberofVertices() ; ++iV )
+//        {
+//            std::cerr<<plane.IthVertex(iV).GetId()<<",";
+//        }
+        for(int iLine=0 ; iLine < plane.NumberofLines() ; ++iLine )
+        {
+            int id = -1;
+            if(iLine==0)id = plane.IthLine(iLine).GetV1().GetId();
+            else id = plane.IthLine(iLine).GetV2().GetId();
+//            std::cerr<<"v1:"<<plane.IthLine(iLine).GetV1().GetId()<<std::endl;
+//            std::cerr<<"v2:"<<plane.IthLine(iLine).GetV2().GetId()<<std::endl;
+//            std::cerr<<":"<<id<<std::endl;
+            //the id is still not right this is just a temp workaround
+            if(id>plane_is_dash.size())continue;
+            if(plane.IthLine(iLine).GetIsDash())
+            {
+                plane_is_dash[id]=1;
+            }else{
+                plane_is_dash[id]=-1;
+            }
+        }
+        is_dash.insert(std::end(is_dash), std::begin(plane_is_dash), std::end(plane_is_dash));
     }
-    std::cerr<<"requesting fields"<<std::endl;
-    mesh.request_vertex_colors();
-    mesh.request_vertex_normals();
-    mesh.request_face_colors();
-    arma::Mat<uint8_t> cMat((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
-    cMat.row(0).fill(220);
-    cMat.row(1).fill(230);
-    cMat.row(2).fill(240);
-    mesh.request_face_normals();
+//    arma::Mat<uint8_t> cMat((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+
     mesh.update_normals();
     OpenMesh::IO::Options opt;
     opt+=OpenMesh::IO::Options::Binary;
@@ -2151,6 +2206,12 @@ void FoldingNet::save_mesh(const std::string& filepath)
     opt+=OpenMesh::IO::Options::FaceNormal;
     if(!OpenMesh::IO::write_mesh(mesh,oinfo.filePath().toStdString(),opt,13)){
         std::cerr<<"can't save to:"<<oinfo.filePath().toStdString()<<std::endl;
+        return;
+    }
+    arma::ivec feature = arma::conv_to<arma::ivec>::from(is_dash);
+    if(!feature.save(ofinfo.filePath().toStdString(),arma::raw_ascii))
+    {
+        std::cerr<<"can't save to:"<<ofinfo.filePath().toStdString()<<std::endl;
         return;
     }
 }

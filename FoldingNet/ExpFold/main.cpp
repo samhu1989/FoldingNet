@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <unistd.h>
 #include "FoldingNet.h"
+#include "common.h"
 int print_usage(int argc, char *argv[] )
 {
     std::cerr << "Usage:"<<std::endl
@@ -40,12 +41,17 @@ int uiMain(int argc, char *argv[])
     {
         return print_usage(argc,argv);
     }
+    QApplication::setColorSpec( QApplication::CustomColor );
+    QApplication::addLibraryPath("./qtplugins/");
+    QApplication::addLibraryPath("./bin/qtplugins/");
+    init_resouce();
     QApplication a(argc, argv);
-    MainWindow w;
-    w.setInputPath(in_path);
-    w.setOutputPath(out_path);
-    w.show();
-    w.load();
+    MainWindow* w = new MainWindow();
+    w->setInputPath(in_path);
+    w->setOutputPath(out_path);
+    w->show();
+    //load have to be used after show so that the set_center_ won't be override  by the one in initializeGL()
+    if(!w->load())return -1;
     return a.exec();
 }
 
@@ -58,6 +64,9 @@ int cMain(int argc, char *argv[])
     {
         switch(ch)
         {
+        case 'f':
+            f_name = std::string(optarg);
+            break;
         case 'o':
             out_path = std::string(optarg);
             break;
@@ -67,8 +76,9 @@ int cMain(int argc, char *argv[])
     }
     if(out_path.empty())
     {
-        return print_usage(argc,argv);
+        return -1;
     }
+    std::cerr<<"out_path:"<<out_path<<std::endl;
     FoldingNet foldingPaper;
     foldingPaper.LoadParameters();
     if(!f_name.empty())
@@ -95,8 +105,19 @@ int main(int argc, char *argv[])
             worked = true;
             return print_usage(argc,argv);
         case 'm':
-            if(optarg[0]=='c')return cMain(argc,argv);
-            else if(optarg[0]=='w') return uiMain(argc,argv);
+            if(optarg[0]=='c')
+            {
+                int r = cMain(argc,argv);
+                std::cerr<<"cMain return:"<<r<<std::endl;
+                if( 0 != r )print_usage(argc,argv);
+                return r;
+            }
+            else if(optarg[0]=='w'){
+                int r = uiMain(argc,argv);
+                if(0!=r)print_usage(argc,argv);
+                return r;
+            }
+            break;
         default:
             ;
         }

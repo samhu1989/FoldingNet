@@ -70,6 +70,7 @@ void Plane::ChangeIthVertex(int i, Vertex v1)
 	_Vertices[i].SetY(v1.GetY());
 	_Vertices[i].SetZ(v1.GetZ());
 	_Vertices[i].SetCorrespondingPoint(v1.GetCorrespondingPoint());
+    _Vertices[i].SetId(i);
 }
 
 
@@ -227,10 +228,14 @@ void Plane::FindLoop()
 		Vertex v; //交点对应的三维点
 		v.SetCorrespondingPoint(_Lines[0].GetP1());
 		_Vertices.push_back(v);
+        _Vertices.back().SetId(_Vertices.size()-1);
+        _Lines[0].SetV1(_Vertices.back());
 		for (int i = 0; i < _Lines.size() - 1; i++)
 		{
 			v.SetCorrespondingPoint(_Lines[i].GetP2());
 			_Vertices.push_back(v);
+            _Vertices.back().SetId(_Vertices.size()-1);
+            _Lines[i].SetV2(_Vertices.back());
 		}
 	}
 	else

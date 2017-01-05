@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     Plane.cpp \
     Point.cpp \
     SolidLine.cpp \
-    Vertex.cpp
+    Vertex.cpp \
+    plate.cpp
 
 HEADERS  += mainwindow.h \
     DashLine.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     Plane.h \
     Point.h \
     SolidLine.h \
-    Vertex.h
+    Vertex.h \
+    plate.h
 
 FORMS    += mainwindow.ui
 

@@ -60,7 +60,7 @@ MeshPairViewerWidgetT<M>::open_mesh(const char* _filename,Mesh& mesh_,Stripifier
     if ( opt_.check( IO::Options::VertexColor ) )
     {
       std::cout << "File provides vertex colors\n";
-      add_draw_mode("Colored Vertices");
+      if(!findAction("Colored Vertices"))add_draw_mode("Colored Vertices");
     }
     else
       mesh_.release_vertex_colors();
@@ -68,7 +68,9 @@ MeshPairViewerWidgetT<M>::open_mesh(const char* _filename,Mesh& mesh_,Stripifier
     if ( _opt.check( IO::Options::FaceColor ) )
     {
       std::cout << "File provides face colors\n";
+      if(!findAction("Solid Colored Faces"))add_draw_mode("Solid Colored Faces");
       add_draw_mode("Solid Colored Faces");
+      if(!findAction("Smooth Colored Faces"))add_draw_mode("Smooth Colored Faces");
       add_draw_mode("Smooth Colored Faces");
     }
     else
@@ -135,12 +137,14 @@ bool MeshPairViewerWidgetT<M>::save_mesh(const std::string& _filename,Mesh& mesh
 
 //  mesh_.request_face_normals();
 //  mesh_.request_face_colors();
-  if(!mesh_.has_vertex_normals())mesh_.request_vertex_normals();
-  if(!mesh_.has_vertex_colors())mesh_.request_vertex_colors();
+  if(!mesh_.has_vertex_normals())_opt.unset(OpenMesh::IO::Options::VertexNormal);
+  if(!mesh_.has_vertex_colors())_opt.unset(OpenMesh::IO::Options::VertexColor);
+  if(!mesh_.has_face_normals())_opt.unset(OpenMesh::IO::Options::FaceNormal);
+  if(!mesh_.has_face_colors())_opt.unset(OpenMesh::IO::Options::FaceColor);
 //  mesh_.request_vertex_texcoords2D();
 
   std::cerr << "Saving to file '" << _filename << "'\n";
-  if ( IO::write_mesh(mesh_, _filename, _opt, 10 ) )
+  if ( IO::write_mesh(mesh_, _filename, _opt, 13 ) )
   {
       std::cerr << "Saved to file '" << _filename << "'\n";
       return true;

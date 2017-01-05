@@ -2,8 +2,6 @@
 #include "LineSegment.h"
 #include <vector>
 #include "delaunay.h"
-
-
 class Plane
 {
 public:
