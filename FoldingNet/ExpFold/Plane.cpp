@@ -225,63 +225,13 @@ void Plane::FindLoop()
     if (_Lines.size() > 0)
     {
 
-//		Vertex v; //交点对应的三维点
-//		v.SetCorrespondingPoint(_Lines[0].GetP1());
-//		_Vertices.push_back(v);
-//        _Vertices.back().SetId(_Vertices.size()-1);
-//        _Lines[0].SetV1(_Vertices.back());
-//		for (int i = 0; i < _Lines.size() - 1; i++)
-//		{
-//			v.SetCorrespondingPoint(_Lines[i].GetP2());
-//			_Vertices.push_back(v);
-//            _Vertices.back().SetId(_Vertices.size()-1);
-//            _Lines[i].SetV2(_Vertices.back());
-//		}
         Vertex v; //交点对应的三维点
-        if (_LoopNo == 1)
+        for (int i = 0; i < _Lines.size(); i++)
         {
-            v.SetCorrespondingPoint(_Lines[0].GetP1());
+            v.SetCorrespondingPoint(_Lines[i].GetP2());
             _Vertices.push_back(v);
             _Vertices.back().SetId(_Vertices.size()-1);
-            _Lines[0].SetV1(_Vertices.back());
-            for (int i = 0; i < _Lines.size() - 1; i++)
-            {
-                v.SetCorrespondingPoint(_Lines[i].GetP2());
-                _Vertices.push_back(v);
-                _Vertices.back().SetId(_Vertices.size()-1);
-                _Lines[i].SetV2(_Vertices.back());
-            }
-        }
-        else
-        {
-            int t_loop = _LoopNo;
-            int t_start = 0;   //一个loop的开始
-            int t_now = 0;
-            while (t_loop> 0)
-            {
-                v.SetCorrespondingPoint(_Lines[t_now].GetP1());
-                _Vertices.push_back(v);
-                _Vertices.back().SetId(_Vertices.size()-1);
-                _Lines[t_now].SetV1(_Vertices.back());
-                for (int i = 0; i < _Lines.size() - 1; i++)
-                {
-                    if (!(_Lines[t_now].GetP2() == _Lines[t_start].GetP1()))
-                    {
-                        v.SetCorrespondingPoint(_Lines[i].GetP2());
-                        _Vertices.push_back(v);
-                        _Vertices.back().SetId(_Vertices.size()-1);
-                        _Lines[i].SetV1(_Vertices.back());
-                        t_now++;
-                    }
-                    else
-                    {
-                        t_start = t_now + 1;
-                        t_now = t_start;
-                        t_loop--;
-                        break;
-                    }
-                }
-            }
+            _Lines[i].SetV2(_Vertices.back());
         }
     }
     else
@@ -345,13 +295,14 @@ void Plane::Triangulation()
 
     //判断三角形重心是否落在凹多边形外，若是，则删除
     //http://blog.csdn.net/hjh2005/article/details/9246967
-    std::cerr<<"triangle"<<std::endl;
+//    std::cerr<<"triangulation..."<<std::endl;
     TRIANGLE_PTR pTri = _Mesh.pTriArr;
-    bool oddNodes;
+    bool oddNodes_x,oddNodes_y;
     float centroid_x, centroid_y;
     while (pTri != NULL)
     {
-        oddNodes = false;
+        oddNodes_x = false;
+        oddNodes_y = false;
         centroid_x = (_Vertices[pTri->i1 - 3].GetCorrespondingPoint().GetX() + _Vertices[pTri->i2 - 3].GetCorrespondingPoint().GetX() + _Vertices[pTri->i3 - 3].GetCorrespondingPoint().GetX()) / 3;
         centroid_y = (_Vertices[pTri->i1 - 3].GetCorrespondingPoint().GetY() + _Vertices[pTri->i2 - 3].GetCorrespondingPoint().GetY() + _Vertices[pTri->i3 - 3].GetCorrespondingPoint().GetY()) / 3;
         for (int i = 0; i < _Lines.size(); i++)
@@ -366,12 +317,25 @@ void Plane::Triangulation()
             {
                 if (xi + (centroid_y - yi) / (yj - yi)*(xj - xi) < centroid_x)
                 {
-                    oddNodes = !oddNodes;
+                    oddNodes_x = !oddNodes_x;
                 }
             }
         }
 
-        if (!oddNodes)
+        for (int i = 0; i < _Lines.size(); i++)
+        {
+            float xi = _Lines[i].GetP1().GetX();
+            float xj = _Lines[i].GetP2().GetX();
+
+            float yi = _Lines[i].GetP1().GetY();
+            float yj = _Lines[i].GetP2().GetY();
+
+            if ((xi < centroid_x && xj >= centroid_x || xj < centroid_x && xi >= centroid_x) && (yi <= centroid_y || yj <= centroid_y))
+                if (yi + (centroid_x - xi) / (xj - xi)*(yj - yi) < centroid_y)
+                    oddNodes_y = !oddNodes_y;
+        }
+
+        if ((!oddNodes_x) && (!oddNodes_y))
         {
             if (pTri == _Mesh.pTriArr)
             {
