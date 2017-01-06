@@ -11,8 +11,10 @@ public:
 
 	Vertex(float x, float y, float z);
 
-    Vertex(const Vertex& v){_id=v._id;_X=v._X;_Y=v._Y;_Z=v._Z;_P=v._P;}
+    Vertex(const Vertex& v):is_on_dash_line_(-1){_id=v._id;_X=v._X;_Y=v._Y;_Z=v._Z;_P=v._P;is_on_dash_line_=v.is_on_dash_line_;}
 
+    inline int GetIsOnDash(){return is_on_dash_line_;}
+    inline void SetIsOnDash(int is_on_dash){is_on_dash_line_=is_on_dash;}
     inline int GetId(){return _id;}
     inline int SetId(int id){_id=id;}
 	float GetX();
@@ -36,6 +38,7 @@ public:
 	void SetParameters(Parameters para);
 
 private:
+    int is_on_dash_line_;
     int _id;
 	float _X;
 	float _Y;

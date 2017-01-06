@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QDir>
 #include "meshpairviewerwidget.h"
-#include "plate.h"
+#include "planegraph.h"
 namespace Ui {
 class MainWindow;
 }
@@ -30,7 +30,9 @@ protected slots:
     void next_axis();
     void last_axis();
     void rotate_to(double angle);
-    void recover_plates(const DefaultMesh& mesh);
+    void recover_axis(void);
+protected:
+    void show_axis(const arma::fvec&);
 private:
     Ui::MainWindow *ui;
     MeshPairViewerWidget* geo_view_;
@@ -38,7 +40,9 @@ private:
     QStringList::Iterator input_current_;
     QDir input_path_;
     QDir output_path_;
-    std::vector<Plate::Ptr> current_plate_;
+    arma::ivec is_dash_;
+    std::shared_ptr<PlaneGraph> plane_graph_;
+    std::vector<std::pair<int,arma::fvec>>::iterator axis_current_;
 };
 
 #endif // MAINWINDOW_H

@@ -1,8 +1,6 @@
 #include "GraphEdge.h"
 #include <math.h>
 
-
-
 GraphEdge::GraphEdge()
 {
 	_StartPlaneNumber = 0;

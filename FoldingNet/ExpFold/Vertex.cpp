@@ -2,7 +2,7 @@
 
 
 
-Vertex::Vertex()
+Vertex::Vertex():is_on_dash_line_(-1)
 {
 	_X = 0;
 	_Y = 0;
@@ -14,7 +14,7 @@ Vertex::~Vertex()
 {
 }
 
-Vertex::Vertex(float x, float y, float z)
+Vertex::Vertex(float x, float y, float z):is_on_dash_line_(-1)
 {
 	_X = x;
 	_Y = y;

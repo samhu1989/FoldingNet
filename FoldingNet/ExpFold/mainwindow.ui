@@ -89,10 +89,10 @@
    </attribute>
    <addaction name="actionLastInput"/>
    <addaction name="actionNextInput"/>
-   <addaction name="actionLastPlane"/>
-   <addaction name="actionNext_Plane"/>
    <addaction name="actionLast_Axis"/>
    <addaction name="actionNext_Axist"/>
+   <addaction name="actionLastPlane"/>
+   <addaction name="actionNext_Plane"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLastInput">

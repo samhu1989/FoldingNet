@@ -2157,6 +2157,15 @@ void FoldingNet::save_mesh(const std::string& filepath)
                             )
                         )
             );
+            if( 1 == plane.IthVertex(iv).GetIsOnDash() )
+            {
+                plane_is_dash[iv] = 1;
+            }else if( 0 == plane.IthVertex(iv).GetIsOnDash() ){
+                plane_is_dash[iv] = -1;
+            }else if( -1 == plane.IthVertex(iv).GetIsOnDash() )
+            {
+                plane_is_dash[iv] = 0;
+            }
             //assign each plane to the same color
             mesh.set_color(vhandle.back(),DefaultMesh::Color(qRed(c),qGreen(c),qBlue(c)));
         }
@@ -2171,27 +2180,6 @@ void FoldingNet::save_mesh(const std::string& filepath)
             mesh.add_face(vhandle_face);
             f_ptr = f_ptr->pNext;
             if(f_ptr==NULL)break;
-        }
-//        for(int iV=0 ; iV < plane.NumberofVertices() ; ++iV )
-//        {
-//            std::cerr<<plane.IthVertex(iV).GetId()<<",";
-//        }
-        for(int iLine=0 ; iLine < plane.NumberofLines() ; ++iLine )
-        {
-            int id = -1;
-            if(iLine==0)id = plane.IthLine(iLine).GetV1().GetId();
-            else id = plane.IthLine(iLine).GetV2().GetId();
-//            std::cerr<<"v1:"<<plane.IthLine(iLine).GetV1().GetId()<<std::endl;
-//            std::cerr<<"v2:"<<plane.IthLine(iLine).GetV2().GetId()<<std::endl;
-//            std::cerr<<":"<<id<<std::endl;
-            //the id is still not right this is just a temp workaround
-            if(id>plane_is_dash.size())continue;
-            if(plane.IthLine(iLine).GetIsDash())
-            {
-                plane_is_dash[id]=1;
-            }else{
-                plane_is_dash[id]=-1;
-            }
         }
         is_dash.insert(std::end(is_dash), std::begin(plane_is_dash), std::end(plane_is_dash));
     }

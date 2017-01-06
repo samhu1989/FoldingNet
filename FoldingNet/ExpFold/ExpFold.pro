@@ -29,7 +29,7 @@ SOURCES += main.cpp\
     Point.cpp \
     SolidLine.cpp \
     Vertex.cpp \
-    plate.cpp
+    planegraph.cpp
 
 HEADERS  += mainwindow.h \
     DashLine.h \
@@ -44,7 +44,7 @@ HEADERS  += mainwindow.h \
     Point.h \
     SolidLine.h \
     Vertex.h \
-    plate.h
+    planegraph.h
 
 FORMS    += mainwindow.ui
 

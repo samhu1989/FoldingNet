@@ -66,10 +66,7 @@ void Plane::ChangeIthLine(int i,Vertex v1, Vertex v2)
 
 void Plane::ChangeIthVertex(int i, Vertex v1)
 {
-    _Vertices[i].SetX(v1.GetX());
-    _Vertices[i].SetY(v1.GetY());
-    _Vertices[i].SetZ(v1.GetZ());
-    _Vertices[i].SetCorrespondingPoint(v1.GetCorrespondingPoint());
+    _Vertices[i] = v1;
     _Vertices[i].SetId(i);
 }
 
@@ -231,6 +228,7 @@ void Plane::FindLoop()
             v.SetCorrespondingPoint(_Lines[i].GetP2());
             _Vertices.push_back(v);
             _Vertices.back().SetId(_Vertices.size()-1);
+            _Vertices.back().SetIsOnDash(_Lines[i].GetIsDash());
             _Lines[i].SetV2(_Vertices.back());
         }
     }
