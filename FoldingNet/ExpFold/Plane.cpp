@@ -345,7 +345,7 @@ void Plane::Triangulation()
 
     //判断三角形重心是否落在凹多边形外，若是，则删除
     //http://blog.csdn.net/hjh2005/article/details/9246967
-
+    std::cerr<<"triangle"<<std::endl;
     TRIANGLE_PTR pTri = _Mesh.pTriArr;
     bool oddNodes;
     float centroid_x, centroid_y;
