@@ -274,17 +274,19 @@ void MainWindow::rotate_to(double angle)
     getTransformFromAxis(axis_current_->second,theta,T);
     arma::fmat R = T.submat(0,0,2,2);
     arma::fvec t = T.submat(0,3,2,3);
+    //updating points:
     DefaultMesh& mesh = geo_view_->first().mesh_;
     arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
     arma::fmat n((float*)mesh.vertex_normals(),3,mesh.n_vertices(),false,true);
     arma::uvec dark_side;
+    std::vector<int> side_axis_;
     switch(side_current_)
     {
     case 1:
-        dark_side = plane_graph_->get_side_b(axis_current_->first);
+        dark_side = plane_graph_->get_side_b(axis_current_->first,side_axis_);
         break;
     case -1:
-        dark_side = plane_graph_->get_side_a(axis_current_->first);
+        dark_side = plane_graph_->get_side_a(axis_current_->first,side_axis_);
         break;
     case 0:
         return;
@@ -294,6 +296,16 @@ void MainWindow::rotate_to(double angle)
     tmp = R*tmp;
     tmp.each_col() += t;
     v.cols(dark_side) = tmp;
+    //updating axis
+    for(std::vector<int>::iterator iter=side_axis_.begin();iter!=side_axis_.end();++iter)
+    {
+       arma::fvec pos = plane_graph_->axis_[*iter-1].second.head(3);
+       arma::fvec dir = plane_graph_->axis_[*iter-1].second.tail(3);
+       pos = R*pos + t;
+       dir = R*dir;
+       plane_graph_->axis_[*iter-1].second.head(3) = pos;
+       plane_graph_->axis_[*iter-1].second.tail(3) = dir;
+    }
     angle_current_ = angle;
     geo_view_->updateGL();
 }
@@ -312,15 +324,16 @@ void MainWindow::show_side(void)
     DefaultMesh& mesh = geo_view_->first().mesh_;
     arma::Mat<uint8_t> mesh_color((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
     arma::uvec dark_side,color_side;
+    std::vector<int> side_axis_;
     switch(side_current_)
     {
     case 1:
-        color_side = plane_graph_->get_side_a(axis_current_->first);
-        dark_side = plane_graph_->get_side_b(axis_current_->first);
+        color_side = plane_graph_->get_side_a(axis_current_->first,side_axis_);
+        dark_side = plane_graph_->get_side_b(axis_current_->first,side_axis_);
         break;
     case -1:
-        color_side = plane_graph_->get_side_b(axis_current_->first);
-        dark_side = plane_graph_->get_side_a(axis_current_->first);
+        color_side = plane_graph_->get_side_b(axis_current_->first,side_axis_);
+        dark_side = plane_graph_->get_side_a(axis_current_->first,side_axis_);
         break;
     case 0:
         color_side = arma::linspace<arma::uvec>(0,mesh.n_vertices()-1,mesh.n_vertices());

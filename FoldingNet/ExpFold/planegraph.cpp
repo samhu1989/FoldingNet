@@ -8,7 +8,7 @@ PlaneGraph::PlaneGraph(const DefaultMesh& mesh,const arma::ivec& is_dash):same_v
 
 }
 
-arma::uvec PlaneGraph::get_side_a(int axis_id)
+arma::uvec PlaneGraph::get_side_a(int axis_id,std::vector<int>& side_a_axis)
 {
     std::vector<bool> visited(nodes_.size(),false);
     std::queue<int> node_to_be;
@@ -33,6 +33,7 @@ arma::uvec PlaneGraph::get_side_a(int axis_id)
         {
             if(edges_(current,i)>0&&!visited[i]&&edges_(current,i)!=axis_id)
             {
+                side_a_axis.push_back(edges_(current,i));
                 node_to_be.push(i);
             }
         }
@@ -45,7 +46,7 @@ arma::uvec PlaneGraph::get_side_a(int axis_id)
     return arma::uvec(result);
 }
 
-arma::uvec PlaneGraph::get_side_b(int axis_id)
+arma::uvec PlaneGraph::get_side_b(int axis_id, std::vector<int> &side_b_axis)
 {
     std::vector<bool> visited(nodes_.size(),false);
     std::queue<int> node_to_be;
@@ -70,6 +71,7 @@ arma::uvec PlaneGraph::get_side_b(int axis_id)
         {
             if(edges_(current,i)>0&&!visited[i]&&edges_(current,i)!=axis_id)
             {
+                side_b_axis.push_back(edges_(current,i));
                 node_to_be.push(i);
             }
         }
