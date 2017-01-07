@@ -33,6 +33,7 @@ protected slots:
     void recover_axis(void);
 protected:
     void show_axis(const arma::fvec&);
+    void show_side(void);
 private:
     Ui::MainWindow *ui;
     MeshPairViewerWidget* geo_view_;
@@ -43,6 +44,8 @@ private:
     arma::ivec is_dash_;
     std::shared_ptr<PlaneGraph> plane_graph_;
     std::vector<std::pair<int,arma::fvec>>::iterator axis_current_;
+    int side_current_;
+    arma::Mat<uint8_t> input_current_color_;
 };
 
 #endif // MAINWINDOW_H

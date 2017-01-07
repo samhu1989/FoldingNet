@@ -223,14 +223,18 @@ void Plane::FindLoop()
     {
 
         Vertex v; //交点对应的三维点
+        bool first_dash_ = false;
         for (int i = 0; i < _Lines.size(); i++)
         {
+            if(i==0&&_Lines[i].GetIsDash())first_dash_=true;
             v.SetCorrespondingPoint(_Lines[i].GetP2());
+            if(_Lines[i].GetIsDash()&&!_Vertices.empty())_Vertices.back().SetIsOnDash(1);//set the previous point as dash too
             _Vertices.push_back(v);
             _Vertices.back().SetId(_Vertices.size()-1);
             _Vertices.back().SetIsOnDash(_Lines[i].GetIsDash());
             _Lines[i].SetV2(_Vertices.back());
         }
+        if(first_dash_)_Vertices.back().SetIsOnDash(1);
     }
     else
         cout <<_PlaneNumber<< "   No Loop !!!!!!!!!!!!!" << endl;

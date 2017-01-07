@@ -89,11 +89,15 @@ void MainWindow::load_current()
     }
     geo_view_->set_center_at_mesh(geo_view_->first().mesh_);
     geo_view_->updateGL();
+    input_current_color_ = arma::Mat<uint8_t>((uint8_t*)geo_view_->first().mesh_.vertex_colors(),3,geo_view_->first().mesh_.n_vertices(),false,true);
     recover_axis();
+    side_current_ = 0;
 }
 
 void MainWindow::save_current()
 {
+    side_current_ = 0;
+    show_side();
     QFileInfo info(*input_current_);
     QDir dir;
     dir = dir.current();
@@ -147,12 +151,16 @@ void MainWindow::last_input()
 
 void MainWindow::next_plane()
 {
-    ui->statusBar->showMessage(tr("next plane"),5000);
+    ++ side_current_  ;
+    if(side_current_>1)side_current_=-1;
+    show_side();
 }
 
 void MainWindow::last_plane()
 {
-    ui->statusBar->showMessage(tr("last plane"),5000);
+    -- side_current_ ;
+    if(side_current_<-1)side_current_=1;
+    show_side();
 }
 
 void MainWindow::next_axis()
@@ -161,6 +169,8 @@ void MainWindow::next_axis()
     ++ axis_current_;
     if(axis_current_==plane_graph_->axis_.end())axis_current_=plane_graph_->axis_.begin();
     show_axis(axis_current_->second);
+    side_current_ = 0;
+    show_side();
 }
 
 void MainWindow::last_axis()
@@ -169,6 +179,8 @@ void MainWindow::last_axis()
     if(axis_current_==plane_graph_->axis_.begin())axis_current_=plane_graph_->axis_.end();
     -- axis_current_;
     show_axis(axis_current_->second);
+    side_current_ = 0;
+    show_side();
 }
 
 void MainWindow::show_axis(const arma::fvec& axis)
@@ -177,7 +189,6 @@ void MainWindow::show_axis(const arma::fvec& axis)
     arma::fmat v((float*)mesh.points(),3,4,false,true);
     arma::fvec pos((float*)axis.memptr(),3,true,true);
     arma::fvec dir((float*)axis.memptr()+3,3,true,true);
-    dir *= geo_view_->radius() * 0.8;
 
     v.each_col() = pos;
     arma::fvec w = {0,0,geo_view_->radius()/100.0};
@@ -186,9 +197,9 @@ void MainWindow::show_axis(const arma::fvec& axis)
     v.col(2) -= dir;
     v.col(3) -= dir;
     v.col(0) += w;
-    v.col(2) += w;
+    v.col(3) += w;
     v.col(1) -= w;
-    v.col(3) -= w;
+    v.col(2) -= w;
 
     mesh.update_normals();
     geo_view_->updateGL();
@@ -205,12 +216,35 @@ void MainWindow::recover_axis()
 {
     DefaultMesh& mesh = geo_view_->first().mesh_;
     plane_graph_.reset(new PlaneGraph(mesh,is_dash_));
-    arma::fvec axis0 = {0.294723,0.117521,0,1,0,0};
-    plane_graph_->axis_.emplace_back(0,axis0);
-    arma::fvec axis1 = {0.294723,0.717521,0,1,0,0};
-    plane_graph_->axis_.emplace_back(1,axis1);
     axis_current_ = plane_graph_->axis_.begin();
     show_axis(axis_current_->second);
+}
+
+void MainWindow::show_side(void)
+{
+    DefaultMesh& mesh = geo_view_->first().mesh_;
+    arma::Mat<uint8_t> mesh_color((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+    arma::uvec dark_side,color_side;
+    switch(side_current_)
+    {
+    case 1:
+        color_side = plane_graph_->get_side_a(axis_current_->first);
+        dark_side = plane_graph_->get_side_b(axis_current_->first);
+        break;
+    case -1:
+        color_side = plane_graph_->get_side_b(axis_current_->first);
+        dark_side = plane_graph_->get_side_a(axis_current_->first);
+        break;
+    case 0:
+        color_side = arma::linspace<arma::uvec>(0,mesh.n_vertices()-1,mesh.n_vertices());
+        dark_side.clear();
+    }
+    QString msg;
+    msg = msg.sprintf("Current Side %d",side_current_);
+    ui->statusBar->showMessage(msg,5000);
+    mesh_color.cols(color_side) = input_current_color_.cols(color_side);
+    mesh_color.cols(dark_side).fill(0);
+    geo_view_->updateGL();
 }
 
 MainWindow::~MainWindow()
