@@ -79,6 +79,62 @@ void init_resouce()
 {
     Q_INIT_RESOURCE(rs);
 }
+//axis px py pz dx dy dz (position and direction)
+void getTransformFromAxis(const arma::fvec& axis,const float theta,arma::fmat& T)
+{
+    T = arma::fmat(4,4,arma::fill::eye);
+
+    float a = axis(0);
+    float b = axis(1);
+    float c = axis(2);
+
+    arma::fvec dir = axis.tail(3);
+    dir = arma::normalise(dir);
+
+    float u = dir(0);
+    float v = dir(1);
+    float w = dir(2);
+
+    float uu = u * u;
+    float uv = u * v;
+    float uw = u * w;
+    float vv = v * v;
+    float vw = v * w;
+    float ww = w * w;
+    float au = a * u;
+    float av = a * v;
+    float aw = a * w;
+    float bu = b * u;
+    float bv = b * v;
+    float bw = b * w;
+    float cu = c * u;
+    float cv = c * v;
+    float cw = c * w;
+
+    float costheta = cosf(theta);
+    float sintheta = sinf(theta);
+
+    T(0,0) = uu + (vv + ww) * costheta;
+    T(0,1) = uv * (1 - costheta) + w * sintheta;
+    T(0,2) = uw * (1 - costheta) - v * sintheta;
+    T(0,3) = 0;
+
+    T(1,0) = uv * (1 - costheta) - w * sintheta;
+    T(1,1) = vv + (uu + ww) * costheta;
+    T(1,2) = vw * (1 - costheta) + u * sintheta;
+    T(1,3) = 0;
+
+    T(2,0) = uw * (1 - costheta) + v * sintheta;
+    T(2,1) = vw * (1 - costheta) - u * sintheta;
+    T(2,2) = ww + (uu + vv) * costheta;
+    T(2,3) = 0;
+
+    T(3,0) = (a * (vv + ww) - u * (bv + cw)) * (1 - costheta) + (bw - cv) * sintheta;
+    T(3,1) = (b * (uu + ww) - v * (au + cw)) * (1 - costheta) + (cu - aw) * sintheta;
+    T(3,2) = (c * (uu + vv) - w * (au + bv)) * (1 - costheta) + (av - bu) * sintheta;
+    T(3,3) = 1;
+    T = T.t();
+}
 
 
 

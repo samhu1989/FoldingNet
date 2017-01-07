@@ -31,6 +31,7 @@ protected slots:
     void last_axis();
     void rotate_to(double angle);
     void recover_axis(void);
+    void recover_angle(void);
 protected:
     void show_axis(const arma::fvec&);
     void show_side(void);
@@ -46,6 +47,7 @@ private:
     std::vector<std::pair<int,arma::fvec>>::iterator axis_current_;
     int side_current_;
     arma::Mat<uint8_t> input_current_color_;
+    float angle_current_;
 };
 
 #endif // MAINWINDOW_H

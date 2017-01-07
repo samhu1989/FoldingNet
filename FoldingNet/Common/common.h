@@ -25,6 +25,7 @@ typedef unibn::Octree<arma::fvec,DefaultOctreeContainer> DefaultOctree;
 void COMMONSHARED_EXPORT getRotationFromZY(const arma::fvec&,const arma::fvec&,arma::fmat&);
 void COMMONSHARED_EXPORT getRotationFromXY(const arma::fvec&,const arma::fvec&,arma::fmat&);
 void COMMONSHARED_EXPORT init_resouce();
+void COMMONSHARED_EXPORT getTransformFromAxis(const arma::fvec&,const float,arma::fmat&);
 arma::mat COMMONSHARED_EXPORT getRotationMatrix2D(const arma::vec& center,double theta,double scale);
 arma::uvec COMMONSHARED_EXPORT randperm(arma::uword N);
 inline void getRotation(float x, float y, float z, float roll, float pitch, float yaw,arma::fmat& t)

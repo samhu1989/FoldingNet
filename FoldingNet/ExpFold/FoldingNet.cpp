@@ -2123,6 +2123,11 @@ void FoldingNet::save_mesh(const std::string& filepath)
     mesh.request_face_colors();
     mesh.request_face_normals();
 
+    //disable the background color by add it to the map
+    uint32_t backgroundcolor = qRgb(179,179,179);
+    key_to_color_map[std::numeric_limits<uint32_t>::max()] = backgroundcolor;
+    color_to_key_map[backgroundcolor] = std::numeric_limits<uint32_t>::max();
+
     std::vector<int> is_dash;
     std::vector<Plane>::iterator iter;
     for(iter=_PolygonList.begin();iter!=_PolygonList.end();++iter)

@@ -32,32 +32,84 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAngleDown,SIGNAL(triggered(bool)),ui->doubleSpinBox,SLOT(stepDown()));
     connect(ui->doubleSpinBox,SIGNAL(valueChanged(double)),this,SLOT(rotate_to(double)));
 
+    //building a cube as axis
     DefaultMesh& mesh = geo_view_->second().mesh_;
-    if(mesh.n_vertices()!=4)
+    if(mesh.n_vertices()!=8)
     {
         std::vector<DefaultMesh::VertexHandle> vhandle;
-        vhandle.reserve(4);
-        for(int i=0;i<4;++i)vhandle.push_back(mesh.add_vertex(DefaultMesh::Point(0,0,0)));
-
-        std::vector<DefaultMesh::VertexHandle> vhandle_face;
-        vhandle_face.push_back(vhandle[0]);
-        vhandle_face.push_back(vhandle[1]);
-        vhandle_face.push_back(vhandle[2]);
-        mesh.add_face(vhandle_face);
-        vhandle_face.clear();
-        vhandle_face.push_back(vhandle[3]);
-        vhandle_face.push_back(vhandle[0]);
-        vhandle_face.push_back(vhandle[2]);
-        mesh.add_face(vhandle_face);
+        vhandle.reserve(8);
+        std::vector<DefaultMesh::VertexHandle> face_vhandles;
+        for(int i=0;i<8;++i)vhandle.push_back(mesh.add_vertex(DefaultMesh::Point(0,0,0)));
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[0]);
+        face_vhandles.push_back(vhandle[1]);
+        face_vhandles.push_back(vhandle[2]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[2]);
+        face_vhandles.push_back(vhandle[3]);
+        face_vhandles.push_back(vhandle[0]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[7]);
+        face_vhandles.push_back(vhandle[6]);
+        face_vhandles.push_back(vhandle[5]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[5]);
+        face_vhandles.push_back(vhandle[4]);
+        face_vhandles.push_back(vhandle[7]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[1]);
+        face_vhandles.push_back(vhandle[0]);
+        face_vhandles.push_back(vhandle[4]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[4]);
+        face_vhandles.push_back(vhandle[5]);
+        face_vhandles.push_back(vhandle[1]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[2]);
+        face_vhandles.push_back(vhandle[1]);
+        face_vhandles.push_back(vhandle[5]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[5]);
+        face_vhandles.push_back(vhandle[6]);
+        face_vhandles.push_back(vhandle[2]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[3]);
+        face_vhandles.push_back(vhandle[2]);
+        face_vhandles.push_back(vhandle[6]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[6]);
+        face_vhandles.push_back(vhandle[7]);
+        face_vhandles.push_back(vhandle[3]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[0]);
+        face_vhandles.push_back(vhandle[3]);
+        face_vhandles.push_back(vhandle[7]);
+        mesh.add_face(face_vhandles);
+        face_vhandles.clear();
+        face_vhandles.push_back(vhandle[7]);
+        face_vhandles.push_back(vhandle[4]);
+        face_vhandles.push_back(vhandle[0]);
+        mesh.add_face(face_vhandles);
 
         mesh.request_vertex_colors();
         mesh.request_vertex_normals();
 
-        arma::Mat<uint8_t> c((uint8_t*)mesh.vertex_colors(),3,4,false,true);
-        arma::fmat n((float*)mesh.vertex_normals(),3,4,false,true);
+        arma::Mat<uint8_t> c((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+        arma::fmat n((float*)mesh.vertex_normals(),3,mesh.n_vertices(),false,true);
         n.fill(0.0);
         n.row(2).fill(1.0);
-        c.fill(255);
+        c.fill(0);
+        c.row(0).fill(255);
     }
 }
 
@@ -168,6 +220,7 @@ void MainWindow::next_axis()
     ui->statusBar->showMessage(tr("next axis"),5000);
     ++ axis_current_;
     if(axis_current_==plane_graph_->axis_.end())axis_current_=plane_graph_->axis_.begin();
+    recover_angle();
     show_axis(axis_current_->second);
     side_current_ = 0;
     show_side();
@@ -178,6 +231,7 @@ void MainWindow::last_axis()
     ui->statusBar->showMessage(tr("last axis"),5000);
     if(axis_current_==plane_graph_->axis_.begin())axis_current_=plane_graph_->axis_.end();
     -- axis_current_;
+    recover_angle();
     show_axis(axis_current_->second);
     side_current_ = 0;
     show_side();
@@ -186,21 +240,26 @@ void MainWindow::last_axis()
 void MainWindow::show_axis(const arma::fvec& axis)
 {
     DefaultMesh& mesh = geo_view_->second().mesh_;
-    arma::fmat v((float*)mesh.points(),3,4,false,true);
+    arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
     arma::fvec pos((float*)axis.memptr(),3,true,true);
     arma::fvec dir((float*)axis.memptr()+3,3,true,true);
 
-    v.each_col() = pos;
-    arma::fvec w = {0,0,geo_view_->radius()/100.0};
-    v.col(0) += dir;
-    v.col(1) += dir;
-    v.col(2) -= dir;
-    v.col(3) -= dir;
-    v.col(0) += w;
-    v.col(3) += w;
-    v.col(1) -= w;
-    v.col(2) -= w;
-
+    //generate a box to represent axis
+    float h = arma::norm(dir);
+    float l = geo_view_->radius() / 100;
+    float w =  geo_view_->radius() / 100;
+    arma::fmat axis_shape =
+    {
+      { w, w,-w,-w, w, w,-w,-w},
+      { l,-l,-l, l, l,-l,-l, l},
+      { h, h, h, h,-h,-h,-h,-h}
+    };
+    arma::fvec zaxis = {0,0,1};
+    v = axis_shape;
+    arma::fmat R(3,3,arma::fill::eye);
+    getRotationFromZY(arma::normalise(dir),zaxis,R);
+    v = R.i()*v;
+    v.each_col() += pos;
     mesh.update_normals();
     geo_view_->updateGL();
 }
@@ -210,6 +269,33 @@ void MainWindow::rotate_to(double angle)
     QString msg;
     msg = msg.sprintf("rotate to %lf",angle);
     ui->statusBar->showMessage(msg,5000);
+    float theta = ( angle - angle_current_ )*M_PI/180.0;
+    arma::fmat T;
+    getTransformFromAxis(axis_current_->second,theta,T);
+    arma::fmat R = T.submat(0,0,2,2);
+    arma::fvec t = T.submat(0,3,2,3);
+    DefaultMesh& mesh = geo_view_->first().mesh_;
+    arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
+    arma::fmat n((float*)mesh.vertex_normals(),3,mesh.n_vertices(),false,true);
+    arma::uvec dark_side;
+    switch(side_current_)
+    {
+    case 1:
+        dark_side = plane_graph_->get_side_b(axis_current_->first);
+        break;
+    case -1:
+        dark_side = plane_graph_->get_side_a(axis_current_->first);
+        break;
+    case 0:
+        return;
+    }
+    n.cols(dark_side) = R*n.cols(dark_side);
+    arma::fmat tmp = v.cols(dark_side);
+    tmp = R*tmp;
+    tmp.each_col() += t;
+    v.cols(dark_side) = tmp;
+    angle_current_ = angle;
+    geo_view_->updateGL();
 }
 
 void MainWindow::recover_axis()
@@ -217,6 +303,7 @@ void MainWindow::recover_axis()
     DefaultMesh& mesh = geo_view_->first().mesh_;
     plane_graph_.reset(new PlaneGraph(mesh,is_dash_));
     axis_current_ = plane_graph_->axis_.begin();
+    recover_angle();
     show_axis(axis_current_->second);
 }
 
@@ -245,6 +332,14 @@ void MainWindow::show_side(void)
     mesh_color.cols(color_side) = input_current_color_.cols(color_side);
     mesh_color.cols(dark_side).fill(0);
     geo_view_->updateGL();
+}
+
+void MainWindow::recover_angle(void)
+{
+    ui->doubleSpinBox->blockSignals(true);
+    ui->doubleSpinBox->setValue(0.0);
+    angle_current_ = ui->doubleSpinBox->value();
+    ui->doubleSpinBox->blockSignals(false);
 }
 
 MainWindow::~MainWindow()
