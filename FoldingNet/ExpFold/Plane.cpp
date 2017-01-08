@@ -181,6 +181,10 @@ bool Plane::FindLoop()
                 if (isLoopFrom(t_ListForFindingLoop[i]) >= 0)
                 {
                     int t_loopfrom = isLoopFrom(t_ListForFindingLoop[i]);
+                    for(std::vector<LineSegment>::iterator iter=t_ListForFindingLoop[i].begin();iter!=t_ListForFindingLoop[i].end();++iter)
+                    {
+                        iter->SetLoopNum(_LoopNo);
+                    }
                     _Lines.insert(_Lines.end(),t_ListForFindingLoop[i].begin() + t_loopfrom, t_ListForFindingLoop[i].end());
                     _LoopNo++;   //环路加1
                     flag = 1;
@@ -192,6 +196,17 @@ bool Plane::FindLoop()
 
     }
 
+    int current_loop = -1000;
+    std::cerr<<"before delete,LoopNo:"<<_LoopNo<<std::endl;
+    for (int i = 0; i < _Lines.size(); i++)
+    {
+        if(current_loop!=_Lines[i].GetLoopNum())
+        {
+            current_loop = _Lines[i].GetLoopNum();
+            std::cerr<<"plane:"<<GetPlaneNumber()<<"loop:"<<current_loop<<std::endl;
+        }
+    }
+
     //删除同一条线段
     //删除重复回路中的线段
     vector<LineSegment>::iterator it, it1;
@@ -201,8 +216,8 @@ bool Plane::FindLoop()
         {
             if (*it1 == *it)
             {
-                if ((*it1).GetIsDash() != (*it).GetIsDash())
-                    (*it).SetIsDash(0);
+//                if ((*it1).GetIsDash() != (*it).GetIsDash())
+//                    (*it).SetIsDash(0);
                 it1 = _Lines.erase(it1);
             }
             else
@@ -218,15 +233,24 @@ bool Plane::FindLoop()
 
     /*for (int i = 0; i < _Lines.size(); i++)
         cout << _Lines[i].GetP1().GetX() << "   " << _Lines[i].GetP1().GetY() << "   " << _Lines[i].GetP2().GetX() << "   " << _Lines[i].GetP2().GetY() << endl;*/
-
+    std::cerr<<"after delete:LoopNo"<<_LoopNo<<std::endl;
     if (_Lines.size() > 0)
     {
 
         Vertex v; //交点对应的三维点
         bool first_dash_ = false;
+        int current_loop = -1000;
         for (int i = 0; i < _Lines.size(); i++)
         {
-            if(i==0&&_Lines[i].GetIsDash())first_dash_=true;
+            //at the end of current loop
+            if(current_loop!=_Lines[i].GetLoopNum()&&_Lines[i].GetIsDash())
+            {
+                current_loop = _Lines[i].GetLoopNum();
+                std::cerr<<"plane:"<<GetPlaneNumber()<<"loop:"<<current_loop<<std::endl;
+                if(first_dash_)_Vertices.back().SetIsOnDash(1);
+                if(_Lines[i].GetIsDash())first_dash_=true;
+                else first_dash_ = false;
+            }
             v.SetCorrespondingPoint(_Lines[i].GetP2());
             if(_Lines[i].GetIsDash()&&!_Vertices.empty())_Vertices.back().SetIsOnDash(1);//set the previous point as dash too
             _Vertices.push_back(v);

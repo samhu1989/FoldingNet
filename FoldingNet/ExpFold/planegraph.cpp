@@ -10,7 +10,6 @@ PlaneGraph::PlaneGraph(
 {
     assert(mesh.n_vertices()==is_dash.size());
     recover_planes(mesh,is_dash);
-
 }
 
 arma::uvec PlaneGraph::get_side_a(int axis_id,std::vector<int>& side_a_axis)
@@ -137,6 +136,7 @@ void PlaneGraph::recover_axis(const DefaultMesh& mesh, const Node& n0, const Nod
         edges_(n1.idx_,n0.idx_) = axis_.size();
     }
 }
+
 void PlaneGraph::get_connect_points(
         const DefaultMesh& mesh,
         const Node& n0,
@@ -184,7 +184,7 @@ void PlaneGraph::get_connect_points(
             c_pts_.push_back(tmp(2));
             int dash_a = is_dash(idxa(i));
             int dash_b = is_dash(idxb(index));
-            if(dash_a==1||dash_b==1)
+            if(dash_a==1&&dash_b==1)
             {
                 c_dash_.push_back(1);
             }else{
@@ -204,7 +204,9 @@ bool PlaneGraph::get_axis_from_dash_points(
         )
 {
     arma::uvec is_dash_idx = arma::find(1==is_dash);
+    arma::uvec not_dash_idx = arma::find(-1==is_dash);
     if(is_dash_idx.size()<2)return false;
+    if(not_dash_idx.size()>=2)return false;
     arma::fmat dash_points = connect.cols(is_dash_idx);
     arma::fvec pos = arma::mean(dash_points,1);
     arma::fvec dir;

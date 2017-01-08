@@ -759,7 +759,6 @@ void FoldingNet::Modeling()
 		_PolygonList[k].Triangulation();
 	}
 
-
 	//¹¹½¨Graph
 	GraphNode t_node;
 	GraphEdge t_edge;

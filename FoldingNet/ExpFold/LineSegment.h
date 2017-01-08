@@ -12,6 +12,9 @@ public:
 	LineSegment(Vertex v1, Vertex v2);
 	~LineSegment();
 
+    inline int GetLoopNum(){return _loop_num;}
+    inline void SetLoopNum(int num){_loop_num=num;}
+
 	Vertex GetV1();
 	void SetV1(Vertex v1);
 	void SetV1(float v_x,float v_y,float v_z);
@@ -67,6 +70,6 @@ private:
 	Point _P2;
 	int _Id;
 	int _IsDash;
-
+    int _loop_num;
 };
 

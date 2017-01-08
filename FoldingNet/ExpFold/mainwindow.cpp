@@ -160,6 +160,7 @@ void MainWindow::load_current()
     geo_view_->updateGL();
     input_current_color_ = arma::Mat<uint8_t>((uint8_t*)geo_view_->first().mesh_.vertex_colors(),3,geo_view_->first().mesh_.n_vertices(),false,true);
     recover_axis();
+    std::cerr<<"done axis"<<std::endl;
     ui->actionView_Dash_All->blockSignals(true);
     ui->actionView_Dash_All->setChecked(false);
     ui->actionView_Dash_All->blockSignals(false);
@@ -275,9 +276,12 @@ void MainWindow::show_axis(const arma::fvec& axis)
 {
     DefaultMesh& mesh = geo_view_->second().mesh_;
     arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
+    if(axis.size()!=6){
+        std::cerr<<"axis size with:"<<axis.size()<<std::endl;
+        return;
+    }
     arma::fvec pos((float*)axis.memptr(),3,true,true);
     arma::fvec dir((float*)axis.memptr()+3,3,true,true);
-
     //generate a box to represent axis
     float h = arma::norm(dir);
     float l = geo_view_->radius() / 100;
@@ -291,7 +295,10 @@ void MainWindow::show_axis(const arma::fvec& axis)
     arma::fvec zaxis = {0,0,1};
     v = axis_shape;
     arma::fmat R(3,3,arma::fill::eye);
-    getRotationFromZY(arma::normalise(dir),zaxis,R);
+    if( dir(0) !=0 || dir(1) != 0 )
+    {
+        getRotationFromZY(arma::normalise(dir),zaxis,R);
+    }
     v = R.i()*v;
     v.each_col() += pos;
     mesh.update_normals();
@@ -348,9 +355,12 @@ void MainWindow::recover_axis()
 {
     DefaultMesh& mesh = geo_view_->first().mesh_;
     plane_graph_.reset(new PlaneGraph(mesh,is_dash_,geo_view_->radius()*g_config->getDouble("same_vertex_threshod")));
+    std::cerr<<"done plane graph"<<std::endl;
     axis_current_ = plane_graph_->axis_.begin();
     recover_angle();
+    std::cerr<<"done recover angle"<<std::endl;
     show_axis(axis_current_->second);
+    std::cerr<<"done show axis"<<std::endl;
 }
 
 void MainWindow::show_side(void)
