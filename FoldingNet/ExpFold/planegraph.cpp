@@ -1,7 +1,12 @@
 #include "planegraph.h"
 #include <QRgb>
 #include "nanoflann.hpp"
-PlaneGraph::PlaneGraph(const DefaultMesh& mesh,const arma::ivec& is_dash):same_vertex_th_(5.0*std::numeric_limits<float>::epsilon())
+#include <iomanip>
+PlaneGraph::PlaneGraph(
+        const DefaultMesh& mesh,
+        const arma::ivec& is_dash,
+        float th=5.0*std::numeric_limits<float>::epsilon()
+        ):same_vertex_th_(th),mesh_(mesh),is_dash_(is_dash)
 {
     assert(mesh.n_vertices()==is_dash.size());
     recover_planes(mesh,is_dash);
@@ -227,4 +232,71 @@ bool PlaneGraph::get_axis_from_dash_points(
     axis_.back().first = axis_.size();
     axis_.back().second = axis;
     return true;
+}
+
+arma::uvec PlaneGraph::get_side_a_dash(int axis_id)
+{
+    arma::uvec result;
+    arma::ivec dash;
+    //find the edge
+    for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
+    {
+        if(axis_id==*iter)
+        {
+            result = arma::conv_to<arma::uvec>::from(nodes_[iter.row()]->indices_);
+            dash = arma::conv_to<arma::ivec>::from(nodes_[iter.row()]->is_dash_);
+            break;
+        }
+    }
+    return result(arma::find(dash==1));
+}
+
+arma::uvec PlaneGraph::get_side_b_dash(int axis_id)
+{
+    arma::uvec result;
+    arma::ivec dash;
+    //find the edge
+    for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
+    {
+        if(axis_id==*iter)
+        {
+            result = arma::conv_to<arma::uvec>::from(nodes_[iter.col()]->indices_);
+            dash = arma::conv_to<arma::ivec>::from(nodes_[iter.col()]->is_dash_);
+            break;
+        }
+    }
+    return result(arma::find(dash==1));
+}
+
+void PlaneGraph::test_connect_points(int axis_id)
+{
+    arma::fmat connect_points;
+    arma::ivec is_dash_points = is_dash_;
+    for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
+    {
+        if(axis_id==*iter)
+        {
+            get_connect_points(
+                    mesh_,
+                    *nodes_[iter.col()],
+                    *nodes_[iter.row()],
+                    connect_points,
+                    is_dash_points
+                    );
+            break;
+        }
+    }
+    std::cerr<<"points:"<<std::endl;
+    std::cerr<<std::setprecision(8)<<std::endl;
+    for(int r=0;r<connect_points.n_rows;++r)
+    {
+        for(int c=0;c<connect_points.n_cols;++c)
+        {
+            std::cerr<<connect_points(r,c)<<",";
+        }
+        std::cerr<<std::endl;
+    }
+    std::cerr<<"dash:"<<std::endl;
+    std::cerr<<is_dash_points.t()<<std::endl;
+
 }

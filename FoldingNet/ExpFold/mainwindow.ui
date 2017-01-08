@@ -68,6 +68,9 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionOpen"/>
+    <addaction name="separator"/>
+    <addaction name="actionConfigure"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -79,9 +82,18 @@
      <string>View</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuTests">
+    <property name="title">
+     <string>Tests</string>
+    </property>
+    <addaction name="actionView_Dash"/>
+    <addaction name="actionView_Dash_All"/>
+    <addaction name="actionCalc_Connected"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
+   <addaction name="menuTests"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -204,6 +216,37 @@
    </property>
    <property name="shortcut">
     <string>Down</string>
+   </property>
+  </action>
+  <action name="actionView_Dash">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>View Dash</string>
+   </property>
+  </action>
+  <action name="actionView_Dash_All">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>View Dash All</string>
+   </property>
+  </action>
+  <action name="actionCalc_Connected">
+   <property name="text">
+    <string>Calc Connected</string>
+   </property>
+  </action>
+  <action name="actionConfigure">
+   <property name="text">
+    <string>configure</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>open</string>
    </property>
   </action>
  </widget>

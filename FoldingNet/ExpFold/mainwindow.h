@@ -24,6 +24,7 @@ public slots:
     void next_input();
     void last_input();
     void get_input_lst();
+    void configure(void);
 protected slots:
     void next_plane();
     void last_plane();
@@ -32,6 +33,10 @@ protected slots:
     void rotate_to(double angle);
     void recover_axis(void);
     void recover_angle(void);
+protected slots://test
+    void show_dash(bool);
+    void show_dash_all(bool);
+    void test_calc_connected(void);
 protected:
     void show_axis(const arma::fvec&);
     void show_side(void);

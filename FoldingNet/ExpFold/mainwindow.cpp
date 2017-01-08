@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include "Parameters.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,6 +12,15 @@ MainWindow::MainWindow(QWidget *parent) :
     geo_view_->second_ptr().reset(new MeshBundle<DefaultMesh>());
     geo_view_->set_draw_mode("Flat Colored Vertices");
     ui->formLayout->addWidget(geo_view_);
+
+    if(!g_config)g_config.reset(new Config("./Default.config"));
+    if(!g_config->has("Configure"))g_config->reload("../Default.config");
+    if(!g_config->has("Configure"))
+    {
+        QString msg = "Please Mannually Configure\n";
+        QMessageBox::critical(this, windowTitle(), msg);
+    }
+
     OpenMesh::IO::Options options;
     options += IO::Options::Binary;
     options += IO::Options::VertexColor;
@@ -22,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
     addAction(ui->actionAngleUp);
     addAction(ui->actionAngleDown);
 
+    connect(ui->actionConfigure,SIGNAL(triggered(bool)),this,SLOT(configure()));
+
     connect(ui->actionLastInput,SIGNAL(triggered(bool)),this,SLOT(last_input()));
     connect(ui->actionNextInput,SIGNAL(triggered(bool)),this,SLOT(next_input()));
     connect(ui->actionLastPlane,SIGNAL(triggered(bool)),this,SLOT(last_plane()));
@@ -31,6 +43,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAngleUp,SIGNAL(triggered(bool)),ui->doubleSpinBox,SLOT(stepUp()));
     connect(ui->actionAngleDown,SIGNAL(triggered(bool)),ui->doubleSpinBox,SLOT(stepDown()));
     connect(ui->doubleSpinBox,SIGNAL(valueChanged(double)),this,SLOT(rotate_to(double)));
+
+    connect(ui->actionView_Dash,SIGNAL(toggled(bool)),this,SLOT(show_dash(bool)));
+    connect(ui->actionView_Dash_All,SIGNAL(toggled(bool)),this,SLOT(show_dash_all(bool)));
+    connect(ui->actionCalc_Connected,SIGNAL(triggered(bool)),this,SLOT(test_calc_connected()));
 
     //building a cube as axis
     DefaultMesh& mesh = geo_view_->second().mesh_;
@@ -143,7 +159,11 @@ void MainWindow::load_current()
     geo_view_->updateGL();
     input_current_color_ = arma::Mat<uint8_t>((uint8_t*)geo_view_->first().mesh_.vertex_colors(),3,geo_view_->first().mesh_.n_vertices(),false,true);
     recover_axis();
+    ui->actionView_Dash_All->blockSignals(true);
+    ui->actionView_Dash_All->setChecked(false);
+    ui->actionView_Dash_All->blockSignals(false);
     side_current_ = 0;
+//    std::cerr<<"is dash:"<<is_dash_.t()<<std::endl;
 }
 
 void MainWindow::save_current()
@@ -157,6 +177,19 @@ void MainWindow::save_current()
     QString additional_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".fvec.arma"));
     geo_view_->save_mesh_gui(mesh_path,geo_view_->first());
     is_dash_.save(additional_path.toStdString(),arma::arma_binary);
+}
+
+void MainWindow::configure(void)
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Confugre"),
+                                                    tr("./"),
+                                                    tr("Configure (*.config);;"
+                                                       "All Files (*)"));
+    if (!fileName.isEmpty())
+    {
+        g_config->reload(fileName.toStdString());
+    }
 }
 
 void MainWindow::get_input_lst()
@@ -313,7 +346,7 @@ void MainWindow::rotate_to(double angle)
 void MainWindow::recover_axis()
 {
     DefaultMesh& mesh = geo_view_->first().mesh_;
-    plane_graph_.reset(new PlaneGraph(mesh,is_dash_));
+    plane_graph_.reset(new PlaneGraph(mesh,is_dash_,geo_view_->radius()*g_config->getDouble("same_vertex_threshod")));
     axis_current_ = plane_graph_->axis_.begin();
     recover_angle();
     show_axis(axis_current_->second);
@@ -353,6 +386,59 @@ void MainWindow::recover_angle(void)
     ui->doubleSpinBox->setValue(0.0);
     angle_current_ = ui->doubleSpinBox->value();
     ui->doubleSpinBox->blockSignals(false);
+}
+
+void MainWindow::show_dash(bool show)
+{
+    geo_view_->first_selected().clear();
+    arma::uvec dark_side_dash;
+    if(show)
+    {
+        switch(side_current_)
+        {
+        case 1:
+            dark_side_dash = plane_graph_->get_side_b_dash(axis_current_->first);
+            break;
+        case -1:
+            dark_side_dash = plane_graph_->get_side_a_dash(axis_current_->first);
+            break;
+        case 0:
+            dark_side_dash.clear();
+        }
+        geo_view_->first_selected().insert(
+                    geo_view_->first_selected().end(),
+                    std::begin(dark_side_dash),
+                    std::end(dark_side_dash)
+                    );
+    }
+    geo_view_->updateGL();
+}
+
+void MainWindow::show_dash_all(bool show)
+{
+    DefaultMesh& mesh = geo_view_->first().mesh_;
+    arma::Mat<uint8_t> mesh_color((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+    if(show)
+    {
+        arma::uvec idx_dash = arma::find(is_dash_==1);
+        std::cerr<<"idx_dash:"<<idx_dash.t()<<std::endl;
+        arma::uvec idx_no_dash = arma::find(is_dash_==-1);
+        std::cerr<<"idx_no_dash:"<<idx_no_dash.t()<<std::endl;
+        arma::Mat<uint8_t> tmp_dash = mesh_color.cols(idx_dash);
+        arma::Mat<uint8_t> tmp_no_dash = mesh_color.cols(idx_no_dash);
+        tmp_dash.fill(0);
+        tmp_no_dash.fill(255);
+        mesh_color.cols(idx_dash) = tmp_dash;
+        mesh_color.cols(idx_no_dash) = tmp_no_dash;
+    }else{
+        mesh_color = input_current_color_;
+    }
+    geo_view_->updateGL();
+}
+
+void MainWindow::test_calc_connected(void)
+{
+    plane_graph_->test_connect_points(axis_current_->first);
 }
 
 MainWindow::~MainWindow()

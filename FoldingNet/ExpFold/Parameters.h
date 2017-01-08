@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "common.h"
 using namespace std;
 
 struct Parameters
@@ -14,5 +14,5 @@ struct Parameters
 };
 
 
-
+extern Config::Ptr g_config;
 extern Parameters g_parameters;

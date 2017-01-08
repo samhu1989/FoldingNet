@@ -13,9 +13,12 @@ class PlaneGraph
 {
 public:
     typedef node Node;
-    PlaneGraph(const DefaultMesh& mesh,const arma::ivec& is_dash);
+    PlaneGraph(const DefaultMesh& mesh,const arma::ivec& is_dash,float th);
     arma::uvec get_side_a(int axis_id,std::vector<int>& side_a_axis);
     arma::uvec get_side_b(int axis_id, std::vector<int>& side_b_axis);
+    arma::uvec get_side_a_dash(int axis_id);
+    arma::uvec get_side_b_dash(int axis_id);
+    void test_connect_points(int axis_id);
     std::vector<std::pair<int,arma::fvec>> axis_;
 protected:
     void recover_planes(const DefaultMesh& mesh,const arma::ivec& is_dash);
@@ -35,6 +38,8 @@ private:
     Node::PtrLst nodes_;
     arma::sp_imat edges_;
     float same_vertex_th_;
+    const DefaultMesh& mesh_;
+    const arma::ivec& is_dash_;
 };
 
 #endif // PLANEGRAPH_H
