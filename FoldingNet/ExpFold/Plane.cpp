@@ -71,13 +71,13 @@ void Plane::ChangeIthVertex(int i, Vertex v1)
 }
 
 
-void Plane::FindLoop()
+bool Plane::FindLoop()
 {
 
     if (_Lines.size() == 0)
     {
         cout << "Plane doesn't exist! " << endl;
-        return;
+        return true;
     }
 
     vector<vector<LineSegment>> t_ListForFindingLoop;
@@ -236,9 +236,11 @@ void Plane::FindLoop()
         }
         if(first_dash_)_Vertices.back().SetIsOnDash(1);
     }
-    else
+    else{
         cout <<_PlaneNumber<< "   No Loop !!!!!!!!!!!!!" << endl;
-
+        return false;
+    }
+    return true;
 }
 
 

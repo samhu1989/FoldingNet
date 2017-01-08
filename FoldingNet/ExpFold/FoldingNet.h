@@ -16,20 +16,20 @@ public:
 
 	void LoadParameters();
 	void ReadLinesFromTxt();
-	//ÇÐ¸îÏß¶Î
+	//ï¿½Ð¸ï¿½ï¿½ß¶ï¿½
 	void CutOffLines();
 
-	//»Ò¶ÈÍ¼×ª»¯³ÉÎ±²ÊÉ«Í¼Ïñ
+	//ï¿½Ò¶ï¿½Í¼×ªï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½É«Í¼ï¿½ï¿½
 	cv::Mat GrayToRGB(cv::Mat img);
 	cv::Mat GrayToRainbow(cv::Mat img);
-	//OpenGlÏÔÊ¾
+	//OpenGlï¿½ï¿½Ê¾
 	static void Show2DPattern();
-	static FoldingNet * pThis;   //¾²Ì¬¶ÔÏóÖ¸Õë
+	static FoldingNet * pThis;   //ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 
-	//Ïß¶ÎÏñËØ»¯£¬ÕÒÆ½Ãæ
-	void BresenhamRasterization(LineSegment lineSeg, int number);  //Bresenham·½·¨µÄÏß¶ÎÏñËØ»¯
+	//ï¿½ß¶ï¿½ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
+	void BresenhamRasterization(LineSegment lineSeg, int number);  //Bresenhamï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ï¿½Ø»ï¿½
 	void FloodFill4Stack(int x, int y, int planenumber);
-	void FindPolygonByFloodFill();  //floodfill·½·¨ÕÒ¶à±ßÐÎ
+    bool FindPolygonByFloodFill();  //floodfillï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	//3D modeling
 	void Modeling();
@@ -48,7 +48,7 @@ public:
 	static GLfloat light_position[4];
 	static GLfloat shadowMat[4][4];
 
-	static void SetupRC(); //ÉèÖÃ»·¾³
+	static void SetupRC(); //ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
 	static void CalcNormal(float v[3][3], float out[3]);
 	static void MakeShadowMatrix(GLfloat points[3][3], GLfloat lightpos[4], GLfloat destMat[4][4]);
 	static void Draw3DModel(bool ColorOrNot);
@@ -56,7 +56,7 @@ public:
 
 	//static void Test();
 
-	//openGLµÄËõ·ÅÐý×ª
+	//openGLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
 	/// record the state of mouse
 	static GLboolean mouserdown ;
 	static GLboolean mouseldown;
@@ -90,7 +90,7 @@ public:
 	static void MouseMotion(int x, int y);
 	static void LookAt();
 
-	//opencv µÄ»¬´°
+	//opencv ï¿½Ä»ï¿½ï¿½ï¿½
 	static void MouseClick(int event, int x, int y, int flags, void* param);
 	static void myShowImageScroll(char* title, IplImage* src_img, int winWidth, int winHeight);
 
@@ -98,7 +98,7 @@ public:
 	static int dx , dy , horizBar_x , vertiBar_y ;
 	static bool clickVertiBar , clickHorizBar , needScroll ;
 	static CvRect rect_bar_horiz, rect_bar_verti;
-	static int src_x , src_y ; // Ô´Í¼ÏñÖÐ rect_src µÄ×óÉÏ½ÇÎ»ÖÃ
+	static int src_x , src_y ; // Ô´Í¼ï¿½ï¿½ï¿½ï¿½ rect_src ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½Î»ï¿½ï¿½
 
     //save mesh
     void save_mesh(const std::string& filepath);
@@ -106,15 +106,15 @@ private:
 	vector<LineSegment> _LineList;
 	vector<Plane> _PolygonList;
 
-	//Á½¸öÊý×é£¬Ò»¸öÌîÏß¶ÎµÄÐòºÅ£¬¸öÊÇflood¶à±ßÐÎµÄÐòºÅ
-	//Êý×é´óÐ¡ÎªÏß¶Î×ø±êµÄÈ¡Öµ·¶Î§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ß¶Îµï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½floodï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Îªï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Öµï¿½ï¿½Î§
 	int _RangeofPX;
 	int _RangeofPY;
 	int _MinPX;
 	int _MinPY;
 
-	cv::Mat _LineLabel;    //ÀûÓÃÆäÑ°ÕÒ±ß½ç
-	cv::Mat _PolygonLabel; //ÀûÓÃÆäÌî³äÍ¼Ïñ
+	cv::Mat _LineLabel;    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½Ò±ß½ï¿½
+	cv::Mat _PolygonLabel; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 
 
 	stack<Point> _MyStack;

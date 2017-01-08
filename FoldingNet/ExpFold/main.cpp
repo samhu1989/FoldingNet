@@ -86,9 +86,19 @@ int cMain(int argc, char *argv[])
         g_parameters.InputFilePath = f_name;
     }
     foldingPaper.ReadLinesFromTxt();
-    foldingPaper.FindPolygonByFloodFill();
-    foldingPaper.Modeling();
-    foldingPaper.save_mesh(out_path);
+    if(foldingPaper.FindPolygonByFloodFill())
+    {
+        foldingPaper.Modeling();
+        foldingPaper.save_mesh(out_path);
+    }else{
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+        glutInitWindowPosition(100, 100);
+        glutInitWindowSize(800, 800);
+        glutCreateWindow("What's Missing?");
+        glutDisplayFunc(&foldingPaper.ShowPlane);
+        glutMainLoop();
+    }
     return 0;
 }
 

@@ -604,7 +604,7 @@ void FoldingNet::FloodFill4Stack(int x, int y, int planenumber)
 	_PolygonList.push_back(t_plane);    //将同一个多边形内的线段存储至一个Polygon，暂时线段无序存储
 }
 
-void FoldingNet::FindPolygonByFloodFill()
+bool FoldingNet::FindPolygonByFloodFill()
 {
 	
 	_LineLabel = cv::Mat::zeros(_RangeofPX, _RangeofPY, CV_32FC1);
@@ -658,6 +658,7 @@ void FoldingNet::FindPolygonByFloodFill()
 
 
 	//若多边形由实线包裹而成，则删除该平面
+    bool success = true;
 	vector<Plane>::iterator it;
 	for (it = _PolygonList.begin(); it != _PolygonList.end();)
 	{
@@ -682,11 +683,11 @@ void FoldingNet::FindPolygonByFloodFill()
 		{
 			//且对每个多边形的边缘进行重排序
 			//(*it).ReorderingOfEdges();
-			(*it).FindLoop();
+            if(!(*it).FindLoop())success=false;
 			++it;
 		}		
 	}	
-
+    return success;
 
 	/*_PolygonLabel.convertTo(_PolygonLabel, CV_8UC1);
 	_PolygonLabel = GrayToRGB(_PolygonLabel);
@@ -1295,8 +1296,8 @@ void FoldingNet::ShowPlane()
 	}*/
 
 
-	int j = 18;
-	//for (int j = 0; j <  pThis->_PolygonList.size(); j++)
+//	int j = 18;
+    for (int j = 0; j <  pThis->_PolygonList.size(); j++)
 		for (int i = 0; i < pThis->_PolygonList[j].NumberofLines(); i++) //pThis->_PolygonList[j].NumberofLines()
 		{
 			glColor3f(0, 0, 0);

@@ -24,7 +24,7 @@ public:
 	void ChangeIthLine(int i,Vertex v1, Vertex v2);
 	void ChangeIthVertex(int i, Vertex v1);
 
-	void FindLoop();
+    bool FindLoop();
 
 	void MergeLines();
 	bool isTwoLinesAdjacent(LineSegment &a, LineSegment &b);
