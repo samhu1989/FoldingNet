@@ -136,6 +136,7 @@ void MainWindow::load_current()
     dir = dir.current();
     //try to load a file with same filename from output path
     QFileInfo tmp_info(*input_current_);
+    ui->statusBar->showMessage(tmp_info.fileName(),0);
     mesh_path = dir.relativeFilePath(output_path_.absoluteFilePath(*input_current_));
     additional_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".fvec.arma"));
     QFileInfo info(mesh_path);

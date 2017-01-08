@@ -221,10 +221,20 @@ bool PlaneGraph::get_axis_from_dash_points(
         dir = arma::normalise(dir);
     }
     arma::frowvec cos = dir.t()*c_dash_points;
-    float max = cos.max();
-    float min = cos.min();
+    arma::uword imax,imin;
+    float max = cos.max(imax);
+    float min = cos.min(imin);
+
+    dir = c_dash_points.col(imax) - c_dash_points.col(imin);
+    dir = arma::normalise(dir);
+
+    cos = dir.t()*c_dash_points;
+    max = cos.max(imax);
+    min = cos.min(imin);
+
     pos += dir*( max + min )*0.5; //correct the center
     dir*= ( max - min )*0.5; // scale the direction
+
     arma::fvec axis(6);
     axis.head(3) = pos;
     axis.tail(3) = dir;
