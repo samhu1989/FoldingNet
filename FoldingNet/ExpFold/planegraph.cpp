@@ -209,6 +209,7 @@ bool PlaneGraph::get_axis_from_dash_points(
     arma::fvec pos = arma::mean(dash_points,1);
     arma::fvec dir;
     arma::fmat c_dash_points = dash_points.each_col() - pos;
+    //caculate the direction by PCA
     if(dash_points.n_cols>2)
     {
         arma::mat A = arma::conv_to<arma::mat>::from(dash_points*dash_points.t());
@@ -225,6 +226,7 @@ bool PlaneGraph::get_axis_from_dash_points(
     float max = cos.max(imax);
     float min = cos.min(imin);
 
+    //recaculate the direction using two points at two ends
     dir = c_dash_points.col(imax) - c_dash_points.col(imin);
     dir = arma::normalise(dir);
 
