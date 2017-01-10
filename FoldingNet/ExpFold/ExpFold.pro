@@ -17,34 +17,23 @@ LIBS += -lgomp -lpthread
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    DashLine.cpp \
     delaunay.cpp \
-    FoldingNet.cpp \
-    Graph.cpp \
-    GraphEdge.cpp \
-    GraphNode.cpp \
     LineSegment.cpp \
     Parameters.cpp \
-    Plane.cpp \
     Point.cpp \
-    SolidLine.cpp \
     Vertex.cpp \
-    planegraph.cpp
+    planegraph.cpp \
+    designtomesh.cpp
 
 HEADERS  += mainwindow.h \
-    DashLine.h \
     delaunay.h \
-    FoldingNet.h \
-    Graph.h \
-    GraphEdge.h \
-    GraphNode.h \
     LineSegment.h \
     Parameters.h \
-    Plane.h \
     Point.h \
-    SolidLine.h \
     Vertex.h \
-    planegraph.h
+    planegraph.h \
+    designtomesh.h \
+    region.h
 
 FORMS    += mainwindow.ui
 

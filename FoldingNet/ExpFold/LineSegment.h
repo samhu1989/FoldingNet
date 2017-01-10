@@ -15,6 +15,11 @@ public:
     inline int GetLoopNum(){return _loop_num;}
     inline void SetLoopNum(int num){_loop_num=num;}
 
+    std::vector<int> connected_planes_;
+    std::vector<int> connected_to_main_;
+    std::vector<int> idx_p1_;
+    std::vector<int> idx_p2_;
+
 	Vertex GetV1();
 	void SetV1(Vertex v1);
 	void SetV1(float v_x,float v_y,float v_z);

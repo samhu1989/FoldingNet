@@ -380,6 +380,8 @@ void InsertOnEdge(MESH_PTR pMesh, TRIANGLE_PTR pTargetTri, int ver_index)
 
 bool FlipTest(MESH_PTR pMesh, TRIANGLE_PTR pTestTri)
 {
+    if(!pTestTri)return false;
+
 	bool flipped = false;
 
 	int index_a = pTestTri->i1;

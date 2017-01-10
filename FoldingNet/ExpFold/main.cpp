@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <unistd.h>
-#include "FoldingNet.h"
 #include "common.h"
+#include "designtomesh.h"
 int print_usage(int argc, char *argv[] )
 {
     std::cerr << "Usage:"<<std::endl
@@ -79,26 +79,38 @@ int cMain(int argc, char *argv[])
         return -1;
     }
     std::cerr<<"out_path:"<<out_path<<std::endl;
-    FoldingNet foldingPaper;
-    foldingPaper.LoadParameters();
+//    FoldingNet foldingPaper;
+//    foldingPaper.LoadParameters();
+//    if(!f_name.empty())
+//    {
+//        g_parameters.InputFilePath = f_name;
+//    }
+//    foldingPaper.ReadLinesFromTxt();
+//    if(foldingPaper.FindPolygonByFloodFill())
+//    {
+//        foldingPaper.Modeling();
+//        foldingPaper.save_mesh(out_path);
+//    }else{
+//        glutInit(&argc, argv);
+//        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+//        glutInitWindowPosition(100, 100);
+//        glutInitWindowSize(800, 800);
+//        glutCreateWindow("What's Missing?");
+//        glutDisplayFunc(&foldingPaper.ShowPlane);
+//        glutMainLoop();
+//    }
+    DesignToMesh d2m;
+    d2m.LoadParameters();
     if(!f_name.empty())
     {
         g_parameters.InputFilePath = f_name;
     }
-    foldingPaper.ReadLinesFromTxt();
-    if(foldingPaper.FindPolygonByFloodFill())
-    {
-        foldingPaper.Modeling();
-        foldingPaper.save_mesh(out_path);
-    }else{
-        glutInit(&argc, argv);
-        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-        glutInitWindowPosition(100, 100);
-        glutInitWindowSize(800, 800);
-        glutCreateWindow("What's Missing?");
-        glutDisplayFunc(&foldingPaper.ShowPlane);
-        glutMainLoop();
-    }
+    d2m.ReadLinesFromTxt();
+    d2m.Rasterization();
+    d2m.FindLayoutByFloodFill();
+    d2m.save_flooding_map(out_path);
+    d2m.generate_mesh();
+    d2m.save_mesh(out_path);
     return 0;
 }
 

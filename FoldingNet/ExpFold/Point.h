@@ -18,7 +18,7 @@ public:
 
 	bool operator ==(const Point& rhs) const
 	{
-		if ((fabs(_X - rhs._X) < g_parameters.ThresholdForSeparateLines) && (fabs(_Y - rhs._Y) < g_parameters.ThresholdForSeparateLines) )  //绝对值要加啊亲。。。。。
+        if ((fabs(_X - rhs._X) < g_parameters.ThresholdForSeparateLines) && (fabs(_Y - rhs._Y) < g_parameters.ThresholdForSeparateLines) )
 			return true;
 		else
 			return false;
