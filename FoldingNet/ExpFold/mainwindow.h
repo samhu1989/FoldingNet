@@ -47,7 +47,7 @@ private:
     QStringList::Iterator input_current_;
     QDir input_path_;
     QDir output_path_;
-    arma::ivec is_dash_;
+    arma::sp_imat connection_;
     std::shared_ptr<PlaneGraph> plane_graph_;
     std::vector<std::pair<int,arma::fvec>>::iterator axis_current_;
     int side_current_;

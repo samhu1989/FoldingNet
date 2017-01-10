@@ -16,7 +16,7 @@ Point::~Point()
 {
 }
 
-float Point::GetX()
+float Point::GetX() const
 {
 	return _X;
 }
@@ -26,7 +26,7 @@ void Point::SetX(float x)
 	_X = x;
 }
 
-float Point::GetY()
+float Point::GetY() const
 {
 	return _Y;
 }

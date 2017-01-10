@@ -26,14 +26,15 @@ protected:
     int getNearByPositiveID(int x,int y);
     int FloodFill4Region(int x,int y, int start_planenumber);//return the number of found plane
     int FloodFill4Plane(int x,int y,Plane& current_plane);//
-    void FindNewStartFromDash(int x, int y);
+    void FindNewStartFromDash(int plane_id,int x, int y);
     void remove_isolate_lines(void);//lines that only connect to one plane
+    bool isNeighorToPlane(const Point& p,int plane_id);
 private:
     Region::PtrLst region_lst_;
     Region::Ptr lr_ptr_;      //ptr to the main region
     vector<LineSegment> _LineList;
     stack<Point> _PointStack; //for plane to grow
-    stack<Point> _PlaneStack; //for region to grow
+    stack<std::pair<int,Point>> _PlaneStack; //for region to grow
     cv::Mat _LineLabel;
     cv::Mat _PolygonLabel;
     int _RangeofPX;

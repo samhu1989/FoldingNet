@@ -461,29 +461,40 @@ int DesignToMesh::FloodFill4Region(int x, int y, int start_planenumber)
     Region& current_region = *(region_lst_.back());
     current_region.start_plane_ = start_planenumber;
     current_region.end_plane_ = start_planenumber;
-    _PlaneStack.push(Point(x, y));
+    _PlaneStack.push(std::make_pair(start_planenumber,Point(x, y)));
+    std::vector<std::pair<int,int>> connected_plane;
     while(!_PlaneStack.empty())
     {
-        x = int(_PlaneStack.top().GetX());
-        y = int(_PlaneStack.top().GetY());
+        x = int(_PlaneStack.top().second.GetX());
+        y = int(_PlaneStack.top().second.GetY());
+        int plane_id = _PlaneStack.top().first;
         _PlaneStack.pop();
-
         if(0.0==_PolygonLabel.at<float>(x, y))
         {
             current_region.plane_lst_.emplace_back(new Plane);
             Plane& plane = *current_region.plane_lst_.back();
             plane.id_ = current_region.end_plane_;
+            if(plane.id_!=plane_id)connected_plane.emplace_back(plane_id,plane.id_);//means that these two are connected
             current_region.end_plane_ ++;
             FloodFill4Plane(x,y,plane);
         }
         else{
-            FindNewStartFromDash(x,y);
+            FindNewStartFromDash(plane_id,x,y);
         }
     }
-    return current_region.plane_lst_.size();
+    std::cerr<<"found "<<connected_plane.size()<<" connection for current region"<<std::endl;
+    int N = current_region.plane_lst_.size();
+    current_region.plane_connetion_ = arma::sp_imat(N,N+1);
+    std::vector<std::pair<int,int>>::iterator iter;
+    for(iter=connected_plane.begin();iter!=connected_plane.end();++iter)
+    {
+        current_region.plane_connetion_(iter->first - current_region.start_plane_,iter->second - current_region.start_plane_) = 1;
+        current_region.plane_connetion_(iter->second - current_region.start_plane_,iter->first - current_region.start_plane_) = 1;
+    }
+    return N;
 }
 
-void DesignToMesh::FindNewStartFromDash(int x,int y)
+void DesignToMesh::FindNewStartFromDash(int plane_id, int x, int y)
 {
     if(0.0==_PolygonLabel.at<float>(x, y))return;
     if(_PolygonLabel.at<float>(x, y)!=-1)return;
@@ -495,7 +506,7 @@ void DesignToMesh::FindNewStartFromDash(int x,int y)
         int ny = y + dy[i];
         if (nx >= 0 && nx < _RangeofPX && ny >= 0 && ny < _RangeofPY && _PolygonLabel.at<float>(nx, ny) == 0)
         {
-            _PlaneStack.push(Point(nx, ny));
+            _PlaneStack.push(std::make_pair(plane_id,Point(nx, ny)));
         }
     }
 }
@@ -531,7 +542,7 @@ int DesignToMesh::FloodFill4Plane(int x, int y, Plane& current_plane)
                 //add new start for region
                 if(current_line.GetIsDash())
                 {
-                    _PlaneStack.push(Point(nx, ny));
+                    _PlaneStack.emplace(current_plane.id_,Point(nx, ny));
                 }
             }
         }
@@ -566,17 +577,18 @@ int DesignToMesh::getNearByPositiveID(int x,int y)
     if(id>0)return id;
 }
 
-void sort_vertex2d(std::vector<VERTEX2D>& v,std::vector<int>& vidx)
+bool DesignToMesh::isNeighorToPlane(const Point& p,int plane_id)
 {
-//    std::cerr<<"v:"<<v.size()<<std::endl;
-    arma::Col<int> idx((int*)vidx.data(),vidx.size(),false,true);
-    arma::fmat xy((float*)v.data(),2,v.size(),false,true);
-    float maxX = arma::max(xy.row(0));
-    arma::frowvec value = xy.row(0) + xy.row(1) * maxX;
-    arma::uvec sorted_idx = arma::sort_index(value);
-    xy = xy.cols(sorted_idx);
-    idx = idx(sorted_idx);
-//    std::cerr<<"end sorting:"<<std::endl;
+    int dx[13] = {0, 0, 1, 0,-1, 1,-1,-1, 1, 2,-2,0, 0 }; // relative neighbor x coordinates
+    int dy[13] = {0,-1, 0, 1, 0, 1,-1, 1,-1, 0, 0,2,-2 };
+    for(int i=0;i<13;++i)
+    {
+        int x = getXForFlood(p.GetX()) + dx[i];
+        int y = getYForFlood(p.GetY()) + dy[i];
+        if(x<0||x>_RangeofPX||y<0||y>_RangeofPY)continue;
+        if( plane_id == _PolygonLabel.at<float>(x,y) ) return true;
+    }
+    return false;
 }
 
 void DesignToMesh::generate_mesh()
@@ -630,7 +642,11 @@ void DesignToMesh::generate_mesh()
     for(Plane::PtrLst::iterator piter=cr.plane_lst_.begin();piter!=cr.plane_lst_.end();++piter)
     {
         Plane& p = **piter;
-        if(1==p.id_)continue;
+        if(1==p.id_){
+            int i = p.id_ - cr.start_plane_;
+            cr.plane_connetion_(i,cr.plane_connetion_.n_cols-1) = qRgb(0,0,0);
+            continue;
+        }
         std::cout<<"plane id:"<<p.id_<<std::endl;
         uint32_t c;
         //generate unique color for this plane
@@ -646,6 +662,8 @@ void DesignToMesh::generate_mesh()
         }else{
             c = key_to_color_map[p.id_];
         }
+        //restore the unique color to plane connection
+        cr.plane_connetion_(p.id_ - cr.start_plane_,cr.plane_connetion_.n_cols-1) = c;
         MESH mesh;
         std::vector<VERTEX2D> v;
         std::vector<int> v2idx;//the idx of vertex
@@ -656,20 +674,24 @@ void DesignToMesh::generate_mesh()
         {
             LineSegment& line = _LineList[*iter];
             if(line.connected_planes_.size()<2)continue;
-            if(line.idx_p1_.empty()||line.idx_p2_.empty())continue;
-            tmp.x = line.GetP1().GetX();
-            tmp.y = line.GetP1().GetY();
-            v.push_back(tmp);
-            v2idx.push_back(line.idx_p1_.back());
-            line.idx_p1_.pop_back();//pop after use
-            tmp.x = line.GetP2().GetX();
-            tmp.y = line.GetP2().GetY();
-            v.push_back(tmp);
-            v2idx.push_back(line.idx_p2_.back());
-            line.idx_p2_.pop_back();//pop after use
+            if(!line.idx_p1_.empty()&&isNeighorToPlane(line.GetP1(),p.id_))
+            {
+                tmp.x = line.GetP1().GetX();
+                tmp.y = line.GetP1().GetY();
+                v.push_back(tmp);
+                v2idx.push_back(line.idx_p1_.back());
+                line.idx_p1_.pop_back();//pop after use
+            }
+            if(!line.idx_p2_.empty()&&isNeighorToPlane(line.GetP1(),p.id_))
+            {
+                tmp.x = line.GetP2().GetX();
+                tmp.y = line.GetP2().GetY();
+                v.push_back(tmp);
+                v2idx.push_back(line.idx_p2_.back());
+                line.idx_p2_.pop_back();//pop after use
+            }
         }
         std::cout<<"triangulization with "<<v.size()<<" vertices"<<std::endl;
-        sort_vertex2d(v,v2idx);
         CreateMesh(v,&mesh);
         //restore the 2d mesh into 3d mesh
         std::cout<<"converting to 3d mesh"<<std::endl;
@@ -730,16 +752,45 @@ void DesignToMesh::save_mesh(const std::string& filepath)
     QFileInfo ofinfo(QString::fromStdString(featurepath));
     std::cerr<<"saving mesh to:"<<oinfo.filePath().toStdString()<<std::endl;
     std::cerr<<"saving feature to:"<<ofinfo.filePath().toStdString()<<std::endl;
-    mesh_.update_normals();
+    DefaultMesh mesh;
+    mesh.request_vertex_colors();
+    mesh.request_vertex_normals();
+    mesh.request_face_colors();
+    mesh.request_face_normals();
+    __gnu_cxx::hash_map<uint32_t,uint32_t> old_vidx_to_new_vidx;
+    std::vector<DefaultMesh::VertexHandle> vhandles;
+    for(DefaultMesh::FaceIter iter = mesh_.faces_begin();iter!=mesh_.faces_end();++iter)
+    {
+        std::vector<DefaultMesh::VertexHandle> fvhandle;
+        for(DefaultMesh::FaceVertexIter fviter = mesh_.fv_begin(*iter);fviter!=mesh_.fv_end(*iter);++fviter)
+        {
+            if(old_vidx_to_new_vidx.end()==old_vidx_to_new_vidx.find(fviter->idx()))
+            {
+                old_vidx_to_new_vidx[fviter->idx()] = vhandles.size();
+                vhandles.push_back(mesh.add_vertex(mesh_.point(*fviter)));
+                fvhandle.push_back(vhandles.back());
+                mesh.set_color(vhandles.back(),mesh_.color(*fviter));
+            }else{
+                fvhandle.push_back(vhandles[old_vidx_to_new_vidx[fviter->idx()]]);
+            }
+        }
+        mesh.set_color(mesh.add_face(fvhandle),mesh_.color(*iter));
+    }
+    mesh.update_normals();
     OpenMesh::IO::Options opt;
     opt+=OpenMesh::IO::Options::Binary;
     opt+=OpenMesh::IO::Options::VertexColor;
     opt+=OpenMesh::IO::Options::VertexNormal;
     opt+=OpenMesh::IO::Options::FaceColor;
     opt+=OpenMesh::IO::Options::FaceNormal;
-    if(!OpenMesh::IO::write_mesh(mesh_,oinfo.filePath().toStdString(),opt,13)){
+    if(!OpenMesh::IO::write_mesh(mesh,oinfo.filePath().toStdString(),opt,13)){
         std::cerr<<"can't save to:"<<oinfo.filePath().toStdString()<<std::endl;
         return;
+    }
+    std::cout<<"plane connection:"<<std::endl;
+    for(arma::sp_imat::iterator iter=lr_ptr_->plane_connetion_.begin();iter!=lr_ptr_->plane_connetion_.end();++iter)
+    {
+        std::cout<<iter.row()+lr_ptr_->start_plane_<<"->"<<iter.col()+lr_ptr_->start_plane_<<std::endl;
     }
     if(!lr_ptr_->plane_connetion_.save(ofinfo.filePath().toStdString(),arma::arma_binary))
     {

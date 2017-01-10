@@ -10,9 +10,9 @@ public:
 	Point(float x, float y);
 	~Point();
 
-	float GetX();
+    float GetX()const;
 	void SetX(float x);
-	float GetY();
+    float GetY()const;
 	void SetY(float y);
 	void SetXY(float x, float y);
 
