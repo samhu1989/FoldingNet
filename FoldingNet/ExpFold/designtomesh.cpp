@@ -8,50 +8,38 @@ DesignToMesh::DesignToMesh()
 
 }
 
-void DesignToMesh::LoadParameters()
+bool DesignToMesh::configure(Config::Ptr config)
 {
-    ifstream para("./data/parameters.txt");
-    string type;
-    float t_float;
-    int t_int;
-    string t_str;
-    while (para)
+    if(config->has("MyPi"))
     {
-        para >> type;
-        if (type == "MyPi")
-        {
-            para >> t_float;
-            g_parameters.MyPi = t_float;
-        }
-        else if (type == "InputFilePath")
-        {
-            para >> t_str;
-            g_parameters.InputFilePath = t_str;
-        }
-        else if (type == "MyEpsilon")
-        {
-            para >> t_float;
-            g_parameters.MyEpsilon = t_float;
-        }
-        else if (type == "MyInfinity")
-        {
-            para >> t_int;
-            g_parameters.MyInfinity = t_int;
-        }
-        else if (type == "ResolutionMultipe")
-        {
-            para >> t_int;
-            g_parameters.ResolutionMultipe = t_int;
-        }
-        else if (type == "ThresholdForSeparateLines")
-        {
-            para >> t_float;
-            g_parameters.ThresholdForSeparateLines = t_float;
-        }
-    }
-
-    para.close();
-
+        g_parameters.MyPi = config->getFloat("MyPi");
+    }else return false;
+    if(config->has("InputFilePath"))
+    {
+        g_parameters.InputFilePath = config->getString("InputFilePath");
+    }else return false;
+    if(config->has("MyEpsilon"))
+    {
+        g_parameters.MyEpsilon = config->getFloat("MyEpsilon");
+    }else return false;
+    if(config->has("MyInfinity"))
+    {
+        g_parameters.MyInfinity = config->getFloat("MyInfinity");
+    }else return false;
+    if(config->has("ResolutionMultipe"))
+    {
+        g_parameters.ResolutionMultipe = config->getInt("ResolutionMultipe");
+    }else return false;
+    if(config->has("ThresholdForSeparateLines"))
+    {
+        g_parameters.ThresholdForSeparateLines = config->getFloat("ThresholdForSeparateLines");
+    }else return false;
+    if(config->has("Neighbor_Check_Size"))
+    {
+        neighbor_check_size_ = config->getInt("Neighbor_Check_Size");
+        std::cerr<<"setting neighbor_check_size_ to "<<neighbor_check_size_ <<std::endl;
+    }else neighbor_check_size_ = 5;
+    return true;
 }
 
 void DesignToMesh::ReadLinesFromTxt()
@@ -579,12 +567,11 @@ int DesignToMesh::getNearByPositiveID(int x,int y)
 
 bool DesignToMesh::isNeighorToPlane(const Point& p,int plane_id)
 {
-    int dx[13] = {0, 0, 1, 0,-1, 1,-1,-1, 1, 2,-2,0, 0 }; // relative neighbor x coordinates
-    int dy[13] = {0,-1, 0, 1, 0, 1,-1, 1,-1, 0, 0,2,-2 };
-    for(int i=0;i<13;++i)
+    for(int dx=-neighbor_check_size_;dx<=neighbor_check_size_;++dx)
+    for(int dy=-neighbor_check_size_;dy<=neighbor_check_size_;++dy)
     {
-        int x = getXForFlood(p.GetX()) + dx[i];
-        int y = getYForFlood(p.GetY()) + dy[i];
+        int x = getXForFlood(p.GetX()) + dx;
+        int y = getYForFlood(p.GetY()) + dy;
         if(x<0||x>_RangeofPX||y<0||y>_RangeofPY)continue;
         if( plane_id == _PolygonLabel.at<float>(x,y) ) return true;
     }

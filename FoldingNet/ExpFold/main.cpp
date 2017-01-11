@@ -78,29 +78,21 @@ int cMain(int argc, char *argv[])
     {
         return -1;
     }
+    if(!g_config)g_config.reset(new Config("./Default.config"));
+    if(!g_config->has("Configure"))g_config->reload("../Default.config");
+    if(!g_config->has("Configure"))
+    {
+        std::cerr<<"Can not find a Configuration File at local path ./Default.config"<<std::endl;
+        std::cerr<<"Please create one and define the parameter 'Configure' in it"<<std::endl;
+        return -1;
+    }
     std::cerr<<"out_path:"<<out_path<<std::endl;
-//    FoldingNet foldingPaper;
-//    foldingPaper.LoadParameters();
-//    if(!f_name.empty())
-//    {
-//        g_parameters.InputFilePath = f_name;
-//    }
-//    foldingPaper.ReadLinesFromTxt();
-//    if(foldingPaper.FindPolygonByFloodFill())
-//    {
-//        foldingPaper.Modeling();
-//        foldingPaper.save_mesh(out_path);
-//    }else{
-//        glutInit(&argc, argv);
-//        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-//        glutInitWindowPosition(100, 100);
-//        glutInitWindowSize(800, 800);
-//        glutCreateWindow("What's Missing?");
-//        glutDisplayFunc(&foldingPaper.ShowPlane);
-//        glutMainLoop();
-//    }
     DesignToMesh d2m;
-    d2m.LoadParameters();
+    if(!d2m.configure(g_config))
+    {
+        std::cerr<<"Missing Critical Parameters in configure file please check it"<<std::endl;
+        return -1;
+    }
     if(!f_name.empty())
     {
         g_parameters.InputFilePath = f_name;

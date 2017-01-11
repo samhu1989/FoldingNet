@@ -10,8 +10,7 @@ class DesignToMesh
 public:
     DesignToMesh();
     ~DesignToMesh();
-
-    void LoadParameters();
+    bool configure(Config::Ptr);
     void ReadLinesFromTxt();
     void Rasterization();
     bool FindLayoutByFloodFill();
@@ -37,6 +36,7 @@ private:
     stack<std::pair<int,Point>> _PlaneStack; //for region to grow
     cv::Mat _LineLabel;
     cv::Mat _PolygonLabel;
+    int neighbor_check_size_;
     int _RangeofPX;
     int _RangeofPY;
     int _MinPX;
