@@ -3,6 +3,8 @@
 #include <QFileInfo>
 #include <QImage>
 #include "delaunay.h"
+#include <QString>
+#include <nanoflann.hpp>
 DesignToMesh::DesignToMesh()
 {
 
@@ -39,6 +41,7 @@ bool DesignToMesh::configure(Config::Ptr config)
         neighbor_check_size_ = config->getInt("Neighbor_Check_Size");
         std::cerr<<"setting neighbor_check_size_ to "<<neighbor_check_size_ <<std::endl;
     }else neighbor_check_size_ = 5;
+    if(!config->has("same_vertex_threshod"))return false;
     return true;
 }
 
@@ -622,6 +625,7 @@ void DesignToMesh::generate_mesh()
             line.idx_p2_.push_back(vhandle.size()-1);
         }
     }
+//    propogate_dash();
     std::cerr<<vhandle.size()<<" vertices generated"<<std::endl;
     //triangluate each plane
     std::cerr<<"generating triangulation"<<std::endl;
@@ -669,7 +673,7 @@ void DesignToMesh::generate_mesh()
                 v2idx.push_back(line.idx_p1_.back());
                 line.idx_p1_.pop_back();//pop after use
             }
-            if(!line.idx_p2_.empty()&&isNeighorToPlane(line.GetP1(),p.id_))
+            if(!line.idx_p2_.empty()&&isNeighorToPlane(line.GetP2(),p.id_))
             {
                 tmp.x = line.GetP2().GetX();
                 tmp.y = line.GetP2().GetY();
@@ -727,18 +731,26 @@ void DesignToMesh::generate_mesh()
     //
 }
 
+void DesignToMesh::get_dash_state(const DefaultMesh&)
+{
+
+}
+
 void DesignToMesh::save_mesh(const std::string& filepath)
 {
     std::cerr<<"saving mesh"<<std::endl;
-    std::string meshpath,featurepath;
+    std::string meshpath,conpath,dashpath;
     QFileInfo info(QString::fromStdString(g_parameters.InputFilePath));
     std::cerr<<"filepath:"<<filepath<<std::endl;
     meshpath = filepath + "/" + info.baseName().toStdString() + ".ply";
-    featurepath = filepath + "/" + info.baseName().toStdString() + ".sp_imat.arma";
+    conpath = filepath + "/" + info.baseName().toStdString() + ".sp_imat.arma";
+    dashpath = filepath +"/"+ info.baseName().toStdString() + ".col_int.arma";
     QFileInfo oinfo(QString::fromStdString(meshpath));
-    QFileInfo ofinfo(QString::fromStdString(featurepath));
+    QFileInfo ocinfo(QString::fromStdString(conpath));
+    QFileInfo odinfo(QString::fromStdString(dashpath));
     std::cerr<<"saving mesh to:"<<oinfo.filePath().toStdString()<<std::endl;
-    std::cerr<<"saving feature to:"<<ofinfo.filePath().toStdString()<<std::endl;
+    std::cerr<<"saving connection to:"<<ocinfo.filePath().toStdString()<<std::endl;
+    std::cerr<<"saving dash state to:"<<odinfo.filePath().toStdString()<<std::endl;
     DefaultMesh mesh;
     mesh.request_vertex_colors();
     mesh.request_vertex_normals();
@@ -779,9 +791,17 @@ void DesignToMesh::save_mesh(const std::string& filepath)
     {
         std::cout<<iter.row()+lr_ptr_->start_plane_<<"->"<<iter.col()+lr_ptr_->start_plane_<<std::endl;
     }
-    if(!lr_ptr_->plane_connetion_.save(ofinfo.filePath().toStdString(),arma::arma_binary))
+    if(!lr_ptr_->plane_connetion_.save(ocinfo.filePath().toStdString(),arma::arma_binary))
     {
-        std::cerr<<"can't save to:"<<ofinfo.filePath().toStdString()<<std::endl;
+        std::cerr<<"can't save to:"<<ocinfo.filePath().toStdString()<<std::endl;
+        return;
+    }
+    std::cout<<"dash state:"<<std::endl;
+    get_dash_state(mesh);
+    arma::Col<int> dash = arma::conv_to<arma::Col<int>>::from(dash_);
+    if(!dash.save(odinfo.filePath().toStdString(),arma::raw_ascii))
+    {
+        std::cerr<<"can't save to:"<<odinfo.filePath().toStdString()<<std::endl;
         return;
     }
 }

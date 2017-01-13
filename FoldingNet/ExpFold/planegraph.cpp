@@ -2,13 +2,12 @@
 #include <QRgb>
 #include "nanoflann.hpp"
 #include <iomanip>
-PlaneGraph::PlaneGraph(
-        const DefaultMesh& mesh,
-        const arma::sp_imat& connection,
+PlaneGraph::PlaneGraph(const DefaultMesh& mesh,
+        const arma::sp_imat& connection, const arma::Col<int> &dash,
         float th=5.0*std::numeric_limits<float>::epsilon()
-        ):same_vertex_th_(th),mesh_(mesh),connection_(connection)
+        ):same_vertex_th_(th),mesh_(mesh),connection_(connection),dash_(dash)
 {
-    recover_planes(mesh,connection);
+    recover_planes(mesh,connection,dash);
 }
 
 arma::uvec PlaneGraph::get_side_a(int axis_id,std::vector<int>& side_a_axis)
@@ -87,7 +86,11 @@ arma::uvec PlaneGraph::get_side_b(int axis_id, std::vector<int> &side_b_axis)
     return arma::uvec(result);
 }
 
-void PlaneGraph::recover_planes(const DefaultMesh& mesh, const arma::sp_imat& connection)
+void PlaneGraph::recover_planes(
+        const DefaultMesh& mesh,
+        const arma::sp_imat& connection,
+        const arma::Col<int>& dash
+        )
 {
     std::cout<<"PlaneGraph::recover_planes"<<std::endl;
     start_plane_ = 0;
@@ -123,6 +126,7 @@ void PlaneGraph::recover_planes(const DefaultMesh& mesh, const arma::sp_imat& co
         uint32_t plane_idx = color_to_plane[ckey];
         if(!nodes_[plane_idx])nodes_[plane_idx].reset(new Node());
         nodes_[plane_idx]->indices_.push_back(v_it->idx());
+        nodes_[plane_idx]->is_dash_.push_back(dash(v_it->idx()));
     }
     std::cerr<<nodes_.size()<<" planes found"<<std::endl;
     edges_ = arma::sp_imat(nodes_.size(),nodes_.size());
@@ -131,20 +135,32 @@ void PlaneGraph::recover_planes(const DefaultMesh& mesh, const arma::sp_imat& co
         for(Node::PtrLst::iterator iter1=iter0;iter1!=nodes_.end();++iter1)
         {
             if(iter0==iter1)continue;
-            recover_axis(mesh,**iter0,**iter1,connection);
+            recover_axis(mesh,**iter0,**iter1,connection,dash);
         }
     }
     std::cerr<<axis_.size()<<" axis found"<<std::endl;
 }
 
-void PlaneGraph::recover_axis(const DefaultMesh& mesh, const Node& n0, const Node& n1,const arma::sp_imat& connection)
+void PlaneGraph::recover_axis(
+        const DefaultMesh& mesh,
+        const Node& n0,
+        const Node& n1,
+        const arma::sp_imat& connection,
+        const arma::Col<int>& dash
+        )
 {
     std::cout<<"PlaneGraph::recover_axis"<<std::endl;
     //if the plane is not connected don't need to recover the axis
     if(!connection(n0.idx_+start_plane_,n1.idx_+start_plane_))return;
+    arma::Col<int> is_dash_points = dash_;
     arma::fmat connect_points;
-    get_connect_points(mesh,n0,n1,connect_points);
-    if(get_axis_from_points(connect_points))
+    get_connect_points(mesh,n0,n1,connect_points,is_dash_points);
+    if( connect_points.n_cols >= 2 )
+    {
+        edges_(n0.idx_,n1.idx_) = -1;
+        edges_(n1.idx_,n0.idx_) = -1;
+    }
+    if(get_axis_from_points(connect_points,is_dash_points))
     {
         edges_(n0.idx_,n1.idx_) = axis_.size();
         edges_(n1.idx_,n0.idx_) = axis_.size();
@@ -159,11 +175,13 @@ void PlaneGraph::get_connect_points(
         const DefaultMesh& mesh,
         const Node& n0,
         const Node& n1,
-        arma::fmat& c
+        arma::fmat& c,
+        arma::Col<int>& is_dash
         )
 {
     std::cout<<"PlaneGraph::get_connect_points"<<std::endl;
     arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
+
     arma::uvec idxa,idxb;
     arma::fmat va,vb;
     if(n0.indices_.size()<n1.indices_.size())
@@ -184,6 +202,7 @@ void PlaneGraph::get_connect_points(
             kdtree(3,arma_points,nanoflann::KDTreeSingleIndexAdaptorParams(3));
     kdtree.buildIndex();
     std::vector<float> c_pts_;//shared_points
+    std::vector<int> c_dash_;//shared_dash_
     float* point_ptr = va.memptr();
     for(int i=0;i<va.n_cols;++i)
     {
@@ -198,20 +217,33 @@ void PlaneGraph::get_connect_points(
             c_pts_.push_back(tmp(0));
             c_pts_.push_back(tmp(1));
             c_pts_.push_back(tmp(2));
+            int dash_a = is_dash(idxa(i));
+            int dash_b = is_dash(idxb(index));
+            if(dash_a==1&&dash_b==1)
+            {
+                c_dash_.push_back(1);
+            }else{
+                c_dash_.push_back(-1);
+            }
         }
         point_ptr += 3;
     }
     //output
     c = arma::fmat(c_pts_.data(),3,c_pts_.size()/3,false,true);
+    is_dash = arma::Col<int>(c_dash_);
 }
 
 bool PlaneGraph::get_axis_from_points(
-        const arma::fmat& connect
+        const arma::fmat& connect,
+        const arma::Col<int>& is_dash
         )
 {
     std::cout<<"PlaneGraph::get_axis_from_points"<<std::endl;
-    if(connect.n_cols<2)return false;
-    arma::fmat dash_points = connect;
+    arma::uvec is_dash_idx = arma::find(1==is_dash);
+    arma::uvec not_dash_idx = arma::find(-1==is_dash);
+    if(is_dash_idx.size()<2)return false;
+    if(not_dash_idx.size()>=2)return false;
+    arma::fmat dash_points = connect.cols(is_dash_idx);
     arma::fvec pos = arma::mean(dash_points,1);
     arma::fvec dir;
     arma::fmat c_dash_points = dash_points.each_col() - pos;
@@ -255,6 +287,7 @@ bool PlaneGraph::get_axis_from_points(
 void PlaneGraph::test_connect_points(int axis_id)
 {
     arma::fmat connect_points;
+    arma::Col<int> is_dash_points = dash_;
     for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
     {
         if(axis_id==*iter)
@@ -263,7 +296,8 @@ void PlaneGraph::test_connect_points(int axis_id)
                     mesh_,
                     *nodes_[iter.col()],
                     *nodes_[iter.row()],
-                    connect_points
+                    connect_points,
+                    is_dash_points
                     );
             break;
         }
@@ -278,4 +312,38 @@ void PlaneGraph::test_connect_points(int axis_id)
         }
         std::cerr<<std::endl;
     }
+}
+
+arma::uvec PlaneGraph::get_side_a_dash(int axis_id)
+{
+    arma::uvec result;
+    arma::ivec dash;
+    //find the edge
+    for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
+    {
+        if(axis_id==*iter)
+        {
+            result = arma::conv_to<arma::uvec>::from(nodes_[iter.row()]->indices_);
+            dash = arma::conv_to<arma::ivec>::from(nodes_[iter.row()]->is_dash_);
+            break;
+        }
+    }
+    return result(arma::find(dash_==1));
+}
+
+arma::uvec PlaneGraph::get_side_b_dash(int axis_id)
+{
+    arma::uvec result;
+    arma::ivec dash;
+    //find the edge
+    for(arma::sp_imat::iterator iter=edges_.begin();iter!=edges_.end();++iter)
+    {
+        if(axis_id==*iter)
+        {
+            result = arma::conv_to<arma::uvec>::from(nodes_[iter.col()]->indices_);
+            dash = arma::conv_to<arma::ivec>::from(nodes_[iter.col()]->is_dash_);
+            break;
+        }
+    }
+    return result(arma::find(dash_==1));
 }

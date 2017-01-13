@@ -48,10 +48,11 @@ private:
     QDir input_path_;
     QDir output_path_;
     arma::sp_imat connection_;
-    std::shared_ptr<PlaneGraph> plane_graph_;
+    arma::Col<int> dash_;
     std::vector<std::pair<int,arma::fvec>>::iterator axis_current_;
+    std::shared_ptr<PlaneGraph> plane_graph_;
     int side_current_;
-    arma::Mat<uint8_t> input_current_color_;
+    arma::Mat<uint8_t> input_current_color_; //for recover color after unselect
     float angle_current_;
 };
 

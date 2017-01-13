@@ -9,6 +9,7 @@ class LineSegment
 {
 public:
 	LineSegment();
+    LineSegment(const LineSegment&);
 	LineSegment(Vertex v1, Vertex v2);
 	~LineSegment();
 

@@ -6,6 +6,13 @@ LineSegment::LineSegment()
 {
 }
 
+LineSegment::LineSegment(const LineSegment& l):
+    _V1(l._V1),_V2(l._V2),_P1(l._P1),_P2(l._P2),
+    _Id(l._Id),_IsDash(l._IsDash),_loop_num(l._loop_num)
+{
+
+}
+
 LineSegment::LineSegment(Vertex v1, Vertex v2)
 {
 	_V1 = v1;
@@ -236,8 +243,6 @@ int LineSegment::IntersectionByTwoLines(LineSegment l,Point &p)
 		p = _P2;
 		return 5;
 	}
-
-
 	return -1;
 }
 

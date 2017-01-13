@@ -131,26 +131,33 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::load_current()
 {
-    QString mesh_path,additional_path;
+    QString mesh_path,con_path,dash_path;
     QDir dir;
     dir = dir.current();
     //try to load a file with same filename from output path
     QFileInfo tmp_info(*input_current_);
     ui->statusBar->showMessage(tmp_info.fileName(),0);
     mesh_path = dir.relativeFilePath(output_path_.absoluteFilePath(*input_current_));
-    additional_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
+    con_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
+    dash_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".col_int.arma"));
     QFileInfo info(mesh_path);
-    QFileInfo add_info(additional_path);
+    QFileInfo con_info(con_path);
+    QFileInfo dash_info(dash_path);
     //if not exist then load the file from original input path
-    if(!info.exists() || !add_info.exists() )
+    if(!info.exists() || !con_info.exists() || !dash_info.exists() )
     {
         mesh_path = dir.relativeFilePath(input_path_.absoluteFilePath(*input_current_));
-        additional_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
+        con_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
+        dash_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".col_int.arma"));
     }
     geo_view_->open_mesh_gui(mesh_path,geo_view_->first());
-    if( !connection_.load(additional_path.toStdString()) )
+    if( !connection_.load(con_path.toStdString()) )
     {
-        std::cerr<<"Failed to load from:"<<additional_path.toStdString()<<std::endl;
+        std::cerr<<"Failed to load from:"<<con_path.toStdString()<<std::endl;
+    }
+    if( !dash_.load(dash_path.toStdString()) )
+    {
+        std::cerr<<"Failed to load from:"<<dash_path.toStdString()<<std::endl;
     }
     geo_view_->set_center_at_mesh(geo_view_->first().mesh_);
     geo_view_->updateGL();
@@ -172,9 +179,11 @@ void MainWindow::save_current()
     QDir dir;
     dir = dir.current();
     QString mesh_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + "." +info.suffix()));
-    QString additional_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".sp_imat.arma"));
+    QString con_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".sp_imat.arma"));
+    QString dash_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".col_int.arma"));
     geo_view_->save_mesh_gui(mesh_path,geo_view_->first());
-    connection_.save(additional_path.toStdString(),arma::arma_binary);
+    connection_.save(con_path.toStdString(),arma::arma_binary);
+    dash_.save(dash_path.toStdString(),arma::arma_binary);
 }
 
 void MainWindow::configure(void)
@@ -351,7 +360,14 @@ void MainWindow::recover_axis()
 {
     std::cerr<<"recovering axis"<<std::endl;
     DefaultMesh& mesh = geo_view_->first().mesh_;
-    plane_graph_.reset(new PlaneGraph(mesh,connection_,geo_view_->radius()*g_config->getDouble("same_vertex_threshod")));
+    plane_graph_.reset(
+                new PlaneGraph(
+                    mesh,
+                    connection_,
+                    dash_,
+                    geo_view_->radius()*g_config->getDouble("same_vertex_threshod")
+                    )
+                );
     std::cerr<<"done plane graph"<<std::endl;
     axis_current_ = plane_graph_->axis_.begin();
     recover_angle();
@@ -398,50 +414,50 @@ void MainWindow::recover_angle(void)
 
 void MainWindow::show_dash(bool show)
 {
-//    geo_view_->first_selected().clear();
-//    arma::uvec dark_side_dash;
-//    if(show)
-//    {
-//        switch(side_current_)
-//        {
-//        case 1:
-//            dark_side_dash = plane_graph_->get_side_b_dash(axis_current_->first);
-//            break;
-//        case -1:
-//            dark_side_dash = plane_graph_->get_side_a_dash(axis_current_->first);
-//            break;
-//        case 0:
-//            dark_side_dash.clear();
-//        }
-//        geo_view_->first_selected().insert(
-//                    geo_view_->first_selected().end(),
-//                    std::begin(dark_side_dash),
-//                    std::end(dark_side_dash)
-//                    );
-//    }
-//    geo_view_->updateGL();
+    geo_view_->first_selected().clear();
+    arma::uvec dark_side_dash;
+    if(show)
+    {
+        switch(side_current_)
+        {
+        case 1:
+            dark_side_dash = plane_graph_->get_side_b_dash(axis_current_->first);
+            break;
+        case -1:
+            dark_side_dash = plane_graph_->get_side_a_dash(axis_current_->first);
+            break;
+        case 0:
+            dark_side_dash.clear();
+        }
+        geo_view_->first_selected().insert(
+                    geo_view_->first_selected().end(),
+                    std::begin(dark_side_dash),
+                    std::end(dark_side_dash)
+                    );
+    }
+    geo_view_->updateGL();
 }
 
 void MainWindow::show_dash_all(bool show)
 {
-//    DefaultMesh& mesh = geo_view_->first().mesh_;
-//    arma::Mat<uint8_t> mesh_color((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
-//    if(show)
-//    {
-//        arma::uvec idx_dash = arma::find(is_dash_==1);
-//        std::cerr<<"idx_dash:"<<idx_dash.t()<<std::endl;
-//        arma::uvec idx_no_dash = arma::find(is_dash_==-1);
-//        std::cerr<<"idx_no_dash:"<<idx_no_dash.t()<<std::endl;
-//        arma::Mat<uint8_t> tmp_dash = mesh_color.cols(idx_dash);
-//        arma::Mat<uint8_t> tmp_no_dash = mesh_color.cols(idx_no_dash);
-//        tmp_dash.fill(0);
-//        tmp_no_dash.fill(255);
-//        mesh_color.cols(idx_dash) = tmp_dash;
-//        mesh_color.cols(idx_no_dash) = tmp_no_dash;
-//    }else{
-//        mesh_color = input_current_color_;
-//    }
-//    geo_view_->updateGL();
+    DefaultMesh& mesh = geo_view_->first().mesh_;
+    arma::Mat<uint8_t> mesh_color((uint8_t*)mesh.vertex_colors(),3,mesh.n_vertices(),false,true);
+    if(show)
+    {
+        arma::uvec idx_dash = arma::find(dash_==1);
+        std::cerr<<"idx_dash:"<<idx_dash.t()<<std::endl;
+        arma::uvec idx_no_dash = arma::find(dash_==-1);
+        std::cerr<<"idx_no_dash:"<<idx_no_dash.t()<<std::endl;
+        arma::Mat<uint8_t> tmp_dash = mesh_color.cols(idx_dash);
+        arma::Mat<uint8_t> tmp_no_dash = mesh_color.cols(idx_no_dash);
+        tmp_dash.fill(0);
+        tmp_no_dash.fill(255);
+        mesh_color.cols(idx_dash) = tmp_dash;
+        mesh_color.cols(idx_no_dash) = tmp_no_dash;
+    }else{
+        mesh_color = input_current_color_;
+    }
+    geo_view_->updateGL();
 }
 
 void MainWindow::test_calc_connected(void)
