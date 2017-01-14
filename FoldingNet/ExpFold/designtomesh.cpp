@@ -594,8 +594,11 @@ void DesignToMesh::generate_mesh()
     __gnu_cxx::hash_map<uint32_t,uint32_t> key_to_color_map;
 
     uint32_t backgroundcolor = qRgb(179,179,179);
+    uint32_t axiscolor = qRgb(255,0,0);
     key_to_color_map[std::numeric_limits<uint32_t>::max()] = backgroundcolor;
     color_to_key_map[backgroundcolor] = std::numeric_limits<uint32_t>::max();
+    key_to_color_map[std::numeric_limits<uint32_t>::max()-1] = axiscolor;
+    color_to_key_map[axiscolor] = std::numeric_limits<uint32_t>::max()-1;
     //generate vertices according to number of planes the line connected to
     std::cerr<<"generating vertices"<<std::endl;
     std::vector<DefaultMesh::VertexHandle> vhandle;

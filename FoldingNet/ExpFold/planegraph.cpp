@@ -219,7 +219,7 @@ void PlaneGraph::get_connect_points(
             c_pts_.push_back(tmp(2));
             int dash_a = is_dash(idxa(i));
             int dash_b = is_dash(idxb(index));
-            if(dash_a==1&&dash_b==1)
+            if(dash_a==1 || dash_b==1)
             {
                 c_dash_.push_back(1);
             }else{
