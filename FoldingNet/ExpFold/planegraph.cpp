@@ -165,7 +165,7 @@ void PlaneGraph::recover_axis(
         edges_(n0.idx_,n1.idx_) = axis_.size();
         edges_(n1.idx_,n0.idx_) = axis_.size();
     }else{
-        std::cerr<<"Failed to recover axis for "<<n0.idx_<<"->"<<n1.idx_<<std::endl;
+        std::cerr<<"!!! Failed to recover axis for "<<n0.idx_<<"->"<<n1.idx_<<std::endl;
         edges_(n0.idx_,n1.idx_) = -1;
         edges_(n1.idx_,n0.idx_) = -1;
     }
@@ -242,7 +242,8 @@ bool PlaneGraph::get_axis_from_points(
     arma::uvec is_dash_idx = arma::find(1==is_dash);
     arma::uvec not_dash_idx = arma::find(-1==is_dash);
     if(is_dash_idx.size()<2){
-        std::cerr<<"is_dash_idx.size()"<<is_dash_idx.size()<<std::endl;
+        std::cerr<<"connect.n_cols:"<<connect.n_cols<<std::endl;
+        std::cerr<<"is_dash_idx.size():"<<is_dash_idx.size()<<std::endl;
         return false;
     }
 //    if(not_dash_idx.size()>=2){
