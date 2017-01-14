@@ -241,9 +241,17 @@ bool PlaneGraph::get_axis_from_points(
     std::cout<<"PlaneGraph::get_axis_from_points"<<std::endl;
     arma::uvec is_dash_idx = arma::find(1==is_dash);
     arma::uvec not_dash_idx = arma::find(-1==is_dash);
-    if(is_dash_idx.size()<2)return false;
-    if(not_dash_idx.size()>=2)return false;
+    if(is_dash_idx.size()<2){
+        std::cerr<<"is_dash_idx.size()"<<is_dash_idx.size()<<std::endl;
+        return false;
+    }
+//    if(not_dash_idx.size()>=2){
+//        std::cerr<<"not_dash_idx.size()"<<not_dash_idx.size()<<std::endl;
+//        return false;
+//    }
     arma::fmat dash_points = connect.cols(is_dash_idx);
+//    if(connect.n_cols<2)return false;
+//    arma::fmat dash_points = connect;
     arma::fvec pos = arma::mean(dash_points,1);
     arma::fvec dir;
     arma::fmat c_dash_points = dash_points.each_col() - pos;

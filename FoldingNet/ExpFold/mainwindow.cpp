@@ -138,17 +138,13 @@ void MainWindow::load_current()
     QFileInfo tmp_info(*input_current_);
     ui->statusBar->showMessage(tmp_info.fileName(),0);
     mesh_path = dir.relativeFilePath(output_path_.absoluteFilePath(*input_current_));
-    con_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
-    dash_path = dir.relativeFilePath(output_path_.absoluteFilePath(tmp_info.baseName()+".col_int.arma"));
+    con_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
+    dash_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".col_int.arma"));
     QFileInfo info(mesh_path);
-    QFileInfo con_info(con_path);
-    QFileInfo dash_info(dash_path);
-    //if not exist then load the file from original input path
-    if(!info.exists() || !con_info.exists() || !dash_info.exists() )
+    //if not exist then load the mesh from original input path
+    if(!info.exists() )
     {
         mesh_path = dir.relativeFilePath(input_path_.absoluteFilePath(*input_current_));
-        con_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".sp_imat.arma"));
-        dash_path = dir.relativeFilePath(input_path_.absoluteFilePath(tmp_info.baseName()+".col_int.arma"));
     }
     geo_view_->open_mesh_gui(mesh_path,geo_view_->first());
     if( !connection_.load(con_path.toStdString()) )
@@ -179,11 +175,11 @@ void MainWindow::save_current()
     QDir dir;
     dir = dir.current();
     QString mesh_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + "." +info.suffix()));
-    QString con_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".sp_imat.arma"));
-    QString dash_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".col_int.arma"));
+//    QString con_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".sp_imat.arma"));
+//    QString dash_path = dir.relativeFilePath(output_path_.absoluteFilePath(info.baseName() + ".col_int.arma"));
     geo_view_->save_mesh_gui(mesh_path,geo_view_->first());
-    connection_.save(con_path.toStdString(),arma::arma_binary);
-    dash_.save(dash_path.toStdString(),arma::arma_binary);
+//    connection_.save(con_path.toStdString(),arma::arma_binary);
+//    dash_.save(dash_path.toStdString(),arma::arma_binary);
 }
 
 void MainWindow::configure(void)

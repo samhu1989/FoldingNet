@@ -731,9 +731,66 @@ void DesignToMesh::generate_mesh()
     //
 }
 
-void DesignToMesh::get_dash_state(const DefaultMesh&)
+void DesignToMesh::get_dash_state(const DefaultMesh& mesh, const std::vector<DefaultMesh::VertexHandle> &vhandles)
 {
+    std::cerr<<"get dash state for each vertex"<<std::endl;
+    DefaultMesh::ConstVertexIter vIt(mesh_.vertices_begin());
+    DefaultMesh::ConstVertexIter vEnd(mesh_.vertices_end());
 
+    typedef DefaultMesh::Point Point;
+    using OpenMesh::Vec3f;
+
+    Vec3f bbMin, bbMax;
+
+    bbMin = bbMax = OpenMesh::vector_cast<Vec3f>(mesh_.point(*vIt));
+
+    for (size_t count=0; vIt!=vEnd; ++vIt, ++count)
+    {
+        bbMin.minimize( OpenMesh::vector_cast<Vec3f>(mesh_.point(*vIt)));
+        bbMax.maximize( OpenMesh::vector_cast<Vec3f>(mesh_.point(*vIt)));
+    }
+    float radius = (bbMin-bbMax).norm()*0.5;
+    float same_vertex_th = radius*g_config->getDouble("same_vertex_threshod");
+    dash_.resize(mesh.n_vertices());
+    arma::fmat v((float*)mesh.points(),3,mesh.n_vertices(),false,true);
+    ArmaKDTreeInterface<arma::fmat> arma_points(v);
+    nanoflann::KDTreeSingleIndexAdaptor<
+            nanoflann::L2_Simple_Adaptor<float,ArmaKDTreeInterface<arma::fmat>>,
+            ArmaKDTreeInterface<arma::fmat>,
+            3,arma::uword>
+            kdtree(3,arma_points,nanoflann::KDTreeSingleIndexAdaptorParams(3));
+    kdtree.buildIndex();
+    for(std::vector<LineSegment>::iterator iter=_LineList.begin();iter!=_LineList.end();++iter)
+    {
+        arma::fvec p0(3,arma::fill::zeros),p1(3,arma::fill::zeros);
+        p0(0) = iter->GetP1().GetX();
+        p0(1) = iter->GetP1().GetY();
+        p1(0) = iter->GetP2().GetX();
+        p1(1) = iter->GetP2().GetY();
+        std::vector<std::pair<arma::uword,float>> index_dist;
+        kdtree.radiusSearch(p0.memptr(),same_vertex_th,index_dist,nanoflann::SearchParams());
+        std::vector<std::pair<arma::uword,float>>::iterator piter;
+        for(piter=index_dist.begin();piter!=index_dist.end();++piter)
+        {
+            const DefaultMesh::VertexHandle h0 = vhandles[piter->first];
+            for(DefaultMesh::ConstVertexVertexIter vviter = mesh.cvv_begin(h0);vviter.is_valid();++vviter)
+            {
+                const DefaultMesh::Point& p = mesh.point(*vviter);
+                arma::fvec pk((float*)p.data(),3,true,true);
+                if(same_vertex_th > arma::norm(p1 - pk))
+                {
+                    if(iter->GetIsDash()){
+                        dash_[h0.idx()] = 1;
+                        dash_[vviter->idx()] = 1;
+                    }
+                    else{
+                        if(dash_[vviter->idx()]<1)dash_[vviter->idx()] = -1;
+                        if(dash_[h0.idx()]<1)dash_[h0.idx()] = -1;
+                    }
+                }
+            }
+        }
+    }
 }
 
 void DesignToMesh::save_mesh(const std::string& filepath)
@@ -797,7 +854,7 @@ void DesignToMesh::save_mesh(const std::string& filepath)
         return;
     }
     std::cout<<"dash state:"<<std::endl;
-    get_dash_state(mesh);
+    get_dash_state(mesh,vhandles);
     arma::Col<int> dash = arma::conv_to<arma::Col<int>>::from(dash_);
     if(!dash.save(odinfo.filePath().toStdString(),arma::raw_ascii))
     {

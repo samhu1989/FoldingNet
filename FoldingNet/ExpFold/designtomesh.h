@@ -28,7 +28,7 @@ protected:
     void FindNewStartFromDash(int plane_id,int x, int y);
     void remove_isolate_lines(void);//lines that only connect to one plane
     bool isNeighorToPlane(const Point& p,int plane_id);
-    void get_dash_state(const DefaultMesh&);
+    void get_dash_state(const DefaultMesh&, const std::vector<DefaultMesh::VertexHandle> &vhandles);
 private:
     Region::PtrLst region_lst_;
     Region::Ptr lr_ptr_;      //ptr to the main region
