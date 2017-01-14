@@ -219,7 +219,7 @@ void PlaneGraph::get_connect_points(
             c_pts_.push_back(tmp(2));
             int dash_a = is_dash(idxa(i));
             int dash_b = is_dash(idxb(index));
-            if(dash_a==1 || dash_b==1)
+            if(dash_a==1 && dash_b==1)
             {
                 c_dash_.push_back(1);
             }else{
@@ -240,17 +240,20 @@ bool PlaneGraph::get_axis_from_points(
 {
     std::cout<<"PlaneGraph::get_axis_from_points"<<std::endl;
     arma::uvec is_dash_idx = arma::find(1==is_dash);
-    arma::uvec not_dash_idx = arma::find(-1==is_dash);
+    arma::fmat dash_points;
     if(is_dash_idx.size()<2){
         std::cerr<<"connect.n_cols:"<<connect.n_cols<<std::endl;
         std::cerr<<"is_dash_idx.size():"<<is_dash_idx.size()<<std::endl;
-        return false;
-    }
+        std::cerr<<"Failed to find enough dash points"<<std::endl;
+        if(connect.n_cols>=2){
+            std::cerr<<"Using all points, this could result in wrong axis"<<std::endl;
+            dash_points = connect;
+        }else return false;
+    }else dash_points = connect.cols(is_dash_idx);
 //    if(not_dash_idx.size()>=2){
 //        std::cerr<<"not_dash_idx.size()"<<not_dash_idx.size()<<std::endl;
 //        return false;
 //    }
-    arma::fmat dash_points = connect.cols(is_dash_idx);
 //    if(connect.n_cols<2)return false;
 //    arma::fmat dash_points = connect;
     arma::fvec pos = arma::mean(dash_points,1);

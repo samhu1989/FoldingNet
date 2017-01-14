@@ -447,19 +447,21 @@ bool DesignToMesh::FindLayoutByFloodFill()
 
 int DesignToMesh::FloodFill4Region(int x, int y, int start_planenumber)
 {
-    while(!_PlaneStack.empty())_PlaneStack.pop();
+    while(!_PlaneStack.empty())_PlaneStack.pop_back();
     region_lst_.emplace_back(new Region);
     Region& current_region = *(region_lst_.back());
     current_region.start_plane_ = start_planenumber;
     current_region.end_plane_ = start_planenumber;
-    _PlaneStack.push(std::make_pair(start_planenumber,Point(x, y)));
+    _PlaneStack.emplace_back(start_planenumber,Point(x, y));
     std::vector<std::pair<int,int>> connected_plane;
     while(!_PlaneStack.empty())
     {
-        x = int(_PlaneStack.top().second.GetX());
-        y = int(_PlaneStack.top().second.GetY());
-        int plane_id = _PlaneStack.top().first;
-        _PlaneStack.pop();
+        int i = _PlaneStack.size() / 2;
+        std::swap(_PlaneStack.back(),_PlaneStack[i]);
+        x = int(_PlaneStack.back().second.GetX());
+        y = int(_PlaneStack.back().second.GetY());
+        int plane_id = _PlaneStack.back().first;
+        _PlaneStack.pop_back();
         if(0.0==_PolygonLabel.at<float>(x, y))
         {
             current_region.plane_lst_.emplace_back(new Plane);
@@ -497,7 +499,7 @@ void DesignToMesh::FindNewStartFromDash(int plane_id, int x, int y)
         int ny = y + dy[i];
         if (nx >= 0 && nx < _RangeofPX && ny >= 0 && ny < _RangeofPY && _PolygonLabel.at<float>(nx, ny) == 0)
         {
-            _PlaneStack.push(std::make_pair(plane_id,Point(nx, ny)));
+            _PlaneStack.push_back(std::make_pair(plane_id,Point(nx, ny)));
         }
     }
 }
@@ -531,9 +533,10 @@ int DesignToMesh::FloodFill4Plane(int x, int y, Plane& current_plane)
                 //add current line to plane
                 current_plane.line_id_lst_.push_back(current_line.GetId()-1);
                 //add new start for region
-                if(current_line.GetIsDash())
+                //since the first plane is always the outside so do not let it continue to grow
+                if(current_line.GetIsDash()&&current_plane.id_!=1)
                 {
-                    _PlaneStack.emplace(current_plane.id_,Point(nx, ny));
+                    _PlaneStack.emplace_back(current_plane.id_,Point(nx, ny));
                 }
             }
         }

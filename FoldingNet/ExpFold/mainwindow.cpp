@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     options += IO::Options::FaceNormal;
     geo_view_->setOptions(options);
     geo_view_->setMinimumSize(320,240);
+    geo_view_->removeAction("Solid Flat");
+    geo_view_->removeAction("Solid Smooth");
     addAction(ui->actionAngleUp);
     addAction(ui->actionAngleDown);
 

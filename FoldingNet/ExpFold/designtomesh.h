@@ -5,6 +5,7 @@
 #include "LineSegment.h"
 #include "Parameters.h"
 #include "region.h"
+#include <queue>
 class DesignToMesh
 {
 public:
@@ -33,8 +34,8 @@ private:
     Region::PtrLst region_lst_;
     Region::Ptr lr_ptr_;      //ptr to the main region
     vector<LineSegment> _LineList;
-    stack<Point> _PointStack; //for plane to grow
-    stack<std::pair<int,Point>> _PlaneStack; //for region to grow
+    std::stack<Point> _PointStack; //for plane to grow
+    std::vector<std::pair<int,Point>> _PlaneStack; //for region to grow
     cv::Mat _LineLabel;
     cv::Mat _PolygonLabel;
     int neighbor_check_size_;
