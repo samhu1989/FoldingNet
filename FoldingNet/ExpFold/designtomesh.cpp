@@ -690,7 +690,10 @@ void DesignToMesh::generate_mesh()
             }
         }
         std::cout<<"triangulization with "<<v.size()<<" vertices"<<std::endl;
-        std::sort(v.begin(),v.end());
+        //sort the vertex before give to "CreateMesh" this sometimes fix bugs for our triangulation module
+        if(g_config->has("Sort_before_Triangulate")){
+            if(g_config->getInt("Sort_before_Triangulate"))std::sort(v.begin(),v.end());
+        }
         CreateMesh(v,&mesh);
         //restore the 2d mesh into 3d mesh
         std::cout<<"converting to 3d mesh"<<std::endl;
