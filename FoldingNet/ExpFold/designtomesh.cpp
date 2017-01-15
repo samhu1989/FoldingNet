@@ -642,6 +642,7 @@ void DesignToMesh::generate_mesh()
         if(1==p.id_){
             int i = p.id_ - cr.start_plane_;
             cr.plane_connetion_(i,cr.plane_connetion_.n_cols-1) = qRgb(0,0,0);
+            std::cerr<<"tst 0"<<std::endl;
             continue;
         }
         std::cout<<"plane id:"<<p.id_<<std::endl;
@@ -676,7 +677,7 @@ void DesignToMesh::generate_mesh()
                 tmp.x = line.GetP1().GetX();
                 tmp.y = line.GetP1().GetY();
                 v.push_back(tmp);
-                v2idx.push_back(line.idx_p1_.back());
+                v.back().v2idx = line.idx_p1_.back();
                 line.idx_p1_.pop_back();//pop after use
             }
             if(!line.idx_p2_.empty()&&isNeighorToPlane(line.GetP2(),p.id_))
@@ -684,11 +685,12 @@ void DesignToMesh::generate_mesh()
                 tmp.x = line.GetP2().GetX();
                 tmp.y = line.GetP2().GetY();
                 v.push_back(tmp);
-                v2idx.push_back(line.idx_p2_.back());
+                v.back().v2idx = line.idx_p2_.back();
                 line.idx_p2_.pop_back();//pop after use
             }
         }
         std::cout<<"triangulization with "<<v.size()<<" vertices"<<std::endl;
+        std::sort(v.begin(),v.end());
         CreateMesh(v,&mesh);
         //restore the 2d mesh into 3d mesh
         std::cout<<"converting to 3d mesh"<<std::endl;
@@ -718,9 +720,9 @@ void DesignToMesh::generate_mesh()
                 continue;
             }
             std::vector<DefaultMesh::VertexHandle> vhandle_face;
-            vhandle_face.push_back(vhandle[v2idx[f_ptr->i1 - 3]]);
-            vhandle_face.push_back(vhandle[v2idx[f_ptr->i2 - 3]]);
-            vhandle_face.push_back(vhandle[v2idx[f_ptr->i3 - 3]]);
+            vhandle_face.push_back(vhandle[v[f_ptr->i1 - 3].v2idx]);
+            vhandle_face.push_back(vhandle[v[f_ptr->i2 - 3].v2idx]);
+            vhandle_face.push_back(vhandle[v[f_ptr->i3 - 3].v2idx]);
             DefaultMesh::FaceHandle f = mesh_.add_face(vhandle_face);
             //set the color for this face to this plane
             mesh_.set_color(vhandle_face[0],DefaultMesh::Color(qRed(c),qGreen(c),qBlue(c)));

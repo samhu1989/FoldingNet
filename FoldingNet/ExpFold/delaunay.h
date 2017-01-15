@@ -10,7 +10,8 @@ typedef struct VERTEX2D_TYP
 {
 	float x;
 	float y;
-
+    int v2idx;
+    friend bool operator<(const struct VERTEX2D_TYP& a,const struct VERTEX2D_TYP& b);
 } VERTEX2D, *VERTEX2D_PTR;
 
 typedef struct EDGE_TYP

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include "Parameters.h"
+#include "gotodialog.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -45,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAngleUp,SIGNAL(triggered(bool)),ui->doubleSpinBox,SLOT(stepUp()));
     connect(ui->actionAngleDown,SIGNAL(triggered(bool)),ui->doubleSpinBox,SLOT(stepDown()));
     connect(ui->doubleSpinBox,SIGNAL(valueChanged(double)),this,SLOT(rotate_to(double)));
+
+    connect(ui->actionGo_to,SIGNAL(triggered(bool)),this,SLOT(go_to_input()));
 
     connect(ui->actionView_Dash,SIGNAL(toggled(bool)),this,SLOT(show_dash(bool)));
     connect(ui->actionView_Dash_All,SIGNAL(toggled(bool)),this,SLOT(show_dash_all(bool)));
@@ -213,6 +216,42 @@ void MainWindow::get_input_lst()
     }
     input_current_ = input_list_.begin();
     load_current();
+}
+
+void MainWindow::go_to_input(void)
+{
+    bool success = false;
+    while( !success )
+    {
+        GoToDialog dialog(this);
+        if(QDialog::Accepted==dialog.exec())
+        {
+            success = go_to_input(dialog.text());
+        }else break;
+    }
+}
+
+bool MainWindow::go_to_input(const QString& input)
+{
+    if(input_list_.empty()){
+        get_input_lst();
+    }
+    QStringList::iterator iter;
+    for(iter=input_list_.begin();iter!=input_list_.end();++iter)
+    {
+        QFileInfo info(*iter);
+//        qDebug()<<info.baseName();
+        if(info.baseName()==input)break;
+    }
+    if(iter!=input_list_.end())
+    {
+        save_current();
+        input_current_ = iter;
+        load_current();
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void MainWindow::next_input()

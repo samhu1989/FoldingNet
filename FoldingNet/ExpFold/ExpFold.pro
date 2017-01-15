@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     Point.cpp \
     Vertex.cpp \
     planegraph.cpp \
-    designtomesh.cpp
+    designtomesh.cpp \
+    gotodialog.cpp
 
 HEADERS  += mainwindow.h \
     delaunay.h \
@@ -33,9 +34,11 @@ HEADERS  += mainwindow.h \
     Vertex.h \
     planegraph.h \
     designtomesh.h \
-    region.h
+    region.h \
+    gotodialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    gotodialog.ui
 
 
 

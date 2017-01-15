@@ -23,6 +23,8 @@ public slots:
     void save_current();
     void next_input();
     void last_input();
+    void go_to_input(void);
+    bool go_to_input(const QString&);
     void get_input_lst();
     void configure(void);
 protected slots:

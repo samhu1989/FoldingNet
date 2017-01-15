@@ -76,6 +76,7 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <addaction name="actionGo_to"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -247,6 +248,14 @@
   <action name="actionOpen">
    <property name="text">
     <string>open</string>
+   </property>
+  </action>
+  <action name="actionGo_to">
+   <property name="text">
+    <string>go to</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
    </property>
   </action>
  </widget>

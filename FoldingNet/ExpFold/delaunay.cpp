@@ -3,6 +3,12 @@
 #include <iostream>
 #include <cmath>
 
+bool operator<(const VERTEX2D& a,const VERTEX2D_TYP& b)
+{
+    if(a.y<b.y)return true;
+    else if( a.y == b.y && a.x < b.x ) return true;
+    else return false;
+}
 
 void CreateMesh(vector<VERTEX2D> vertex, MESH_PTR pMesh)
 {   
