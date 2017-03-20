@@ -1,0 +1,120 @@
+\begin{thebibliography}{\protect\citename{Demaine and O'Rourke }2010}
+
+\bibitem[\protect\citename{Biedl and Genç }2004]{Biedl2004When}
+{\sc Biedl, T.~C., and Genç, B.}
+\newblock 2004.
+\newblock When can a graph form an orthogonal polyhedron?
+\newblock 100--102.
+
+\bibitem[\protect\citename{Biedl et~al\mbox{.}
+  }2005]{Biedl:2005:NFP:1090462.1646553}
+{\sc Biedl, T., Lubiw, A., and Sun, J.}
+\newblock 2005.
+\newblock When can a net fold to a polyhedron?
+\newblock {\em Comput. Geom. Theory Appl. 31}, 3 (June), 207--218.
+
+\bibitem[\protect\citename{Cao et~al\mbox{.}
+  }2005]{Cao:2005:ORS:1097114.1097658}
+{\sc Cao, L., Liu, J., and Tang, X.}
+\newblock 2005.
+\newblock 3d object reconstruction from a single 2d line drawing without hidden
+  lines.
+\newblock In {\em Proceedings of the Tenth IEEE International Conference on
+  Computer Vision (ICCV'05) Volume 1 - Volume 01}, IEEE Computer Society,
+  Washington, DC, USA, ICCV '05, 272--277.
+
+\bibitem[\protect\citename{Dai and Jones }1999]{Dai1999Mobility}
+{\sc Dai, J.~S., and Jones, J.~R.}
+\newblock 1999.
+\newblock Mobility in metamorphic mechanisms of foldable/erectable kinds.
+\newblock {\em Journal of Mechanical Design 121}, 3, 375--382.
+
+\bibitem[\protect\citename{Demaine and O'Rourke }2010]{Demaine2010A}
+{\sc Demaine, E.~D., and O'Rourke, J.}
+\newblock 2010.
+\newblock A survey of folding and unfolding in computational geometry.
+\newblock In {\em Revised Papers from the Japanese Conference on Discrete and
+  Computational Geometry}, 258--266.
+
+\bibitem[\protect\citename{Kanade }1980]{KANADE1980279}
+{\sc Kanade, T.}
+\newblock 1980.
+\newblock A theory of origami world.
+\newblock {\em Artificial Intelligence 13}, 3, 279 -- 311.
+
+\bibitem[\protect\citename{Le et~al\mbox{.} }2014]{Le:2014:SCO:2574223.2574468}
+{\sc Le, S.~N., Leow, S.-J., Le-Nguyen, T.-V., Ruiz, C., and Low, K.-L.}
+\newblock 2014.
+\newblock Surface and contour-preserving origamic architecture paper pop-ups.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics 20}, 2
+  (Feb.), 276--288.
+
+\bibitem[\protect\citename{Leclerc and Fischler }1992]{Leclerc1992An}
+{\sc Leclerc, Y.~G., and Fischler, M.~A.}
+\newblock 1992.
+\newblock An optimization-based approach to the interpretation of single line
+  drawings as 3d wire frames.
+\newblock {\em International Journal of Computer Vision 9}, 2, 113--136.
+
+\bibitem[\protect\citename{Li et~al\mbox{.} }2010]{Li:2010:PAP:1833349.1778848}
+{\sc Li, X.-Y., Shen, C.-H., Huang, S.-S., Ju, T., and Hu, S.-M.}
+\newblock 2010.
+\newblock Popup: Automatic paper architectures from 3d models.
+\newblock In {\em ACM SIGGRAPH 2010 Papers}, ACM, New York, NY, USA, SIGGRAPH
+  '10, 111:1--111:9.
+
+\bibitem[\protect\citename{Li et~al\mbox{.} }2011]{Li:2011:GSV:1964921.1964993}
+{\sc Li, X.-Y., Ju, T., Gu, Y., and Hu, S.-M.}
+\newblock 2011.
+\newblock A geometric study of v-style pop-ups: Theories and algorithms.
+\newblock In {\em ACM SIGGRAPH 2011 Papers}, ACM, New York, NY, USA, SIGGRAPH
+  '11, 98:1--98:10.
+
+\bibitem[\protect\citename{Lubiw }1996]{Lubiw1996When}
+{\sc Lubiw, A.}
+\newblock 1996.
+\newblock When can a polygon fold to a polytope?
+\newblock {\em Dept.comput.sci.smith College\/}.
+
+\bibitem[\protect\citename{Marill }1991]{Marill:1991:EHI:113057.113061}
+{\sc Marill, T.}
+\newblock 1991.
+\newblock Emulating the human interpretation of line-drawings as
+  three-dimensional objects.
+\newblock {\em Int. J. Comput. Vision 6}, 2 (June), 147--161.
+
+\bibitem[\protect\citename{Marill }1992]{Marill1992Why}
+{\sc Marill, T.}
+\newblock 1992.
+\newblock Why do we see three-dimensional objects?
+
+\bibitem[\protect\citename{O'Rourke }2000]{O'Rourke:1998:FUC:646319.686376}
+{\sc O'Rourke, J.}
+\newblock 2000.
+\newblock Folding and unfolding in computational geometry.
+\newblock In {\em Revised Papers from the Japanese Conference on Discrete and
+  Computational Geometry}, Springer-Verlag, London, UK, UK, JCDCG '98,
+  258--266.
+
+\bibitem[\protect\citename{Ruiz et~al\mbox{.}
+  }2013]{Ruiz:2013:GMP:2542355.2542360}
+{\sc Ruiz, Jr., C.~R., Le, S.~N., and Low, K.-L.}
+\newblock 2013.
+\newblock Generating multi-style paper pop-up designs using 3d primitive
+  fitting.
+\newblock In {\em SIGGRAPH Asia 2013 Technical Briefs}, ACM, New York, NY, USA,
+  SA '13, 4:1--4:4.
+
+\bibitem[\protect\citename{Shoji et~al\mbox{.} }2001]{Shoji20013}
+{\sc Shoji, K., Kato, K., and Toyama, F.}
+\newblock 2001.
+\newblock 3-d interpretation of single line drawings based on entropy
+  minimization principle.
+
+\bibitem[\protect\citename{Wikipedia }2016]{wiki:xxx}
+{\sc Wikipedia}, 2016.
+\newblock Chebychev–grübler–kutzbach criterion --- wikipedia{,} the free
+  encyclopedia.
+\newblock [Online; accessed 30-September-2016].
+
+\end{thebibliography}
