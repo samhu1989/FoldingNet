@@ -7,10 +7,11 @@
 %%% The "\documentclass" command is the first command in your file. If you want to 
 %%% prepare a version of your article with line numbers - a "review" version - 
 %%% include the "review" parameter:
+%\usepackage{mathrsfs}
 
 \documentclass[review]{acmsiggraph}
 %%%
-
+\usepackage{amssymb}
 %%%\documentclass{acmsiggraph}
 
 %%% Title of your article or abstract.
@@ -270,68 +271,67 @@ Three-dimensional reconstruction has been wildly studied from different sources,
 %	\item[Plane Parallelism] If there are only two planes which have equal area, this two are probably parallel to each other.
 %\end{description}
 
-\section{Formulation}
-Simply put, our main problem is how to fold a planar layout $\mathcal{L} = \{l_i\}$ into its three-dimentional realization where $l_i$ represents $i$th line segment in the layout.Each line has a label that shows the line segment is solid or dashed which is used to cut or fold.
-
-Furthermore, we assume that every plane is rigid which means the interior angle in each plane stays the same, but planes can be bent during folding. Also, planes are connected by fold lines at the boundry of the patches, and we assume that the planar layout has its front and back.
-
-In order to slove this problem, we turn the box fold problem into triangular mesh deformation. One reason is that mesh can approximately represents both design layouts and 3D box models, thus we can turn this problem into functional mapping . Besides, the triangular mesh is widely studied and used, so we can use the Graph Laplacian as our methods, which will be mentioned in ****.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=3.0in]{images/approximation.jpg}
-	\caption{Given a design layout (a) and its 3D realization (c), we can approximately represent them by triangular mesh as (b) and (d).}
-	\label{fig:approximation}
-\end{figure}
-
-\subsection{New}
-If we assign the positive direction of normal is ***, and we know the final state of each angle, we can have the only one state of 3D realization. 
-
-\begin{equation}
-\theta: \{\mathbf{e_i}\}-> \{{\alpha_i}\} 
-\end{equation}
-
-\begin{equation}
-X_j: \{\mathbf{e_i}\}-> \mathbf{R}\\
-\end{equation}
-
-\begin{equation}
-F: \{X_1,X_2, \dots\}->\theta\\
-\end{equation}
-
-constrain:
-\begin{itemize}
-	\item $\alpha_i = \alpha_j$ if $\mathbf{e_i}$  and $\mathbf{e_j}$ are adjacent and paralleled, also they are in the same plane.??????(how to define)
-	\item $\alpha_i = \pi$ if $\mathbf{e_i}$ is inside the plane.??????(how to define)(does it appear?)
-\end{itemize}
-
-\subsubsection{Need to explain}
-\begin{itemize}
-	\item why a initial line sample to many short edges to learn more angles
-	\item bezier sample interval 
-\end{itemize}
-
-\subsubsection{Why laplacian can apply to our problem}
-Given a 2D flat mesh, we take each edge $\mathbf{e_i}$ as a graph node, and the distance function between two adjacent edges as its weight to construct a laplacian matrix $L = \{a_{i,j}\}$.
-\begin{equation}
-\left\{
-\begin{gathered}
-a_{i,j} = w_{i,j} = \exp^(-\frac{|dis|}{average dis}) \quad \hfill if (i,j) is adjacent. \\
-a_{i,i} = -\sum w_{i,j} \quad \hfill \\
-a_{i,j} = 0 \quad \hfill otherwise \\
-\end{gathered}
-\right.
-\end{equation}
-
-To some degree, the laplacian matrix can represent the layout structure, the eigenvectors and eigenvalues of the graph Laplacian contain both geometric and topological information, meanwhile the angles $\{\alpha_i\}$ we need to solve can been seen as a function $\theta$ defined in the layout $\mathcal{L}$.
-
-\begin{equation}
-\theta: \{\mathbf{e_i}\}-> \{{\alpha_i}\} 
-\end{equation}
-
-As a result, we can use the eigenvectors as basic functions to approximate the angle function $\theta$.
-
-
+%\section{Formulation}
+%Simply put, our main problem is how to fold a planar layout $\mathcal{L} = \{l_i\}$ into its three-dimentional realization where $l_i$ represents $i$th line segment in the layout.Each line has a label that shows the line segment is solid or dashed which is used to cut or fold.
+%
+%Furthermore, we assume that every plane is rigid which means the interior angle in each plane stays the same, but planes can be bent during folding. Also, planes are connected by fold lines at the boundry of the patches, and we assume that the planar layout has its front and back.
+%
+%In order to slove this problem, we turn the box fold problem into triangular mesh deformation. One reason is that mesh can approximately represents both design layouts and 3D box models, thus we can turn this problem into functional mapping . Besides, the triangular mesh is widely studied and used, so we can use the Graph Laplacian as our methods, which will be mentioned in ****.
+%
+%\begin{figure}[ht]
+%	\centering
+%	\includegraphics[width=3.0in]{images/approximation.jpg}
+%	\caption{Given a design layout (a) and its 3D realization (c), we can approximately represent them by triangular mesh as (b) and (d).}
+%	\label{fig:approximation}
+%\end{figure}
+%
+%\subsection{New}
+%If we assign the positive direction of normal is ***, and we know the final state of each angle, we can have the only one state of 3D realization. 
+%
+%\begin{equation}
+%\theta: \{\mathbf{e_i}\}-> \{{\alpha_i}\} 
+%\end{equation}
+%
+%\begin{equation}
+%X_j: \{\mathbf{e_i}\}-> \mathbf{R}\\
+%\end{equation}
+%
+%\begin{equation}
+%F: \{X_1,X_2, \dots\}->\theta\\
+%\end{equation}
+%
+%constrain:
+%\begin{itemize}
+%	\item $\alpha_i = \alpha_j$ if $\mathbf{e_i}$  and $\mathbf{e_j}$ are adjacent and paralleled, also they are in the same plane.??????(how to define)
+%	\item $\alpha_i = \pi$ if $\mathbf{e_i}$ is inside the plane.??????(how to define)(does it appear?)
+%\end{itemize}
+%
+%\subsubsection{Need to explain}
+%\begin{itemize}
+%	\item why a initial line sample to many short edges to learn more angles
+%	\item bezier sample interval 
+%\end{itemize}
+%
+%\subsubsection{Why laplacian can apply to our problem}
+%Given a 2D flat mesh, we take each edge $\mathbf{e_i}$ as a graph node, and the distance function between two adjacent edges as its weight to construct a laplacian matrix $L = \{a_{i,j}\}$.
+%\begin{equation}
+%\left\{
+%\begin{gathered}
+%a_{i,j} = w_{i,j} = \exp^(-\frac{|dis|}{average dis}) \quad \hfill if (i,j) is adjacent. \\
+%a_{i,i} = -\sum w_{i,j} \quad \hfill \\
+%a_{i,j} = 0 \quad \hfill otherwise \\
+%\end{gathered}
+%\right.
+%\end{equation}
+%
+%To some degree, the laplacian matrix can represent the layout structure, the eigenvectors and eigenvalues of the graph Laplacian contain both geometric and topological information, meanwhile the angles $\{\alpha_i\}$ we need to solve can been seen as a function $\theta$ defined in the layout $\mathcal{L}$.
+%
+%\begin{equation}
+%\theta: \{\mathbf{e_i}\}-> \{{\alpha_i}\} 
+%\end{equation}
+%
+%As a result, we can use the eigenvectors as basic functions to approximate the angle function $\theta$.
+\input{formulation}
 
 \section{Methods}
 
