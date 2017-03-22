@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.28)  20 MAR 2017 15:43
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.28)  22 MAR 2017 16:15
 entering extended mode
 **FoldingNet2.0.tex
 
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\FoldingNet2
-.0.tex
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
+Net2.0.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for loaded.
 
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\acmsiggraph
-.cls
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\acmsigg
+raph.cls
 Document Class: acmsiggraph 2015/11/04 v0.92 ACM SIGGRAPH class
 \ACMpointsize=\skip41
 ("D:\Program Files\CTEX\MiKTeX\tex\latex\base\article.cls"
@@ -172,8 +172,8 @@ Excluding comment 'comment') Excluding comment 'CCSXML'
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\acmcopyrigh
-t.sty
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\acmcopy
+right.sty
 Package: acmcopyright 2014/06/29 v1.2 Copyright statements for ACM classes
  ("D:\Program Files\CTEX\MiKTeX\tex\latex\xkeyval\xkeyval.sty"
 Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
@@ -294,23 +294,33 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package hyperref Info: Option `colorlinks' set `true' on input line 548.
 Package hyperref Info: Option `breaklinks' set `true' on input line 548.
 )
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\FoldingNet2
-.0.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 59.
+("D:\Program Files\CTEX\MiKTeX\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("D:\Program Files\CTEX\MiKTeX\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
+Net2.0.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 60.
  ("D:\Program Files\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -340,7 +350,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 59.
+Package hyperref Info: Link coloring ON on input line 60.
 
 ("D:\Program Files\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -350,58 +360,68 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 59.
-LaTeX Info: Redefining \pageref on input line 59.
-LaTeX Info: Redefining \nameref on input line 59.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 69.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 70.
 
 ("D:\Program Files\CTEX\MiKTeX\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 69.
+(Font)              scaled to size 13.24796pt on input line 70.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 69.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 70.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 13.24796pt on input line 69.
+(Font)              scaled to size 13.24796pt on input line 70.
 
 <images/teaser.jpg, id=3, 925.4575pt x 179.67125pt>
 File: images/teaser.jpg Graphic file (type jpg)
  <use images/teaser.jpg>
-Package pdftex.def Info: images/teaser.jpg used on input line 69.
+Package pdftex.def Info: images/teaser.jpg used on input line 70.
 (pdftex.def)             Requested size: 521.16167pt x 101.17755pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 69.
+(caption)                particular \caption on input line 70.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.27167pt too wide) in paragraph at lines 69--69
+Overfull \hbox (15.27167pt too wide) in paragraph at lines 70--70
  [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 69.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 69.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 70.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 75.
+(Font)              scaled to size 11.03998pt on input line 76.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 75.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 76.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 11.03998pt on input line 75.
+(Font)              scaled to size 11.03998pt on input line 76.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 4.59999pt on input line 75.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 113.
+(Font)              scaled to size 4.59999pt on input line 76.
+LaTeX Font Info:    Try loading font information for U+msa on input line 114.
+("D:\Program Files\CTEX\MiKTeX\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 114.
+
+("D:\Program Files\CTEX\MiKTeX\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 114.
+
 
 ("D:\Program Files\CTEX\MiKTeX\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
 
-Underfull \hbox (badness 1496) in paragraph at lines 127--128
+Underfull \hbox (badness 1496) in paragraph at lines 128--129
 \OT1/ptm/b/n/9 Reconsturction from s-in-gle line draw-ings. \OT1/ptm/m/n/9 Line
  draw-ings
  []
@@ -412,45 +432,41 @@ Missing character: There is no § in font ptmr7t!
 d}}
 
 
- <E:/image_lab/packaging_folding/svn/FoldingNet/documents/PaperDraft/images/tea
-ser.jpg>] <images/approximation.jpg, id=58, 4266.94125pt x 1356.06625pt>
+ <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images
+/teaser.jpg>]
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\formula
+tion.tex
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 9.19998pt on input line 3.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 9.19998pt on input line 3.
+ <images/approximation.jpg, id=59, 4266.94125pt x 1356.06625pt>
 File: images/approximation.jpg Graphic file (type jpg)
 
 <use images/approximation.jpg>
-Package pdftex.def Info: images/approximation.jpg used on input line 282.
+Package pdftex.def Info: images/approximation.jpg used on input line 7.
 (pdftex.def)             Requested size: 216.81pt x 68.90395pt.
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 287.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 287.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 9.19998pt on input line 287.
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 304.
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 308.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 308.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 8.27998pt on input line 308.
-
-<images/databaseflow.jpg, id=61, 3202.96625pt x 1011.78pt>
+)
+<images/databaseflow.jpg, id=66, 3202.96625pt x 1011.78pt>
 File: images/databaseflow.jpg Graphic file (type jpg)
 
 <use images/databaseflow.jpg>
 Package pdftex.def Info: images/databaseflow.jpg used on input line 355.
 (pdftex.def)             Requested size: 216.81pt x 68.48518pt.
- [2 <E:/image_lab/packaging_folding/svn/FoldingNet/documents/PaperDraft/images/
-approximation.jpg> <E:/image_lab/packaging_folding/svn/FoldingNet/documents/Pap
-erDraft/images/databaseflow.jpg>]
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 389.
+ [2 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/ima
+ges/approximation.jpg>]
 Underfull \hbox (badness 1264) in paragraph at lines 406--407
 []\OT1/ptm/m/n/9 Finally we can get the cor-re-spond-ing 3D re-al-iza-tion $[] 
 \OT1/cmr/m/n/9 =$
  []
 
 
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\FoldingNet2
-.0.bbl
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
+Net2.0.bbl
 Missing character: There is no Ã in font ptmrc7t!
 Missing character: There is no § in font ptmrc7t!
 Missing character: There is no â in font ptmr7t!
@@ -462,52 +478,57 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 
-Underfull \hbox (badness 4518) in paragraph at lines 115--119
+Underfull \hbox (badness 4518) in paragraph at lines 124--128
 []\OT1/ptm/m/sc/9 Wikipedia\OT1/ptm/m/n/9 , 2016.  Cheby-chev-gr-blerkutzbach c
 ri-te-ri-on ---
  []
 
 
-Underfull \hbox (badness 1629) in paragraph at lines 115--119
+Underfull \hbox (badness 1629) in paragraph at lines 124--128
 \OT1/ptm/m/n/9 wikipedi-a, the free en-cy-clo-pe-di-a.  [On-line; ac-cessed 30-
 
  []
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
- [3]
+ [3 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/ima
+ges/databaseflow.jpg>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
 
-(E:\image_lab\packaging_folding\svn\FoldingNet\documents\PaperDraft\FoldingNet2
-.0.aux)
+(E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
+Net2.0.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 419.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 419.
  ) 
 Here is how much of TeX's memory you used:
- 7186 strings out of 495354
- 108114 string characters out of 3183075
- 217318 words of memory out of 3000000
- 10217 multiletter control sequences out of 15000+200000
- 32974 words of font info for 63 fonts, out of 3000000 for 9000
+ 7475 strings out of 495354
+ 111499 string characters out of 3183075
+ 220997 words of memory out of 3000000
+ 10484 multiletter control sequences out of 15000+200000
+ 32388 words of font info for 68 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,7n,75p,1369b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,9n,75p,1369b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Program Files/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<D:/Program Fil
 es/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><D:/Program Files/CTEX/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><D:/Program Files/CTEX/MiKTeX/f
 onts/type1/public/amsfonts/cmextra/cmex9.pfb><D:/Program Files/CTEX/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi6.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmi9.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmr6.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr9.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/P
-rogram Files/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><D:/Program Files/
-CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><D:/Program Files/CTEX/MiKTeX/f
-onts/type1/urw/times/utmb8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/t
-imes/utmbi8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb
-><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on FoldingNet2.0.pdf (3 pages, 5592076 bytes).
+s/type1/public/amsfonts/cm/cmmi5.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi6.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr6.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.p
+fb><D:/Program Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/P
+rogram Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Program F
+iles/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files/CTE
+X/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/Program Files/CTEX/MiKTeX
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/Program Files/CTEX/MiKTeX/f
+onts/type1/urw/helvetic/uhvb8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/ur
+w/helvetic/uhvr8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmb8
+a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/Progr
+am Files/CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/Program Files/CTEX/Mi
+KTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on FoldingNet2.0.pdf (3 pages, 5626042 bytes).
 PDF statistics:
- 161 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 183 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
