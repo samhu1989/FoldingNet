@@ -20,26 +20,26 @@ It is difficult to design a model and a learning scheme to learn the operator in
 \mathcal{\bar{F}}:\{(X_0,X_1,...,X_n)\}\rightarrow\{\Theta\}
 \label{equ:F_1}
 \end{equation}
-in which the $\{(X_0,X_1,...,X_n)\}$ is a set of feature tensors that is extracted from $\{L\}$ to represent each 2D layout. A feature tensor is composed of n feature functionals and a feature functional has the form of $X_n:E\rightarrow\mathbb{R}$ which is a real value functional that maps each edge of a mesh to a real value. The $\{\Theta\}$ is a set of dihedral angle functionals that maps each edge of a mesh to its angle of folded state. One dihedral angle functional has the form of $\Theta:E\rightarrow [0,2\pi]$. To avoid ambiguity, we define the dihedral angle to be the one that the face normal pointed to.({\color{red} {need more elaberation with the definition of ``positive dihedral angle"}})\\
-Unfortunately, it is still difficult to learn the operator $\mathcal{\bar{F}}$, since the dimension number of tensors and functionals in $\{(X_0,X_1,...,X_n)\}$ and $\{\Theta\}$ varies from one pair of $(L,R)$ to another.\\
-To cope with this problem, we approximate each functionals as a linear combination of $K$ basis functionals $\Phi = \{\phi_k\}$ as $X_n \approx \sum \alpha_k \phi_k$  and $\Theta \approx \sum \theta_k \phi_k$. Each pair of $(L,R)$ shares the same $\Phi$, which allows us to further change the problem into learning $\mathcal{\hat{F}}$ as a mapping from the feature coefficient tensors to dihedral angle coefficients:
+in which the $\{(X_0,X_1,...,X_n)\}$ is a set of feature tensors that is extracted from $\{L\}$ to represent each 2D layout. A feature tensor is composed of n feature functions and a feature function has the form of $X_n:E\rightarrow\mathbb{R}$ which is a real value function that maps each edge of a mesh to a real value. The $\{\Theta\}$ is a set of dihedral angle functions that maps each edge of a mesh to its angle of folded state. One dihedral angle functional has the form of $\Theta:E\rightarrow [0,2\pi]$. To avoid ambiguity, we define the dihedral angle to be the one that the face normal pointed to.({\color{red} {need more elaberation with the definition of ``positive dihedral angle"}})\\
+Unfortunately, it is still difficult to learn the operator $\mathcal{\bar{F}}$, since the dimension number of tensors and functions in $\{(X_0,X_1,...,X_n)\}$ and $\{\Theta\}$ varies from one pair of $(L,R)$ to another.\\
+To cope with this problem, we approximate each functions as a linear combination of $K$ basis functions $\Phi = \{\phi_k\}$ as $X_n \approx \sum \alpha_k \phi_k$  and $\Theta \approx \sum \theta_k \phi_k$. Each pair of $(L,R)$ shares the same $\Phi$, which allows us to further change the problem into learning $\mathcal{\hat{F}}$ as a mapping from the feature coefficient tensors to dihedral angle coefficients:
 \begin{equation}
-\mathcal{\hat{F}}:\{(\{\alpha_k\}_0,\{\alpha_k\}_1,...,\{\alpha_k\}_n)\}\rightarrow\{\{\theta_k\}\}
+\mathcal{\hat{F}}:\{(\alpha_k\}_0,\{\alpha_k\}_1,...,\{\alpha_k\}_n)\}\rightarrow\{\{\theta_k\}\}
 \label{equ:F_2}
 \end{equation}
 \subsection{Choice of Basis Functionals}
-It is tricky to construct basis functionals $\{\Phi\}$, which are derived from the first $K$ smallest magnitude eigenvectors of the Graph Laplacian $\mathcal{L} = (a_{i,j})$:
-
+We construct the basis functionals $\{\Phi\}$ as follows:\\
+Firstly, we construct the edge Laplacian matrix $A$ for a mesh:
 \begin{equation}
 \left\{
 \begin{gathered}
-a_{i,j} = w_{i,j} = \exp^{-\frac{|dis_{i,j}|}{\overline{dis}}} \quad \hfill if (i,j) is adjacent. \\
+a_{i,j} = w_{i,j} = \exp\{-\frac{d(e_i,e_j)}{\overline{d(e_i,e_j)}}\} \quad \hfill if~(e_i,e_j)~shares~a~vertex. \\
 a_{i,i} = -\sum w_{i,j} \quad \hfill \\
 a_{i,j} = 0 \quad \hfill otherwise \\
 \end{gathered}
 \right.
 \end{equation}
-
-where we take each edge as a graph node, and $dis_{i,j}$ means the Euclidean distance between the midpoint of edge $i$ and $j$, and $\overline{dis}$ denotes the average value of all the distance. This menthod is widely used in geometric reconstruction and pose tranfer field \cite{Levy:2006:LET:1136647.1136965}.
-
+in which the $d(e_i,e_j)$ is the euclidean distance between the centroid of the edge $e_i$ and edge $e_j$ and $\overline{d(e_i,e_j)}$ is the mean of $d(e_i,e_j)$ on this mesh.\\
+Secondly, we calculate $K$ eigenfunctions of $A$ corresponding to the smallest magnitudes of $K$ eigenvalues as $\Phi$ for this mesh.({\color{blue}{We now use ``scipy.sparse.linalg.eigs" in python to solve this problem. It seems that it is also use ``ARPACK" routines as backend the same as other solvers. We choose ``SM" mode to make the solver to choose eigenvalues with smallest magnitudes}})
 \subsection{Choice of Features}
+We try not to design handcraft features to avoid the loss of information during feature extraction. Therefore, we use the coordinates of vertices from flat meshes as feature functions. For each edge, there is two vertices at each end and two dimension for each vertices in flat meshes, which defines the feature tensor as $(X_{v_0},Y_{v_0},X_{v_1},Y_{v_1})$ for a input mesh.
