@@ -29,6 +29,7 @@ To cope with this problem, we approximate each functions as a linear combination
 \end{equation}
 \subsection{Choice of Basis Functionals}
 We construct the basis functionals $\{\Phi\}$ as follows:\\
+\subsubsection{Method 1}
 Firstly, we construct the edge Laplacian matrix $A$ for a mesh:
 \begin{equation}
 \left\{
@@ -40,6 +41,63 @@ a_{i,j} = 0 \quad \hfill otherwise \\
 \right.
 \end{equation}
 in which the $d(e_i,e_j)$ is the euclidean distance between the centroid of the edge $e_i$ and edge $e_j$ and $\overline{d(e_i,e_j)}$ is the mean of $d(e_i,e_j)$ on this mesh.\\
+
+\subsubsection{Method 2}
+We can also construct the edge Laplacian matrix $A^{'}$ as 
+\begin{equation}
+\left\{
+\begin{gathered}
+a_{i,j} = w_{i,j} = \exp\{-\frac{d(e_i,e_j)}{\overline{d(e_i,e_j)}}\} \quad \hfill \\ \quad  \hfill if~(e_i,e_j)~are~in~the~same~face. \\
+a_{i,i} = -\sum w_{i,j} \quad \hfill \\
+a_{i,j} = 0 \quad \hfill otherwise \\
+\end{gathered}
+\right.
+\end{equation}
+
+where we can remove the effect from little related edges.
+
+\subsubsection{Method 3}
+Besides, we have another way to construct the edge Laplacian matrix $A^{''}$ focus on the fold edges $\{e_{f_i}\}$ as
+
+\begin{equation}
+\left\{
+\begin{gathered}
+a_{{f_i},{f_j}} = w_{{f_i},{f_j}} = \exp\{-\frac{d(e_{f_i},e_{f_j})}{\overline{d(e_{f_i},e_j)}}\} \quad \hfill \\ \quad  \hfill if~(e_{f_i},e_{f_j})~satisfy~condition~1. \\
+a_{{f_i},-1} = a_{-1,{f_i}} =  w_{{f_i},j} = \exp\{-\frac{d(e_{f_i},e_j)}{\overline{d(e_{f_i},e_{j})}}\} \quad \hfill \\ \quad  \hfill if~(e_{f_i},e_j)~satisfy~condition~2.\\
+a_{{f_i},f_i} = -\sum w_{{f_i},{f_j}} \quad \hfill \\
+a_{{f_i},{f_j}} = 0 \quad \hfill otherwise \\
+\end{gathered}
+\right.
+\end{equation}
+
+
+$\overline{d(e_{f_i},e_j)}$ is the average distance of all record distances.  
+
+\textbf{Condition 1:} if $e_{f_i}$ and  $e_{f_j}$ are in the same face, and all of them are the fold edge.
+
+\textbf{Condition 2:} if $e_{f_i}$ and  $e_{j}$ are in the same face, one of them $e_{f_i}$ is the fold edge, and $e_j$ is some cut edge in the same face with $e_{f_i}$.
+
+This method is a wrong implement but we get the best result ever, why?
+
+\subsubsection{Method 3-1}
+The dimension of Laplacian is the sum of fold edges' size and cut edges' size which are in the same face with fold edges. 
+
+\subsubsection{Method 3-2}
+The dimension of Laplacian is $fn + 1$, $fn$ is the size of fold edges. This method is mean to keep the origin relations between fold edges, and we use the added one row and column to save some covered distance. Figure \ref{fig:method} shows an example of initial distance saved in Laplacian matrix.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=3.0in]{images/method3.png}
+	\caption{An example shows the initial distance between edge pair of Laplacian matrix by method 3 and 3-2. }
+	\label{fig:method}
+\end{figure}
+
+\subsubsection{Method 3-3}
+Compared with method 3-2, we only set the distance between all fold edges as $\infty$ to observe the influence of last column and row on the corresponding 3D realization.
+
+\subsubsection{Method 3-4}
+We construct the similar Laplacian as Method 3-3, to see the influence of last column and row with $size = n$, $n$ is the size of all edges.
+
 Secondly, we calculate $K$ eigenfunctions of $A$ corresponding to the smallest magnitudes of $K$ eigenvalues as $\Phi$ for this mesh.({\color{blue}{We now use ``scipy.sparse.linalg.eigs" in python to solve this problem. It seems that it is also use ``ARPACK" routines as backend the same as other solvers. We choose ``SM" mode to make the solver to choose eigenvalues with smallest magnitudes}})
 \subsection{Choice of Features}
 We try not to design handcraft features to avoid the loss of information during feature extraction. Therefore, we use the coordinates of vertices from flat meshes as feature functions. For each edge, there is two vertices at each end and two dimension for each vertices in flat meshes, which defines the feature tensor as $(X_{v_0},Y_{v_0},X_{v_1},Y_{v_1})$ for a input mesh.

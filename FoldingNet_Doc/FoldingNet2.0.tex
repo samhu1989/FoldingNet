@@ -12,6 +12,10 @@
 \documentclass[review]{acmsiggraph}
 %%%
 \usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+
 %%%\documentclass{acmsiggraph}
 
 %%% Title of your article or abstract.
@@ -335,75 +339,7 @@ Three-dimensional reconstruction has been wildly studied from different sources,
 
 \section{Methods}
 
-
-\section{Experiments}
-We now describe the experimental part of our methods.
-
-\subsection{DataBase}
-To our knowledge, the problem we need to solve is new, thus we have not found any related database. As a result, we built our database following a flow as Figure \ref{fig:dataset}.
-
-For one example as shown in Figure \ref{fig:dataset}(a), we collect the planar layout from designers, then we transfer the design into a flat triangular mesh, and finally interactively fold this triangular mesh into 3D realization.
-
-In the end, we have 51 example pairs where each includes a flat triangular mesh and its corresponding 3D realization.
-
-%The bigger red rectangle shows the main interface, we use keyboard to control which edge need to be assigned and which side need to be fold such as the black side rotated around the red line, and with the smaller red rectangle, it's the value the we want to assign such as 30 degree. At last, the labelled 3D model export to ply file as the result.
-
-%One file 'box\_004.col\_int.arma' indicates all the line in the ply is solid or dash, another file stores the minimun spanning tree of the meshes generated.%
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=3.0in]{images/databaseflow.jpg}
-	\caption{Take a design layout named box\_004 as an example, we collect it from designers, then we convert it to a flat triangular mesh(b), which can finally import to the interface (c) to manully assign angles to each fold edge to get the folded 3D realization.}
-	\label{fig:dataset}
-\end{figure}
-
-\subsection{TrainingData}
-%From the database, we extract the ground truth angle with the following procedure. 
-
-%Given two faces $f_1$ and $f_2$ with normal $\mathbf{n_1}$ and $\mathbf{n_2}$ separately, and two vertices $V_1,V_2$ of their shared edge, we caculate the diheral angle $\theta$ of these two faces by 
-%
-%\begin{equation}
-%\theta= 
-%\left\{
-%\begin{gathered}
-%2\pi - \alpha   \quad    \hfill      \mathbf{e} \cdot (\mathbf{n_1} \times \mathbf{n_2}) < 0 \\
-%\alpha  \quad   \hfill      otherwise\\
-%\end{gathered}
-%\right.
-%\end{equation}
-
-%in which $\mathbf{e} = \overrightarrow{V_2V_1} $, and $\alpha = \pi - \arccos(\mathbf{n_1} \cdot \mathbf{n_2})$.
-
-From the database, we extract the ground truth angle as the dihedral angle between front side of two faces. 
-
-%\begin{figure}[ht]
-%	\centering
-%	\includegraphics[width=3.0in]{images/computeAngle.jpg}
-%	\caption{The initial flat two face $f_1$ and $f_2$ will rotate to two different states (b) and (c) with the same rotate angle if we haven't defined the rotate order. When $f_2$ rotate around $f_1$, we will get (b), otherwise we will get (c).}
-%	\label{fig:compute}
-%\end{figure}
-
-\subsection{Implement Details}
-Given a flat mesh $\mathcal{M} = (\mathcal{V},\mathcal{N},\mathcal{E},\mathcal{P},\mathcal{F})$, where 
-\begin{itemize}
-	\item for each vertex $v_i \in \mathcal{V}, v_z = 0$.
-	\item for each normal $n_i \in \mathcal{N}$, $n_i = (0,0,1)$.
-	\item for each edge $\mathbf{e_i} \in \mathcal{E}$, it has a label denotes the line is dash or solid.
-	\item for each plane $p_i \in \mathcal{P}$, it is a minimun rigid polygon.
-	\item for each triangular face $f \in \mathcal{F}$, we know $f_i \in p_j$.
-\end{itemize}
-
-We need to learn angles $\mathcal{A} = \{\alpha_i\}$ of the corresponding edges $\mathcal{E} = \{\mathbf{e_i}\}$, angle $\alpha_i$ means the dihedral angle between front side of two faces sharing edge $\mathbf{e_i}$ . There is some constrains on $\mathcal{A}$:
-\begin{itemize}
-	\item $\alpha_i = \alpha_j$ if $\mathbf{e_i}$  and $\mathbf{e_j}$ are adjacent and paralleled, also they are in the same plane.??????(how to define)
-	\item $\alpha_i = \pi$ if $\mathbf{e_i}$ is inside the plane.??????(how to define)(does it appear?)
-\end{itemize}
-
-The first constrain means that when two  edge are on the same fold edge between two faces, they have the same fold angle. While if edges are inside the plane, the fold angle is always $\pi$.
-
-Through $\mathcal{A}$, we can compute the new coordinates of each face which rotates around the edge $e_i$ to angle $\alpha_i$(need to modify). This just fits the physical problem of folding boxes.
-
-Finally we can get the corresponding 3D realization $\mathcal{\hat{M}} = \{\mathcal{\hat{V}},\mathcal{\hat{N}},\mathcal{E},\mathcal{P},\mathcal{F}\}$, where $\mathcal{\hat{V}}$ and $\mathcal{\hat{N}}$ is the new computed value of vertices and normals.
+\input{experiment}
 
 \section{User Study}
 

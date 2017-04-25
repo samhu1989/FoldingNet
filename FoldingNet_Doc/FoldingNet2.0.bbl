@@ -56,6 +56,15 @@
   drawings as 3d wire frames.
 \newblock {\em International Journal of Computer Vision 9}, 2, 113--136.
 
+\bibitem[\protect\citename{Levy }2006]{Levy:2006:LET:1136647.1136965}
+{\sc Levy, B.}
+\newblock 2006.
+\newblock Laplace-beltrami eigenfunctions towards an algorithm that
+  "understands" geometry.
+\newblock In {\em Proceedings of the IEEE International Conference on Shape
+  Modeling and Applications 2006}, IEEE Computer Society, Washington, DC, USA,
+  SMI '06, 13--.
+
 \bibitem[\protect\citename{Li et~al\mbox{.} }2010]{Li:2010:PAP:1833349.1778848}
 {\sc Li, X.-Y., Shen, C.-H., Huang, S.-S., Ju, T., and Hu, S.-M.}
 \newblock 2010.
