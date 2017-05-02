@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.28)  25 APR 2017 12:40
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.28)  1 MAY 2017 11:06
 entering extended mode
 **FoldingNet2.0.tex
 
@@ -481,11 +481,6 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 8.27998pt on input line 32.
 
-Overfull \hbox (3.83223pt too wide) detected at line 42
-[]
- []
-
-
 Underfull \hbox (badness 1087) in paragraph at lines 42--44
 \OT1/ptm/m/n/9 in which the $\OML/cmm/m/it/9 d\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 e
 []; e[]\OT1/cmr/m/n/9 )$ \OT1/ptm/m/n/9 is the eu-clidean dis-tance be-tween th
@@ -497,19 +492,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--44
 
  []
 
+<images/laplacian.png, id=63, 331.99031pt x 320.69812pt>
+File: images/laplacian.png Graphic file (type png)
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<use images/laplacian.png>
+Package pdftex.def Info: images/laplacian.png used on input line 47.
+(pdftex.def)             Requested size: 216.81pt x 209.43488pt.
  [2 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/ima
-ges/approximation.jpg>] <images/method3.png, id=90, 688.82344pt x 516.42938pt>
+ges/approximation.jpg> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet
+/FoldingNet_Doc/images/laplacian.png>]
+<images/method3.png, id=93, 688.82344pt x 516.42938pt>
 File: images/method3.png Graphic file (type png)
 
 <use images/method3.png>
-Package pdftex.def Info: images/method3.png used on input line 90.
+Package pdftex.def Info: images/method3.png used on input line 97.
 (pdftex.def)             Requested size: 216.81pt x 162.55003pt.
 )
 (E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\experim
-ent.tex <images/databaseflow.jpg, id=94, 3202.96625pt x 1011.78pt>
+ent.tex [3 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_
+Doc/images/method3.png>]
+<images/databaseflow.jpg, id=119, 3202.96625pt x 1011.78pt>
 File: images/databaseflow.jpg Graphic file (type jpg)
 
 <use images/databaseflow.jpg>
@@ -517,406 +519,366 @@ Package pdftex.def Info: images/databaseflow.jpg used on input line 17.
 (pdftex.def)             Requested size: 216.81pt x 68.48518pt.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
- [3 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/ima
-ges/method3.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Foldi
-ngNet_Doc/images/databaseflow.jpg>]
-Underfull \hbox (badness 1264) in paragraph at lines 68--69
+
+Underfull \hbox (badness 1264) in paragraph at lines 70--71
 []\OT1/ptm/m/n/9 Finally we can get the cor-re-spond-ing 3D re-al-iza-tion $[] 
 \OT1/cmr/m/n/9 =$
  []
 
-<images/comparison/001i.png, id=117, 863.47594pt x 536.75531pt>
+<images/comparison/001i.png, id=120, 863.47594pt x 536.75531pt>
 File: images/comparison/001i.png Graphic file (type png)
 
 <use images/comparison/001i.png>
-Package pdftex.def Info: images/comparison/001i.png used on input line 76.
+Package pdftex.def Info: images/comparison/001i.png used on input line 78.
 (pdftex.def)             Requested size: 91.53064pt x 56.9055pt.
 
-<images/comparison/001o.png, id=118, 635.37375pt x 444.91219pt>
+<images/comparison/001o.png, id=121, 635.37375pt x 444.91219pt>
 File: images/comparison/001o.png Graphic file (type png)
 
 <use images/comparison/001o.png>
-Package pdftex.def Info: images/comparison/001o.png used on input line 80.
+Package pdftex.def Info: images/comparison/001o.png used on input line 82.
 (pdftex.def)             Requested size: 81.26357pt x 56.9055pt.
 
-<images/comparison/001-1-1.png, id=119, 329.73187pt x 335.75438pt>
-File: images/comparison/001-1-1.png Graphic file (type png)
+<images/comparison/001-1.png, id=122, 329.73187pt x 335.75438pt>
+File: images/comparison/001-1.png Graphic file (type png)
 
-<use images/comparison/001-1-1.png>
-Package pdftex.def Info: images/comparison/001-1-1.png used on input line 84.
+<use images/comparison/001-1.png>
+Package pdftex.def Info: images/comparison/001-1.png used on input line 86.
 (pdftex.def)             Requested size: 55.8826pt x 56.9055pt.
 
-<images/comparison/001-2-1.png, id=120, 341.02406pt x 363.60844pt>
-File: images/comparison/001-2-1.png Graphic file (type png)
+<images/comparison/001-2.png, id=123, 310.15875pt x 344.03531pt>
+File: images/comparison/001-2.png Graphic file (type png)
 
-<use images/comparison/001-2-1.png>
-Package pdftex.def Info: images/comparison/001-2-1.png used on input line 88.
-(pdftex.def)             Requested size: 53.36813pt x 56.9055pt.
+<use images/comparison/001-2.png>
+Package pdftex.def Info: images/comparison/001-2.png used on input line 90.
+(pdftex.def)             Requested size: 51.30176pt x 56.9055pt.
 
-<images/comparison/001-3-1.png, id=121, 343.2825pt x 299.61937pt>
-File: images/comparison/001-3-1.png Graphic file (type png)
+<images/comparison/001-3.png, id=124, 337.26pt x 292.84406pt>
+File: images/comparison/001-3.png Graphic file (type png)
 
-<use images/comparison/001-3-1.png>
-Package pdftex.def Info: images/comparison/001-3-1.png used on input line 92.
-(pdftex.def)             Requested size: 65.19815pt x 56.9055pt.
+<use images/comparison/001-3.png>
+Package pdftex.def Info: images/comparison/001-3.png used on input line 94.
+(pdftex.def)             Requested size: 65.53642pt x 56.9055pt.
 
-<images/comparison/002i.png, id=122, 587.94656pt x 559.33969pt>
+<images/comparison/002i.png, id=125, 587.94656pt x 559.33969pt>
 File: images/comparison/002i.png Graphic file (type png)
 
 <use images/comparison/002i.png>
-Package pdftex.def Info: images/comparison/002i.png used on input line 98.
+Package pdftex.def Info: images/comparison/002i.png used on input line 100.
 (pdftex.def)             Requested size: 59.81186pt x 56.9055pt.
 
-<images/comparison/002o.png, id=123, 577.40718pt x 470.50781pt>
+<images/comparison/002o.png, id=126, 577.40718pt x 470.50781pt>
 File: images/comparison/002o.png Graphic file (type png)
 
 <use images/comparison/002o.png>
-Package pdftex.def Info: images/comparison/002o.png used on input line 102.
+Package pdftex.def Info: images/comparison/002o.png used on input line 104.
 (pdftex.def)             Requested size: 69.83212pt x 56.9055pt.
 
-<images/comparison/002-1-1.png, id=124, 299.61937pt x 250.68657pt>
-File: images/comparison/002-1-1.png Graphic file (type png)
+<images/comparison/002-1.png, id=127, 326.72063pt x 277.035pt>
+File: images/comparison/002-1.png Graphic file (type png)
 
-<use images/comparison/002-1-1.png>
-Package pdftex.def Info: images/comparison/002-1-1.png used on input line 106.
-(pdftex.def)             Requested size: 68.01035pt x 56.9055pt.
+<use images/comparison/002-1.png>
+Package pdftex.def Info: images/comparison/002-1.png used on input line 108.
+(pdftex.def)             Requested size: 67.10777pt x 56.9055pt.
 
-<images/comparison/002-2-1.png, id=125, 339.51843pt x 347.79938pt>
-File: images/comparison/002-2-1.png Graphic file (type png)
+<images/comparison/002-2.png, id=128, 316.93407pt x 368.87813pt>
+File: images/comparison/002-2.png Graphic file (type png)
 
-<use images/comparison/002-2-1.png>
-Package pdftex.def Info: images/comparison/002-2-1.png used on input line 110.
-(pdftex.def)             Requested size: 55.54668pt x 56.9055pt.
+<use images/comparison/002-2.png>
+Package pdftex.def Info: images/comparison/002-2.png used on input line 112.
+(pdftex.def)             Requested size: 48.89214pt x 56.9055pt.
 
-<images/comparison/002-3-1.png, id=126, 347.04657pt x 300.3722pt>
-File: images/comparison/002-3-1.png Graphic file (type png)
+<images/comparison/002-3.png, id=129, 344.78813pt x 271.0125pt>
+File: images/comparison/002-3.png Graphic file (type png)
 
-<use images/comparison/002-3-1.png>
-Package pdftex.def Info: images/comparison/002-3-1.png used on input line 114.
-(pdftex.def)             Requested size: 65.74359pt x 56.9055pt.
+<use images/comparison/002-3.png>
+Package pdftex.def Info: images/comparison/002-3.png used on input line 116.
+(pdftex.def)             Requested size: 72.39185pt x 56.9055pt.
 
-<images/comparison/004i.png, id=127, 735.49782pt x 478.78876pt>
+<images/comparison/004i.png, id=130, 735.49782pt x 478.78876pt>
 File: images/comparison/004i.png Graphic file (type png)
 
 <use images/comparison/004i.png>
-Package pdftex.def Info: images/comparison/004i.png used on input line 120.
+Package pdftex.def Info: images/comparison/004i.png used on input line 122.
 (pdftex.def)             Requested size: 87.41422pt x 56.9055pt.
 
-<images/comparison/004o.png, id=128, 563.10374pt x 587.94656pt>
+<images/comparison/004o.png, id=131, 563.10374pt x 587.94656pt>
 File: images/comparison/004o.png Graphic file (type png)
 
 <use images/comparison/004o.png>
-Package pdftex.def Info: images/comparison/004o.png used on input line 124.
+Package pdftex.def Info: images/comparison/004o.png used on input line 126.
 (pdftex.def)             Requested size: 54.5007pt x 56.9055pt.
 
-<images/comparison/004-1-1.png, id=129, 329.73187pt x 336.50719pt>
-File: images/comparison/004-1-1.png Graphic file (type png)
+<images/comparison/004-1.png, id=132, 317.68687pt x 366.61969pt>
+File: images/comparison/004-1.png Graphic file (type png)
 
-<use images/comparison/004-1-1.png>
-Package pdftex.def Info: images/comparison/004-1-1.png used on input line 128.
-(pdftex.def)             Requested size: 55.75682pt x 56.9055pt.
+<use images/comparison/004-1.png>
+Package pdftex.def Info: images/comparison/004-1.png used on input line 130.
+(pdftex.def)             Requested size: 49.3088pt x 56.9055pt.
 
-<images/comparison/004-2-1.png, id=130, 339.51843pt x 405.76593pt>
-File: images/comparison/004-2-1.png Graphic file (type png)
+<images/comparison/004-2.png, id=133, 331.99031pt x 423.08063pt>
+File: images/comparison/004-2.png Graphic file (type png)
 
-<use images/comparison/004-2-1.png>
-Package pdftex.def Info: images/comparison/004-2-1.png used on input line 132.
-(pdftex.def)             Requested size: 47.61514pt x 56.9055pt.
+<use images/comparison/004-2.png>
+Package pdftex.def Info: images/comparison/004-2.png used on input line 134.
+(pdftex.def)             Requested size: 44.64958pt x 56.9055pt.
 
-<images/comparison/004-3-1.png, id=131, 333.49594pt x 394.47375pt>
-File: images/comparison/004-3-1.png Graphic file (type png)
+<images/comparison/004-3.png, id=134, 316.18124pt x 402.00188pt>
+File: images/comparison/004-3.png Graphic file (type png)
 
-<use images/comparison/004-3-1.png>
-Package pdftex.def Info: images/comparison/004-3-1.png used on input line 136.
-(pdftex.def)             Requested size: 48.10886pt x 56.9055pt.
+<use images/comparison/004-3.png>
+Package pdftex.def Info: images/comparison/004-3.png used on input line 138.
+(pdftex.def)             Requested size: 44.75717pt x 56.9055pt.
 
-<images/comparison/005i.png, id=132, 603.0028pt x 584.1825pt>
+<images/comparison/005i.png, id=135, 603.0028pt x 584.1825pt>
 File: images/comparison/005i.png Graphic file (type png)
 
 <use images/comparison/005i.png>
-Package pdftex.def Info: images/comparison/005i.png used on input line 142.
+Package pdftex.def Info: images/comparison/005i.png used on input line 144.
 (pdftex.def)             Requested size: 58.73042pt x 56.9055pt.
 
-<images/comparison/005o.png, id=133, 468.24937pt x 515.67656pt>
+<images/comparison/005o.png, id=136, 468.24937pt x 515.67656pt>
 File: images/comparison/005o.png Graphic file (type png)
 
 <use images/comparison/005o.png>
-Package pdftex.def Info: images/comparison/005o.png used on input line 146.
+Package pdftex.def Info: images/comparison/005o.png used on input line 148.
 (pdftex.def)             Requested size: 51.67192pt x 56.9055pt.
 
-<images/comparison/005-1-1.png, id=134, 347.79938pt x 370.38374pt>
-File: images/comparison/005-1-1.png Graphic file (type png)
-
-<use images/comparison/005-1-1.png>
-Package pdftex.def Info: images/comparison/005-1-1.png used on input line 150.
-(pdftex.def)             Requested size: 53.43071pt x 56.9055pt.
-
-<images/comparison/005-2-1.png, id=135, 339.51843pt x 368.87813pt>
-File: images/comparison/005-2-1.png Graphic file (type png)
-
-<use images/comparison/005-2-1.png>
-Package pdftex.def Info: images/comparison/005-2-1.png used on input line 154.
-(pdftex.def)             Requested size: 52.37613pt x 56.9055pt.
-
-<images/comparison/005-3-1.png, id=136, 349.305pt x 462.22687pt>
-File: images/comparison/005-3-1.png Graphic file (type png)
-
-<use images/comparison/005-3-1.png>
-Package pdftex.def Info: images/comparison/005-3-1.png used on input line 158.
-(pdftex.def)             Requested size: 43.00209pt x 56.9055pt.
-File: images/comparison/001i.png Graphic file (type png)
- <use images/comparison/001i.png>
-Package pdftex.def Info: images/comparison/001i.png used on input line 168.
-(pdftex.def)             Requested size: 91.53064pt x 56.9055pt.
-File: images/comparison/001o.png Graphic file (type png)
-
-<use images/comparison/001o.png>
-Package pdftex.def Info: images/comparison/001o.png used on input line 172.
-(pdftex.def)             Requested size: 81.26357pt x 56.9055pt.
-
-<images/comparison/001-1-2.png, id=137, 346.29375pt x 289.83281pt>
-File: images/comparison/001-1-2.png Graphic file (type png)
-
-<use images/comparison/001-1-2.png>
-Package pdftex.def Info: images/comparison/001-1-2.png used on input line 176.
-(pdftex.def)             Requested size: 67.98935pt x 56.9055pt.
-
-<images/comparison/001-2-2.png, id=138, 343.2825pt x 300.3722pt>
-File: images/comparison/001-2-2.png Graphic file (type png)
-
-<use images/comparison/001-2-2.png>
-Package pdftex.def Info: images/comparison/001-2-2.png used on input line 180.
-(pdftex.def)             Requested size: 65.03053pt x 56.9055pt.
-
-<images/comparison/001-3-2.png, id=139, 347.04657pt x 292.84406pt>
-File: images/comparison/001-3-2.png Graphic file (type png)
-
-<use images/comparison/001-3-2.png>
-Package pdftex.def Info: images/comparison/001-3-2.png used on input line 184.
-(pdftex.def)             Requested size: 67.43816pt x 56.9055pt.
-File: images/comparison/002i.png Graphic file (type png)
- <use images/comparison/002i.png>
-Package pdftex.def Info: images/comparison/002i.png used on input line 190.
-(pdftex.def)             Requested size: 59.81186pt x 56.9055pt.
-File: images/comparison/002o.png Graphic file (type png)
-
-<use images/comparison/002o.png>
-Package pdftex.def Info: images/comparison/002o.png used on input line 194.
-(pdftex.def)             Requested size: 69.83212pt x 56.9055pt.
-
-<images/comparison/002-1-2.png, id=140, 344.03531pt x 299.61937pt>
-File: images/comparison/002-1-2.png Graphic file (type png)
-
-<use images/comparison/002-1-2.png>
-Package pdftex.def Info: images/comparison/002-1-2.png used on input line 198.
-(pdftex.def)             Requested size: 65.34114pt x 56.9055pt.
-
-<images/comparison/002-2-2.png, id=141, 348.55219pt x 307.90031pt>
-File: images/comparison/002-2-2.png Graphic file (type png)
-
-<use images/comparison/002-2-2.png>
-Package pdftex.def Info: images/comparison/002-2-2.png used on input line 202.
-(pdftex.def)             Requested size: 64.41731pt x 56.9055pt.
-
-<images/comparison/002-3-2.png, id=142, 344.03531pt x 295.1025pt>
-File: images/comparison/002-3-2.png Graphic file (type png)
-
-<use images/comparison/002-3-2.png>
-Package pdftex.def Info: images/comparison/002-3-2.png used on input line 206.
-(pdftex.def)             Requested size: 66.33855pt x 56.9055pt.
-File: images/comparison/004i.png Graphic file (type png)
- <use images/comparison/004i.png>
-Package pdftex.def Info: images/comparison/004i.png used on input line 212.
-(pdftex.def)             Requested size: 87.41422pt x 56.9055pt.
-File: images/comparison/004o.png Graphic file (type png)
-
-<use images/comparison/004o.png>
-Package pdftex.def Info: images/comparison/004o.png used on input line 216.
-(pdftex.def)             Requested size: 54.5007pt x 56.9055pt.
-
-<images/comparison/004-1-2.png, id=143, 336.50719pt x 352.31625pt>
-File: images/comparison/004-1-2.png Graphic file (type png)
-
-<use images/comparison/004-1-2.png>
-Package pdftex.def Info: images/comparison/004-1-2.png used on input line 220.
-(pdftex.def)             Requested size: 54.35057pt x 56.9055pt.
-
-<images/comparison/004-2-2.png, id=144, 338.76563pt x 410.2828pt>
-File: images/comparison/004-2-2.png Graphic file (type png)
-
-<use images/comparison/004-2-2.png>
-Package pdftex.def Info: images/comparison/004-2-2.png used on input line 224.
-(pdftex.def)             Requested size: 46.98232pt x 56.9055pt.
-
-<images/comparison/004-3-2.png, id=145, 323.70938pt x 342.5297pt>
-File: images/comparison/004-3-2.png Graphic file (type png)
-
-<use images/comparison/004-3-2.png>
-Package pdftex.def Info: images/comparison/004-3-2.png used on input line 228.
-(pdftex.def)             Requested size: 53.77525pt x 56.9055pt.
-File: images/comparison/005i.png Graphic file (type png)
- <use images/comparison/005i.png>
-Package pdftex.def Info: images/comparison/005i.png used on input line 234.
-(pdftex.def)             Requested size: 58.73042pt x 56.9055pt.
-File: images/comparison/005o.png Graphic file (type png)
+<images/comparison/005-1.png, id=137, 324.46219pt x 353.06906pt>
+File: images/comparison/005-1.png Graphic file (type png)
 
-<use images/comparison/005o.png>
-Package pdftex.def Info: images/comparison/005o.png used on input line 238.
-(pdftex.def)             Requested size: 51.67192pt x 56.9055pt.
+<use images/comparison/005-1.png>
+Package pdftex.def Info: images/comparison/005-1.png used on input line 152.
+(pdftex.def)             Requested size: 52.29128pt x 56.9055pt.
 
-<images/comparison/005-1-2.png, id=146, 341.77687pt x 426.84468pt>
-File: images/comparison/005-1-2.png Graphic file (type png)
+<images/comparison/005-2.png, id=138, 335.75438pt x 397.485pt>
+File: images/comparison/005-2.png Graphic file (type png)
 
-<use images/comparison/005-1-2.png>
-Package pdftex.def Info: images/comparison/005-1-2.png used on input line 242.
-(pdftex.def)             Requested size: 45.56422pt x 56.9055pt.
+<use images/comparison/005-2.png>
+Package pdftex.def Info: images/comparison/005-2.png used on input line 156.
+(pdftex.def)             Requested size: 48.06578pt x 56.9055pt.
 
-<images/comparison/005-2-2.png, id=147, 344.03531pt x 458.46281pt>
-File: images/comparison/005-2-2.png Graphic file (type png)
+<images/comparison/005-3.png, id=139, 346.29375pt x 451.6875pt>
+File: images/comparison/005-3.png Graphic file (type png)
 
-<use images/comparison/005-2-2.png>
-Package pdftex.def Info: images/comparison/005-2-2.png used on input line 246.
-(pdftex.def)             Requested size: 42.69983pt x 56.9055pt.
-
-<images/comparison/005-3-2.png, id=148, 332.74312pt x 408.02437pt>
-File: images/comparison/005-3-2.png Graphic file (type png)
-
-<use images/comparison/005-3-2.png>
-Package pdftex.def Info: images/comparison/005-3-2.png used on input line 250.
-(pdftex.def)             Requested size: 46.406pt x 56.9055pt.
+<use images/comparison/005-3.png>
+Package pdftex.def Info: images/comparison/005-3.png used on input line 160.
+(pdftex.def)             Requested size: 43.62479pt x 56.9055pt.
 
-<images/comparison/1-1.png, id=149, 314.67563pt x 286.06876pt>
-File: images/comparison/1-1.png Graphic file (type png)
-
-<use images/comparison/1-1.png>
-Package pdftex.def Info: images/comparison/1-1.png used on input line 260.
-(pdftex.def)             Requested size: 62.5931pt x 56.9055pt.
+<images/comparison/001-31.png, id=140, 344.03531pt x 350.05782pt>
+File: images/comparison/001-31.png Graphic file (type png)
 
-<images/comparison/2-1.png, id=150, 342.5297pt x 245.41687pt>
-File: images/comparison/2-1.png Graphic file (type png)
-
-<use images/comparison/2-1.png>
-Package pdftex.def Info: images/comparison/2-1.png used on input line 264.
-(pdftex.def)             Requested size: 79.42303pt x 56.9055pt.
+<use images/comparison/001-31.png>
+Package pdftex.def Info: images/comparison/001-31.png used on input line 170.
+(pdftex.def)             Requested size: 55.92345pt x 56.9055pt.
 
-<images/comparison/4-1.png, id=151, 315.42844pt x 237.88875pt>
-File: images/comparison/4-1.png Graphic file (type png)
-
-<use images/comparison/4-1.png>
-Package pdftex.def Info: images/comparison/4-1.png used on input line 268.
-(pdftex.def)             Requested size: 75.45409pt x 56.9055pt.
+<images/comparison/001-32.png, id=141, 342.5297pt x 258.9675pt>
+File: images/comparison/001-32.png Graphic file (type png)
 
-<images/comparison/5-1.png, id=152, 340.27126pt x 287.57437pt>
-File: images/comparison/5-1.png Graphic file (type png)
+<use images/comparison/001-32.png>
+Package pdftex.def Info: images/comparison/001-32.png used on input line 174.
+(pdftex.def)             Requested size: 75.26791pt x 56.9055pt.
 
-<use images/comparison/5-1.png>
-Package pdftex.def Info: images/comparison/5-1.png used on input line 272.
-(pdftex.def)             Requested size: 67.33133pt x 56.9055pt.
-File: images/comparison/001-3-1.png Graphic file (type png)
- <use images/comparison/001-3-1.png>
-Package pdftex.def Info: images/comparison/001-3-1.png used on input line 276.
-(pdftex.def)             Requested size: 65.19815pt x 56.9055pt.
-
-<images/comparison/1-2.png, id=153, 325.215pt x 294.34969pt>
-File: images/comparison/1-2.png Graphic file (type png)
-
-<use images/comparison/1-2.png>
-Package pdftex.def Info: images/comparison/1-2.png used on input line 282.
-(pdftex.def)             Requested size: 62.86832pt x 56.9055pt.
-
-<images/comparison/2-2.png, id=154, 345.54094pt x 277.78781pt>
-File: images/comparison/2-2.png Graphic file (type png)
-
-<use images/comparison/2-2.png>
-Package pdftex.def Info: images/comparison/2-2.png used on input line 286.
-(pdftex.def)             Requested size: 70.78362pt x 56.9055pt.
-
-<images/comparison/4-2.png, id=155, 336.50719pt x 299.61937pt>
-File: images/comparison/4-2.png Graphic file (type png)
-
-<use images/comparison/4-2.png>
-Package pdftex.def Info: images/comparison/4-2.png used on input line 290.
-(pdftex.def)             Requested size: 63.91135pt x 56.9055pt.
-
-<images/comparison/5-2.png, id=156, 328.97906pt x 279.29344pt>
-File: images/comparison/5-2.png Graphic file (type png)
-
-<use images/comparison/5-2.png>
-Package pdftex.def Info: images/comparison/5-2.png used on input line 294.
-(pdftex.def)             Requested size: 67.02951pt x 56.9055pt.
-File: images/comparison/002-3-1.png Graphic file (type png)
- <use images/comparison/002-3-1.png>
-Package pdftex.def Info: images/comparison/002-3-1.png used on input line 298.
-(pdftex.def)             Requested size: 65.74359pt x 56.9055pt.
-
-<images/comparison/1-3.png, id=157, 328.22626pt x 377.91188pt>
-File: images/comparison/1-3.png Graphic file (type png)
-
-<use images/comparison/1-3.png>
-Package pdftex.def Info: images/comparison/1-3.png used on input line 304.
-(pdftex.def)             Requested size: 49.42212pt x 56.9055pt.
-
-<images/comparison/2-3.png, id=158, 282.30469pt x 377.15906pt>
-File: images/comparison/2-3.png Graphic file (type png)
-
-<use images/comparison/2-3.png>
-Package pdftex.def Info: images/comparison/2-3.png used on input line 308.
-(pdftex.def)             Requested size: 42.5937pt x 56.9055pt.
-
-<images/comparison/4-3.png, id=159, 268.75406pt x 353.82187pt>
-File: images/comparison/4-3.png Graphic file (type png)
-
-<use images/comparison/4-3.png>
-Package pdftex.def Info: images/comparison/4-3.png used on input line 312.
-(pdftex.def)             Requested size: 43.22296pt x 56.9055pt.
-
-<images/comparison/5-3.png, id=160, 316.93407pt x 328.22626pt>
-File: images/comparison/5-3.png Graphic file (type png)
-
-<use images/comparison/5-3.png>
-Package pdftex.def Info: images/comparison/5-3.png used on input line 316.
-(pdftex.def)             Requested size: 54.94684pt x 56.9055pt.
-File: images/comparison/004-3-1.png Graphic file (type png)
- <use images/comparison/004-3-1.png>
-Package pdftex.def Info: images/comparison/004-3-1.png used on input line 320.
-(pdftex.def)             Requested size: 48.10886pt x 56.9055pt.
-
-<images/comparison/1-4.png, id=161, 316.93407pt x 363.60844pt>
-File: images/comparison/1-4.png Graphic file (type png)
-
-<use images/comparison/1-4.png>
-Package pdftex.def Info: images/comparison/1-4.png used on input line 326.
-(pdftex.def)             Requested size: 49.59819pt x 56.9055pt.
-
-<images/comparison/2-4.png, id=162, 320.69812pt x 368.1253pt>
-File: images/comparison/2-4.png Graphic file (type png)
-
-<use images/comparison/2-4.png>
-Package pdftex.def Info: images/comparison/2-4.png used on input line 330.
-(pdftex.def)             Requested size: 49.57066pt x 56.9055pt.
-
-<images/comparison/4-4.png, id=163, 322.20375pt x 423.83344pt>
-File: images/comparison/4-4.png Graphic file (type png)
-
-<use images/comparison/4-4.png>
-Package pdftex.def Info: images/comparison/4-4.png used on input line 334.
-(pdftex.def)             Requested size: 43.25963pt x 56.9055pt.
-
-<images/comparison/5-4.png, id=164, 277.78781pt x 317.68687pt>
-File: images/comparison/5-4.png Graphic file (type png)
-
-<use images/comparison/5-4.png>
-Package pdftex.def Info: images/comparison/5-4.png used on input line 338.
-(pdftex.def)             Requested size: 49.75803pt x 56.9055pt.
-File: images/comparison/005-3-1.png Graphic file (type png)
- <use images/comparison/005-3-1.png>
-Package pdftex.def Info: images/comparison/005-3-1.png used on input line 342.
-(pdftex.def)             Requested size: 43.00209pt x 56.9055pt.
+<images/comparison/001-33.png, id=142, 339.51843pt x 284.56313pt>
+File: images/comparison/001-33.png Graphic file (type png)
+
+<use images/comparison/001-33.png>
+Package pdftex.def Info: images/comparison/001-33.png used on input line 178.
+(pdftex.def)             Requested size: 67.89212pt x 56.9055pt.
+
+<images/comparison/001-34.png, id=143, 337.26pt x 218.31563pt>
+File: images/comparison/001-34.png Graphic file (type png)
+
+<use images/comparison/001-34.png>
+Package pdftex.def Info: images/comparison/001-34.png used on input line 182.
+(pdftex.def)             Requested size: 87.90681pt x 56.9055pt.
+File: images/comparison/001-3.png Graphic file (type png)
+ <use images/comparison/001-3.png>
+Package pdftex.def Info: images/comparison/001-3.png used on input line 186.
+(pdftex.def)             Requested size: 65.53642pt x 56.9055pt.
+
+<images/comparison/002-31.png, id=144, 340.27126pt x 289.83281pt>
+File: images/comparison/002-31.png Graphic file (type png)
+
+<use images/comparison/002-31.png>
+Package pdftex.def Info: images/comparison/002-31.png used on input line 192.
+(pdftex.def)             Requested size: 66.80693pt x 56.9055pt.
+
+<images/comparison/002-32.png, id=145, 328.97906pt x 318.43968pt>
+File: images/comparison/002-32.png Graphic file (type png)
+
+<use images/comparison/002-32.png>
+Package pdftex.def Info: images/comparison/002-32.png used on input line 196.
+(pdftex.def)             Requested size: 58.78699pt x 56.9055pt.
+
+<images/comparison/002-33.png, id=146, 342.5297pt x 277.035pt>
+File: images/comparison/002-33.png Graphic file (type png)
+
+<use images/comparison/002-33.png>
+Package pdftex.def Info: images/comparison/002-33.png used on input line 200.
+(pdftex.def)             Requested size: 70.35492pt x 56.9055pt.
+
+<images/comparison/002-34.png, id=147, 298.86656pt x 267.24844pt>
+File: images/comparison/002-34.png Graphic file (type png)
+
+<use images/comparison/002-34.png>
+Package pdftex.def Info: images/comparison/002-34.png used on input line 204.
+(pdftex.def)             Requested size: 63.63484pt x 56.9055pt.
+File: images/comparison/002-3.png Graphic file (type png)
+ <use images/comparison/002-3.png>
+Package pdftex.def Info: images/comparison/002-3.png used on input line 208.
+(pdftex.def)             Requested size: 72.39185pt x 56.9055pt.
+
+<images/comparison/004-31.png, id=148, 301.125pt x 345.54094pt>
+File: images/comparison/004-31.png Graphic file (type png)
+
+<use images/comparison/004-31.png>
+Package pdftex.def Info: images/comparison/004-31.png used on input line 214.
+(pdftex.def)             Requested size: 49.58698pt x 56.9055pt.
+
+<images/comparison/004-32.png, id=149, 335.00156pt x 398.23781pt>
+File: images/comparison/004-32.png Graphic file (type png)
+
+<use images/comparison/004-32.png>
+Package pdftex.def Info: images/comparison/004-32.png used on input line 218.
+(pdftex.def)             Requested size: 47.866pt x 56.9055pt.
+
+<images/comparison/004-33.png, id=150, 334.24875pt x 453.94594pt>
+File: images/comparison/004-33.png Graphic file (type png)
+
+<use images/comparison/004-33.png>
+Package pdftex.def Info: images/comparison/004-33.png used on input line 222.
+(pdftex.def)             Requested size: 41.89828pt x 56.9055pt.
+
+<images/comparison/004-34.png, id=151, 306.39468pt x 350.81062pt>
+File: images/comparison/004-34.png Graphic file (type png)
+
+<use images/comparison/004-34.png>
+Package pdftex.def Info: images/comparison/004-34.png used on input line 226.
+(pdftex.def)             Requested size: 49.69737pt x 56.9055pt.
+File: images/comparison/004-3.png Graphic file (type png)
+ <use images/comparison/004-3.png>
+Package pdftex.def Info: images/comparison/004-3.png used on input line 230.
+(pdftex.def)             Requested size: 44.75717pt x 56.9055pt.
+
+<images/comparison/005-31.png, id=152, 341.02406pt x 441.14813pt>
+File: images/comparison/005-31.png Graphic file (type png)
+
+<use images/comparison/005-31.png>
+Package pdftex.def Info: images/comparison/005-31.png used on input line 236.
+(pdftex.def)             Requested size: 43.98604pt x 56.9055pt.
+
+<images/comparison/005-32.png, id=153, 336.50719pt x 481.04718pt>
+File: images/comparison/005-32.png Graphic file (type png)
+
+<use images/comparison/005-32.png>
+Package pdftex.def Info: images/comparison/005-32.png used on input line 240.
+(pdftex.def)             Requested size: 39.80403pt x 56.9055pt.
+
+<images/comparison/005-33.png, id=154, 326.72063pt x 472.76625pt>
+File: images/comparison/005-33.png Graphic file (type png)
+
+<use images/comparison/005-33.png>
+Package pdftex.def Info: images/comparison/005-33.png used on input line 244.
+(pdftex.def)             Requested size: 39.32442pt x 56.9055pt.
+
+<images/comparison/005-34.png, id=155, 294.34969pt x 355.3275pt>
+File: images/comparison/005-34.png Graphic file (type png)
+
+<use images/comparison/005-34.png>
+Package pdftex.def Info: images/comparison/005-34.png used on input line 248.
+(pdftex.def)             Requested size: 47.13733pt x 56.9055pt.
+File: images/comparison/005-3.png Graphic file (type png)
+ <use images/comparison/005-3.png>
+Package pdftex.def Info: images/comparison/005-3.png used on input line 252.
+(pdftex.def)             Requested size: 43.62479pt x 56.9055pt.
+
+<images/comparison/001-35-1.png, id=156, 347.79938pt x 276.28218pt>
+File: images/comparison/001-35-1.png Graphic file (type png)
+
+<use images/comparison/001-35-1.png>
+Package pdftex.def Info: images/comparison/001-35-1.png used on input line 262.
+
+(pdftex.def)             Requested size: 71.63367pt x 56.9055pt.
+
+<images/comparison/001-35-2.png, id=157, 337.26pt x 238.64156pt>
+File: images/comparison/001-35-2.png Graphic file (type png)
+
+<use images/comparison/001-35-2.png>
+Package pdftex.def Info: images/comparison/001-35-2.png used on input line 266.
+
+(pdftex.def)             Requested size: 80.41914pt x 56.9055pt.
+File: images/comparison/001-3.png Graphic file (type png)
+ <use images/comparison/001-3.png>
+Package pdftex.def Info: images/comparison/001-3.png used on input line 270.
+(pdftex.def)             Requested size: 65.53642pt x 56.9055pt.
+
+<images/comparison/002-35-1.png, id=158, 345.54094pt x 332.74312pt>
+File: images/comparison/002-35-1.png Graphic file (type png)
+
+<use images/comparison/002-35-1.png>
+Package pdftex.def Info: images/comparison/002-35-1.png used on input line 276.
+
+(pdftex.def)             Requested size: 59.08916pt x 56.9055pt.
+
+<images/comparison/002-35-2.png, id=159, 326.72063pt x 267.24844pt>
+File: images/comparison/002-35-2.png Graphic file (type png)
+
+<use images/comparison/002-35-2.png>
+Package pdftex.def Info: images/comparison/002-35-2.png used on input line 280.
+
+(pdftex.def)             Requested size: 69.56555pt x 56.9055pt.
+File: images/comparison/002-3.png Graphic file (type png)
+ <use images/comparison/002-3.png>
+Package pdftex.def Info: images/comparison/002-3.png used on input line 284.
+(pdftex.def)             Requested size: 72.39185pt x 56.9055pt.
+
+<images/comparison/004-35-1.png, id=160, 253.69781pt x 436.63126pt>
+File: images/comparison/004-35-1.png Graphic file (type png)
+
+<use images/comparison/004-35-1.png>
+Package pdftex.def Info: images/comparison/004-35-1.png used on input line 290.
+
+(pdftex.def)             Requested size: 33.06316pt x 56.9055pt.
+
+<images/comparison/004-35-2.png, id=161, 317.68687pt x 459.21562pt>
+File: images/comparison/004-35-2.png Graphic file (type png)
+
+<use images/comparison/004-35-2.png>
+Package pdftex.def Info: images/comparison/004-35-2.png used on input line 294.
+
+(pdftex.def)             Requested size: 39.36658pt x 56.9055pt.
+File: images/comparison/004-3.png Graphic file (type png)
+ <use images/comparison/004-3.png>
+Package pdftex.def Info: images/comparison/004-3.png used on input line 298.
+(pdftex.def)             Requested size: 44.75717pt x 56.9055pt.
+
+<images/comparison/005-35-1.png, id=162, 328.97906pt x 387.69844pt>
+File: images/comparison/005-35-1.png Graphic file (type png)
+
+<use images/comparison/005-35-1.png>
+Package pdftex.def Info: images/comparison/005-35-1.png used on input line 304.
+
+(pdftex.def)             Requested size: 48.28554pt x 56.9055pt.
+
+<images/comparison/005-35-2.png, id=163, 279.29344pt x 375.65344pt>
+File: images/comparison/005-35-2.png Graphic file (type png)
+
+<use images/comparison/005-35-2.png>
+Package pdftex.def Info: images/comparison/005-35-2.png used on input line 308.
+
+(pdftex.def)             Requested size: 42.30559pt x 56.9055pt.
+File: images/comparison/005-3.png Graphic file (type png)
+ <use images/comparison/005-3.png>
+Package pdftex.def Info: images/comparison/005-3.png used on input line 312.
+(pdftex.def)             Requested size: 43.62479pt x 56.9055pt.
 )
 (E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
 Net2.0.bbl
 Missing character: There is no Ã in font ptmrc7t!
 Missing character: There is no § in font ptmrc7t!
+ [4 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/ima
+ges/databaseflow.jpg>]
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
@@ -939,68 +901,65 @@ Underfull \hbox (badness 1629) in paragraph at lines 124--128
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 355.
- [4] [5 <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc
-/images/comparison/001i.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fold
-ingNet/FoldingNet_Doc/images/comparison/001o.png> <E:/image_lab/packaging_foldi
-ng/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/001-1-1.png> <E:/i
-mage_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/compa
-rison/001-2-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Fol
-dingNet_Doc/images/comparison/001-3-1.png> <E:/image_lab/packaging_folding/Fold
-ingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002i.png> <E:/image_lab/p
-ackaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002o
-.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/i
-mages/comparison/002-1-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fol
-dingNet/FoldingNet_Doc/images/comparison/002-2-1.png> <E:/image_lab/packaging_f
-olding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002-3-1.png> <
-E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/c
-omparison/004i.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Fo
-ldingNet_Doc/images/comparison/004o.png> <E:/image_lab/packaging_folding/Foldin
-gNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004-1-1.png> <E:/image_lab/
-packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004
--2-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_D
-oc/images/comparison/004-3-1.png> <E:/image_lab/packaging_folding/FoldingNetGit
-/FoldingNet/FoldingNet_Doc/images/comparison/005i.png> <E:/image_lab/packaging_
-folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/005o.png> <E:
-/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/com
-parison/005-1-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/F
-oldingNet_Doc/images/comparison/005-2-1.png> <E:/image_lab/packaging_folding/Fo
-ldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/005-3-1.png> <E:/image_
-lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison
-/001-1-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingN
-et_Doc/images/comparison/001-2-2.png> <E:/image_lab/packaging_folding/FoldingNe
-tGit/FoldingNet/FoldingNet_Doc/images/comparison/001-3-2.png> <E:/image_lab/pac
-kaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002-1-
-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/
-images/comparison/002-2-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fo
-ldingNet/FoldingNet_Doc/images/comparison/002-3-2.png> <E:/image_lab/packaging_
-folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004-1-2.png> 
-<E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/
-comparison/004-2-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNe
-t/FoldingNet_Doc/images/comparison/004-3-2.png> <E:/image_lab/packaging_folding
-/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/005-1-2.png> <E:/ima
+ [5
+
+ <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images
+/comparison/001i.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/
+FoldingNet_Doc/images/comparison/001o.png> <E:/image_lab/packaging_folding/Fold
+ingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/001-1.png> <E:/image_lab/
+packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/001
+-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc
+/images/comparison/001-3.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fol
+dingNet/FoldingNet_Doc/images/comparison/002i.png> <E:/image_lab/packaging_fold
+ing/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002o.png> <E:/ima
 ge_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/compari
-son/005-2-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Foldi
-ngNet_Doc/images/comparison/005-3-2.png>] [6 <E:/image_lab/packaging_folding/Fo
-ldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/1-1.png> <E:/image_lab/
-packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/2-1
-.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/i
-mages/comparison/4-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/Folding
-Net/FoldingNet_Doc/images/comparison/5-1.png> <E:/image_lab/packaging_folding/F
-oldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/1-2.png> <E:/image_lab
-/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/2-
-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/
-images/comparison/4-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/Foldin
-gNet/FoldingNet_Doc/images/comparison/5-2.png> <E:/image_lab/packaging_folding/
-FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/1-3.png> <E:/image_la
-b/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/2
--3.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc
-/images/comparison/4-3.png> <E:/image_lab/packaging_folding/FoldingNetGit/Foldi
-ngNet/FoldingNet_Doc/images/comparison/5-3.png> <E:/image_lab/packaging_folding
-/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/1-4.png> <E:/image_l
+son/002-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Folding
+Net_Doc/images/comparison/002-2.png> <E:/image_lab/packaging_folding/FoldingNet
+Git/FoldingNet/FoldingNet_Doc/images/comparison/002-3.png> <E:/image_lab/packag
+ing_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004i.png>
+ <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images
+/comparison/004o.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/
+FoldingNet_Doc/images/comparison/004-1.png> <E:/image_lab/packaging_folding/Fol
+dingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004-2.png> <E:/image_lab
+/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/00
+4-3.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Do
+c/images/comparison/005i.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fol
+dingNet/FoldingNet_Doc/images/comparison/005o.png> <E:/image_lab/packaging_fold
+ing/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/005-1.png> <E:/im
+age_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/compar
+ison/005-2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Foldin
+gNet_Doc/images/comparison/005-3.png>] [6 <E:/image_lab/packaging_folding/Foldi
+ngNetGit/FoldingNet/FoldingNet_Doc/images/comparison/001-31.png> <E:/image_lab/
+packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/001
+-32.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Do
+c/images/comparison/001-33.png> <E:/image_lab/packaging_folding/FoldingNetGit/F
+oldingNet/FoldingNet_Doc/images/comparison/001-34.png> <E:/image_lab/packaging_
+folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002-31.png> <
+E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/c
+omparison/002-32.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/
+FoldingNet_Doc/images/comparison/002-33.png> <E:/image_lab/packaging_folding/Fo
+ldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002-34.png> <E:/image_l
 ab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/
-2-4.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Do
-c/images/comparison/4-4.png> <E:/image_lab/packaging_folding/FoldingNetGit/Fold
-ingNet/FoldingNet_Doc/images/comparison/5-4.png>]
+004-31.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet
+_Doc/images/comparison/004-32.png> <E:/image_lab/packaging_folding/FoldingNetGi
+t/FoldingNet/FoldingNet_Doc/images/comparison/004-33.png> <E:/image_lab/packagi
+ng_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004-34.png
+> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/image
+s/comparison/005-31.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingN
+et/FoldingNet_Doc/images/comparison/005-32.png> <E:/image_lab/packaging_folding
+/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/005-33.png> <E:/imag
+e_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparis
+on/005-34.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/Folding
+Net_Doc/images/comparison/001-35-1.png> <E:/image_lab/packaging_folding/Folding
+NetGit/FoldingNet/FoldingNet_Doc/images/comparison/001-35-2.png> <E:/image_lab/
+packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/002
+-35-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_
+Doc/images/comparison/002-35-2.png> <E:/image_lab/packaging_folding/FoldingNetG
+it/FoldingNet/FoldingNet_Doc/images/comparison/004-35-1.png> <E:/image_lab/pack
+aging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/images/comparison/004-35-
+2.png> <E:/image_lab/packaging_folding/FoldingNetGit/FoldingNet/FoldingNet_Doc/
+images/comparison/005-35-1.png> <E:/image_lab/packaging_folding/FoldingNetGit/F
+oldingNet/FoldingNet_Doc/images/comparison/005-35-2.png>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 355.
 
 (E:\image_lab\packaging_folding\FoldingNetGit\FoldingNet\FoldingNet_Doc\Folding
@@ -1009,13 +968,13 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 355.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 355.
  ) 
 Here is how much of TeX's memory you used:
- 7897 strings out of 495354
- 120759 string characters out of 3183075
- 233063 words of memory out of 3000000
- 10827 multiletter control sequences out of 15000+200000
- 34627 words of font info for 71 fonts, out of 3000000 for 9000
+ 7890 strings out of 495354
+ 120544 string characters out of 3183075
+ 229207 words of memory out of 3000000
+ 10819 multiletter control sequences out of 15000+200000
+ 35670 words of font info for 74 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,9n,75p,1369b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,9n,75p,1369b,408s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Program Files/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<D:/Program Fil
 es/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><D:/Program Files/CTEX/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><D:/Program Files/CTEX/MiKTeX/f
@@ -1029,15 +988,16 @@ ogram Files/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/Program Fi
 les/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/Program Files/CTEX
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files/CTEX/MiKTeX/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/Program Files/CTEX/MiKTeX/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type
-1/urw/helvetic/uhvb8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/helveti
-c/uhvr8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:
-/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/Program Files/
-CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/Program Files/CTEX/MiKTeX/font
-s/type1/urw/times/utmri8a.pfb>
-Output written on FoldingNet2.0.pdf (6 pages, 6031132 bytes).
+pe1/public/amsfonts/cm/cmti9.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/he
+lvetic/uhvb8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/helvetic/uhvr8a
+.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:/Program
+ Files/CTEX/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/Program Files/CTEX/MiK
+TeX/fonts/type1/urw/times/utmr8a.pfb><D:/Program Files/CTEX/MiKTeX/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on FoldingNet2.0.pdf (6 pages, 6052083 bytes).
 PDF statistics:
  316 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 named destinations out of 1000 (max. 500000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 
